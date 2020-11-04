@@ -22,7 +22,6 @@ def text_extraction(verb):
 
     lemmatizer = WordNetLemmatizer()
     list_sent = brown.sents()
-
     # if you want to filter sentences by category
     # list_sent = brown.sents(categories=['news'])
 
