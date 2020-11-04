@@ -71,9 +71,9 @@ def save_html_intermediate_data(dataframe, filename, caption="", crosscell="", s
 
   s = dataframe.style.set_table_styles(styles).highlight_max(
         color='lightgreen').highlight_min(color='#cd4f39').set_caption(caption)
-  html_text = s.render().replace('\\t', '<br/> <br/>').replace('nan', '')
+  html_text = s.render().replace('\\t', '<br/> <br/>').replace('nan', '').replace("Synset","")
     # dataframe.to_html(filename)
-  with open(filename, 'w') as f:
+  with open("./part3/exercise2/reports/html/"+filename, 'w') as f:
     f.write(html_text)
 
 
