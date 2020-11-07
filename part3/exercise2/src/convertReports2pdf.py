@@ -13,7 +13,6 @@ if __name__ == "__main__":
     
      
     doc = fitz.open()                            # PDF with the pictures
-
     img = fitz.open(png_filepath)  # open pic as document
     rect = img[0].rect                       # pic dimension
     pdfbytes = img.convertToPDF()            # make a PDF stream
