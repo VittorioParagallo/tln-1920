@@ -173,6 +173,13 @@ def findConcept(concept):
     # è un dizionario con synset del genus in chiave e #occorrenze in valore
     # Es Counter({Synset('recognition.n.08'): 1, Synset('respect.n.01'): 1})
     concept.set_genus_bag(Counter(all_definitions_possible_genuses))
+    #associa tutti i lemma se richiesto nei parametri
+    if execution_parms["lemmas_similarity"]:
+      target_corpus_lemmas = [lemma.name() for lemma in list(itertools.chain(
+        *[genus_syn.lemmas() for genus_syn in concept.get_genus_bag()]))]
+      concept.get_preprocessed_corpus().extend(target_corpus_lemmas)
+     
+
     concept.set_genus_hypernyms_bag(
         Counter(all_definitions_possible_genuses_hypernyms))
 
@@ -299,20 +306,25 @@ def findConcept(concept):
                                 "<br/>".join(["SCORE: "+str(k[1].path_similarity(concept.get_id()))[:8]
                                               for k, v in global_genus_hype_hypo_max.items()])
                                   )
-    row_template = "{}|{}|{}"
+    row_template = "{}|{}|{}|{}|{}"
     return "{}|{}|{}".format(str(concept.get_id()),
         row_template.format(
-                      ", ".join([k[0].name()
-                                for k, v in global_genus_hypo_max.items()]),
-                      ", ".join([k[1].name()
-                                for k, v in global_genus_hypo_max.items()]),
-                          [str(compute_score(k[1], concept.get_id())).replace(".", ",") if k is not None else 'N/A' for k, v in global_genus_hypo_max.items()][0]),
+                      ", ".join([k[0].name() for k, v in global_genus_hypo_max.items()]),
+                      ", ".join([str(j[1])[:9] for j in compute_syns_similarity(concept, [k[0] for k, v in global_genus_hypo_max.items()], 1)]),
+                      ", ".join([k[1].name() for k, v in global_genus_hypo_max.items()]),
+                      ", ".join([str(v)[:9]
+                                 for k, v in global_genus_hypo_max.items()]),
+                     [str(compute_score(k[1], concept.get_id())) if k is not None else 'N/A' for k, v in global_genus_hypo_max.items()][0]),
         row_template.format(
-        ", ".join([k[0].name()
-                  for k, v in global_genus_hype_hypo_max.items()]),
-        ", ".join([k[1].name()
-                  for k, v in global_genus_hype_hypo_max.items()]),
-        [str(compute_score(k[1], concept.get_id())).replace(".", ",") if k is not None else 'N/A' for k, v in global_genus_hype_hypo_max.items()][0]),).replace("Synset('", "").replace("')", "")
+                     ", ".join([k[0].name() for k, v in global_genus_hype_hypo_max.items()]),
+                     ", ".join([str(j[1])[:9] for j in compute_syns_similarity(
+                         concept, [k[0] for k, v in global_genus_hype_hypo_max.items()], 1)]),
+                     ", ".join([k[1].name()
+                                for k, v in global_genus_hype_hypo_max.items()]),
+                     ", ".join([str(v)[:9]
+                                for k, v in global_genus_hype_hypo_max.items()]),
+                     [str(compute_score(k[1], concept.get_id())) if k is not None else 'N/A' for k, v in global_genus_hype_hypo_max.items()][0]),
+                ).replace("Synset('", "").replace("')", "")
 
 
 def compute_score(syn_x, syn_y):
@@ -337,9 +349,11 @@ def noun_hypo_analisys(concept):
         # return all the genus hypons with similarity values !=0
         # all similarity values are weighted with genus weight
         # Example{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
-        hypons_analisys = compute_hypons_similarity(
-            concept, genus, genus_weight, execution_parms["genus_hypo_depth"]
-        )
+        all_hypon = list(genus.closure(
+            lambda s: s.hyponyms(), depth=execution_parms["genus_hypo_depth"]))
+        hypons_analisys = compute_syns_similarity(
+            concept, all_hypon, genus_weight)
+        
         # add to the genus_hypons_similarities only if the genus has hypons or these have similariity values
         # Ex. paleness doesn't have hyponyms
         if(len(hypons_analisys) > 0):
@@ -360,8 +374,10 @@ def noun_hype_hypo_analisys(concept):
         # return all the genus hyperyms with similarity values !=0
         # all similarity values are weighted with genus weight
         # Example{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
-        hypons_analisys = compute_hypons_similarity(
-            concept, hype, hype_weight, execution_parms["genus_hyper_hypo_depth"]
+        all_hypon = list(hype.closure(
+            lambda s: s.hyponyms(), depth=execution_parms["genus_hyper_hypo_depth"]))
+        hypons_analisys = compute_syns_similarity(
+            concept, all_hypon, hype_weight,
         )
         # add to the genus_hypons_similarities only if the genus has hypons or these have similariity values
         # Ex. paleness doesn't have hyponyms
@@ -370,9 +386,7 @@ def noun_hype_hypo_analisys(concept):
     return hype_hypons_similarities
 
 
-def compute_hypons_similarity(concept, root_syn, genus_weight, depth=1):
-    all_hypon = list(root_syn.closure(
-        lambda s: s.hyponyms(), depth=depth))
+def compute_syns_similarity(concept, all_hypon, genus_weight):
     # creates a dictionary like
     # {Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
  # k=hypon, v=weighted cosine similarity  between definitions corpus and hypon definition
@@ -391,15 +405,9 @@ def compute_hypons_similarity(concept, root_syn, genus_weight, depth=1):
       corpus_to_analyze.extend(preprocessed_examples)
       corpus_to_analyze.extend(lemmas_corpus)
 
-      target_corpus_lemmas = [lemma.name() for lemma in list(itertools.chain(
-          *[genus_syn.lemmas() for genus_syn in concept.get_genus_bag()]))] if execution_parms["lemmas_similarity"] else []
-
-      target_corpus = concept.get_preprocessed_corpus()
-      target_corpus.extend(target_corpus_lemmas)
-
 
       hypon_analisys_list.append((hypon, cos_similarity(
-          corpus_to_analyze, target_corpus) * genus_weight))
+          corpus_to_analyze, concept.get_preprocessed_corpus() ) * genus_weight))
 
     # return the result omitting the ones with 0 similarity
     return [tuple for tuple in hypon_analisys_list if tuple[0]]
@@ -439,7 +447,7 @@ verbs = ["VB", "VBD", "VBG", "VBN", "VBP", "VBZ"]
 execution_parms={}
 if __name__ == "__main__":
 
-  for execution_item in experiments_parameters[8:9]:
+  for execution_item in experiments_parameters:
     execution_parms = execution_item
 
     concept_definitions_dict = load_data(
