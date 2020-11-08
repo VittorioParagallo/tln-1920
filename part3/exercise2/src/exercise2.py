@@ -1,8 +1,12 @@
 import csv
 import nltk
 import pprint
+import imgkit
+import fitz
+import img2pdf
 import string
 import random
+import os
 import pandas as pd
 from nltk import word_tokenize
 from nltk.corpus import stopwords
@@ -15,6 +19,7 @@ import itertools
 from collections import Counter
 from definition import Definition
 from concept import Concept, Genus
+from experiments_list import experiments_parameters
 
 
 def load_data(data_file_url):
@@ -37,7 +42,11 @@ def load_data(data_file_url):
             concept.set_preprocessed_corpus(list(itertools.chain(
                 *list((map(Definition.get_preprocessed, concept.get_definitions()))))))
 
+            concept.set_id(
+                lesk(concept.get_corpus().split(), (concept.get_id())))
+
             concept_definitions_dict[i] = concept
+
          # save the result in html table for logging purpose
         save_html_intermediate_data(pd.DataFrame(
             [x.get_definitions() for x in concept_definitions_dict.values()]), 'load_data_log.html', "Preprocessed loaded data")
@@ -47,19 +56,19 @@ def load_data(data_file_url):
 # function to save log in html tables
 
 
-def save_html_intermediate_data(dataframe, filename, caption="", crosscell="", summary=""):
-  columns =  dataframe.columns.to_list()
-  columns = list(zip([summary] * len(columns), columns))
-  columns = pd.MultiIndex.from_tuples(columns, names=['-', crosscell])
-  dataframe.columns = columns
-  styles = [{'props': [("font-family", "Calibri")]}, {
+def save_html_intermediate_data(dataframe, filename, caption="", crosscell="", summary="", scorecell="-"):
+    columns = dataframe.columns.to_list()
+    columns = list(zip([summary] * len(columns), columns))
+    columns = pd.MultiIndex.from_tuples(columns, names=[scorecell, crosscell])
+    dataframe.columns = columns
+    styles = [{'props': [("font-family", "Calibri")]}, {
         'selector': 'th',
         'props': [
-            ('background-color', 'rgba(0, 0, 128, 0.3)'),
-           # ('opacity', '0.3'),
-            ('color', 'black'),
-            ('text-align', 'left'),
-        ]  # for alignment
+              ('background-color', 'LightGrey'),
+              # ('opacity', '0.3'),
+              ('color', 'black'),
+              ('text-align', 'left'),
+              ]  # for alignment
     },
         {
         'selector': 'td',
@@ -67,14 +76,44 @@ def save_html_intermediate_data(dataframe, filename, caption="", crosscell="", s
             ('border-collapse', 'collapse'),
             ('border', '1px solid silver'),
         ]
-    },]
+    }, ]
 
-  s = dataframe.style.set_table_styles(styles).highlight_max(
+    s = dataframe.style.set_table_styles(styles).highlight_max(
         color='lightgreen').highlight_min(color='#cd4f39').set_caption(caption)
-  html_text = s.render().replace('\\t', '<br/> <br/>').replace('nan', '')
+    html_text = s.render().replace(
+        '\\t', '<br/> <br/>').replace('nan', '').replace("Synset", "")
     # dataframe.to_html(filename)
-  with open(filename, 'w') as f:
-    f.write(html_text)
+    html_filepath = "./part3/exercise2/reports/html/" + \
+        execution_parms["test_id"]+"/"
+    if not os.path.exists(html_filepath):
+      os.makedirs(html_filepath)
+    png_filepath = html_filepath.replace("html", "png")
+    if not os.path.exists(png_filepath):
+      os.makedirs(png_filepath)
+    pdf_filepath = html_filepath.replace("html", "pdf")
+    if not os.path.exists(pdf_filepath):
+      os.makedirs(pdf_filepath)
+    html_filepath += filename
+    png_filepath += filename
+    pdf_filepath += filename
+
+    # save as html
+    with open(html_filepath, 'w') as f:
+        f.write(html_text)
+    # save as png
+    # imgkit.from_file(html_filepath, png_filepath)
+    # #save as pdf
+    # doc = fitz.open()                            # PDF with the pictures
+    # img = fitz.open(png_filepath)  # open pic as document
+    # rect = img[0].rect                       # pic dimension
+    # pdfbytes = img.convertToPDF()            # make a PDF stream
+    # img.close()                              # no longer needed
+    # imgPDF = fitz.open("pdf", pdfbytes)      # open stream as PDF
+    # page = doc.newPage(width=rect.width,   # new page with ...
+    #                     height=rect.height)  # pic dimension
+    # page.showPDFpage(rect, imgPDF, 0)
+    # # image fills the page
+    # doc.save(pdf_filepath)
 
 
 stop_words = set(stopwords.words('english'))
@@ -89,7 +128,6 @@ def preprocess(text):
     :param definition: a string representing to preprocess
     :return: a lost of strings which contains the preprocessed string tokens, lemmantized and wiyhout stopwords.
     """
-
     # tokenize dentence
     text_tokenized = word_tokenize(text)
     # add pos tag and convert each touple  ("church","NN") to list  ["church","NN"] because touples are unmodifiable
@@ -111,26 +149,33 @@ def findConcept(concept):
     # processa le definizioni per individuare candidati genus
     for definition in concept.get_definitions():
         print('analizing definition:'+definition.get_raw())
-        # estrai solo i lemmi taggati 'NN' (inserire anche JJ???)
-        possible_genuses = [x[0] for x in list(filter(lambda x: x[1] in ["NN"] , definition.get_preprocessed()))]
+
+        possible_genuses = [x[0] for x in list(
+            filter(lambda x: x[1] in execution_parms["genus_tags"], definition.get_preprocessed()))]
         # disambigua rispetto a tutte le definizioni dello stesso concetto come se fosse un unico corpus.
         # eventualmente provare la differenza disambiguando solo con la definizione in cui è contenuto
-        possible_genuses_syns = list(filter(None, [lesk(concept.get_corpus(), possible_genus)
-                                 for possible_genus in possible_genuses]))
+        if execution_parms["lesk_on_genus"]:
+          possible_genuses_syns = list(filter(None, [
+              lesk(concept.get_corpus().split(), possible_genus, 'n')
+                if execution_parms['lesk_only_n']
+                else lesk(concept.get_corpus().split(), possible_genus)
+            for possible_genus in possible_genuses]))
+        else:
+          possible_genuses_syns = list(filter(None, list(itertools.chain(
+              *[wn.synsets(possible_genus) for possible_genus in possible_genuses]))))
         # aggiungi alla lista di genus di tutte le definizioni del concetto
         # Es. [Synset('recognition.n.08'), Synset('respect.n.01')]
         all_definitions_possible_genuses.extend(possible_genuses_syns)
         # save the list of all the genuses hypernyms
         all_definitions_possible_genuses_hypernyms.extend(
-            list(itertools.chain(*[genus_syn.hypernyms() for genus_syn in possible_genuses_syns if len(possible_genuses_syns)>0 and len(genus_syn.hypernyms()) > 0])))
+            list(itertools.chain(*[genus_syn.hypernyms() for genus_syn in possible_genuses_syns if len(possible_genuses_syns) > 0 and len(genus_syn.hypernyms()) > 0])))
     # associa al concetto il genus bag pesato.
     # è un dizionario con synset del genus in chiave e #occorrenze in valore
     # Es Counter({Synset('recognition.n.08'): 1, Synset('respect.n.01'): 1})
     concept.set_genus_bag(Counter(all_definitions_possible_genuses))
     concept.set_genus_hypernyms_bag(
         Counter(all_definitions_possible_genuses_hypernyms))
-    
-    
+
     # FIRST EXPERIMENT:
     # given the genus and its hyponyms compute these hyponyms similarities vs. definition corpus
     #
@@ -142,129 +187,233 @@ def findConcept(concept):
     # tot_frequencies= 7
 
     genus_hypo_similarities = noun_hypo_analisys(concept)
+
     # associa ad ogni genus l'iponimo con max similarità
-    local_genus_hypo_max_dict = {
-        key: max(val.values()) for key, val in genus_hypo_similarities.items()}
-    # l'iponimo con similarita massima globale    
-    global_genus_hypo_max = max(
-        local_genus_hypo_max_dict, key=local_genus_hypo_max_dict.get, default=None)
+    # è un dict { (genus_syn:hypo_syn): similarity_value}
+    local_genus_hypo_max_dict = {}
+    # create a new dictionary to display genus frequencies in report on the column heads
+    data_display = {}
+    all_hypoId_found = set(pair[0] for pair in list(
+        itertools.chain(*genus_hypo_similarities.values())))
+
+    for key, value in genus_hypo_similarities.items():
+        # local_maxes is a list of tuples (Synset, similarity) with the
+        # maximum value, is a list because more synset with the
+        # same similarity value are taken into account
+        local_maxes = list(filter(lambda x: x[1] == max(
+            value, key=lambda t: t[1])[1], value))
+
+        for local_max in local_maxes:
+            local_genus_hypo_max_dict[(key, local_max[0])] = local_max[1]
+
+        genus_hiposId = set(pair[0] for pair in value)
+        missing_hypo = all_hypoId_found - genus_hiposId
+        genus_hypo_similarities[key].extend([(x, None) for x in missing_hypo])
+        column_label = key.name() + "<br/> (f:" + \
+                                str(dict(concept.get_genus_bag())[key]) + ")"
+        data_display[column_label] = dict(value)
+
+    global_genus_hypo_max = dict(filter(lambda x: x[1] == max(
+            local_genus_hypo_max_dict.values()), local_genus_hypo_max_dict.items()))
+
     # log results
-    save_html_intermediate_data(pd.DataFrame(genus_hypo_similarities),\
-                                'concept ' + str(concept.get_id()) + ' genus_hypons_similarities.html', \
-                                'Genus -> hypo: similarity\n Concept:' + str(concept.get_id()), \
-                                  'HYPONYMS \ GENUSES', \
-                                'local max: <br>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".join([str(v).replace("Synset('", '').replace("')", '')+' : '+str(k)[:8] for v, k in local_genus_hypo_max_dict.items()])+'<br/>overall max:'+str(global_genus_hypo_max))
+
+    # summary_row = 'local max: <br>' + '&nbsp;&nbsp;&nbsp;&nbsp;<font color="DarkBlue">'.join([str(k[0])+'</font>-><font color="DarkGreen">'+str(k[1])+'</font>:'+str(
+    #    v)[:8] for k, v in local_genus_hypo_max_dict.items()])
+    summary_row_template = '&nbsp;&nbsp;&nbsp;&nbsp;<font color="DarkBlue">{}</font><font color="DarkGreen"> -> </font><font color="Indigo">{}</font >: {}'
+    summary_row = 'local max: <br>' + ''.join([summary_row_template.format(str(k[0]), str(k[1]), str(
+        v)[:8]) for k, v in local_genus_hypo_max_dict.items()])
+
+    summary_row += '<br/><br/>overall max: ' + \
+        " ".join([str(k[0]) + ' -> ' + str(k[1]) + ': ' + str(v)
+                  for k, v in global_genus_hypo_max.items()])
+
+    summary_row = summary_row.replace("('", "").replace("')", '')
+    save_html_intermediate_data(pd.DataFrame(data_display),
+                                str(concept.get_id().name().split()[0]) +
+                                ' genus_hypons_similarities.html',
+                                "<b>"+execution_parms["test_id"]+'</b> Genus -> hypo: similarity\n Concept: ' +
+                                str(concept.get_id()),
+                                'HYPONYMS \ GENUSES',
+                                summary_row,
+                                '<font size="2">' + "<br/>".join(["{} = {}".format(k, v)
+                                                                  for k, v in execution_parms.items() if k is not "test_id"]) + "</font><br/>" +
+                                "<br/>".join(["SCORE: "+str(k[1].path_similarity(concept.get_id()))[:8]
+                                              for k, v in global_genus_hypo_max.items() ]))
 
     # SEECOND EXPERIMENT:
     # given the genus and its hyponyms compute these hyponyms similarities vs. definition corpus
     #
     #
     genus_hype_hypo_similarities = noun_hype_hypo_analisys(concept)
-    # associa ad ogni genus l'iponimo con max similarità
-    local_hype_hypo_max_dict = {
-        key: max(val.values()) for key, val in genus_hype_hypo_similarities.items()}
-    # l'iponimo con similarita massima globale
-    global_hype_hypo_max = max(
-        local_hype_hypo_max_dict, key=local_hype_hypo_max_dict.get, default=None)
+
+    local_genus_hype_hypo_max_dict = {}
+    data_display = {}
+    all_hypoId_found = set(pair[0] for pair in list(
+        itertools.chain(*genus_hype_hypo_similarities.values())))
+
+    for key, value in genus_hype_hypo_similarities.items():
+        # local_maxes is a list of tuples (Synset, similarity) with the
+        # maximum value, is a list because more synset with the
+        # same similarity value are taken into account
+        local_maxes = list(filter(lambda x: x[1] == max(
+            value, key=lambda t: t[1])[1], value))
+
+        for local_max in local_maxes:
+            local_genus_hype_hypo_max_dict[(key, local_max[0])] = local_max[1]
+
+        genus_hiposId = set(pair[0] for pair in value)
+        missing_hypo = all_hypoId_found - genus_hiposId
+        genus_hype_hypo_similarities[key].extend(
+            [(x, None) for x in missing_hypo])
+        column_label = key.name() + "<br/> (f:" + \
+            str(dict(concept.get_genus_hypernyms_bag())[key]) + ")"
+        data_display[column_label] = dict(value)
+
+    global_genus_hype_hypo_max = dict(filter(lambda x: x[1] == max(
+            local_genus_hype_hypo_max_dict.values()), local_genus_hype_hypo_max_dict.items()))
+
     # log results
-    save_html_intermediate_data(pd.DataFrame(genus_hype_hypo_similarities),
-                                'concept ' + str(concept.get_id()) + ' genus_hype_hypons_similarities.html', \
-                                'Genus-> hype -> hypo: similarity\n Concept:' + str(concept.get_id()), \
-                                      'HYPONYMS \ HYPERONYMS (of genuses)',
-                                'local max: <br>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".join([str(v).replace("Synset('", '').replace("')", '') + ' : ' + str(
-                                    k)[:8] for v, k in local_hype_hypo_max_dict.items()]) + '<br/>overall max:' + str(global_hype_hypo_max)
+
+    summary_row_template = '&nbsp;&nbsp;&nbsp;&nbsp;<font color="DarkBlue">{}</font><font color="DarkGreen"> -> </font><font color="Indigo">{}</font >: {}'
+    summary_row = 'local max: <br>' + ''.join([summary_row_template.format(str(k[0]), str(k[1]), str(
+        v)[:8]) for k, v in local_genus_hype_hypo_max_dict.items()])
+
+    summary_row += '<br/><br/>overall max: ' + \
+        " ".join([str(k[0]) + ' -> ' + str(k[1]) + ': ' + str(v)
+                  for k, v in global_genus_hype_hypo_max.items()])
+
+    summary_row = summary_row.replace("('", "").replace("')", '')
+
+    save_html_intermediate_data(pd.DataFrame(data_display),
+                                str(concept.get_id().name().split()[0]) +
+                                ' genus_hype_hypons_similarities.html',
+                                "<b>"+execution_parms["test_id"]+'</b> Genus-> hype -> hypo: similarity\n Concept:' +
+                                str(concept.get_id()),
+                                'HYPONYMS \ HYPERONYMS (of genuses)',
+                                summary_row,
+                                '<font size="2">' + "<br/>".join(["{} = {}".format(k, v)
+                                                                  for k, v in execution_parms.items() if k is not "test_id"]) + "</font><br/>" +
+                                "<br/>".join(["SCORE: "+str(k[1].path_similarity(concept.get_id()))[:8]
+                                              for k, v in global_genus_hype_hypo_max.items()])
                                   )
+    row_template = "{}|{}|{}"
+    return "{}|{}|{}".format(str(concept.get_id()),
+        row_template.format(
+                      ", ".join([k[0].name()
+                                for k, v in global_genus_hypo_max.items()]),
+                      ", ".join([k[1].name()
+                                for k, v in global_genus_hypo_max.items()]),
+                          [str(compute_score(k[1], concept.get_id())).replace(".", ",") if k is not None else 'N/A' for k, v in global_genus_hypo_max.items()][0]),
+        row_template.format(
+        ", ".join([k[0].name() for k, v in global_genus_hype_hypo_max.items()]),
+        ", ".join([k[1].name()
+                  for k, v in global_genus_hype_hypo_max.items()]),
+        [str(compute_score(k[1], concept.get_id())).replace(".", ",") if k is not None else 'N/A' for k, v in global_genus_hype_hypo_max.items()][0]),).replace("Synset('", "").replace("')", "")
 
-    return "\t{}: \t{}\t\t{}".format(str(concept.get_id()),
-                                     global_genus_hypo_max.name() if global_genus_hypo_max is not None else 'N/A', global_hype_hypo_max.name() if global_hype_hypo_max is not None else 'N/A')
+def compute_score(syn_x, syn_y):
+   if execution_parms["score_type"] == "path_similarity":
+     return syn_x.path_similarity(syn_y)
+   if execution_parms["score_type"] == "lch_similarity":
+     return syn_x.lch_similarity(syn_y)
+   if execution_parms["score_type"] == "wup_similarity":
+     return syn_x.wup_similarity(syn_y)
 
+
+
+
+  
 
 def noun_hypo_analisys(concept):
-  tot_frequencies = sum(concept.get_genus_bag().values())
-  genus_hypons_similarities = {}
-  for genus in concept.get_genus_bag():
-      #genus = max(concept.get_genus_bag(), key=concept.get_genus_bag().get)
+    tot_frequencies=sum(concept.get_genus_bag().values())
+    genus_hypons_similarities={}
+    for genus in concept.get_genus_bag():
+        # genus = max(concept.get_genus_bag(), key=concept.get_genus_bag().get)
 
-      # compute the genus normalized weight based on its frequency over all frequencies
-      genus_weight = (1 / tot_frequencies) * concept.get_genus_bag()[genus]
+        # compute the genus normalized weight based on its frequency over all frequencies
+        genus_weight=(1 / tot_frequencies) * concept.get_genus_bag()[genus]
 
-      # return all the genus hypons with similarity values !=0
-      # all similarity values are weighted with genus weight
-      # Example{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
-      hypons_analisys = compute_hypons_similarity(
-           concept, genus, genus_weight
-           )
-       # add to the genus_hypons_similarities only if the genus has hypons or these have similariity values
-       # Ex. paleness doesn't have hyponyms
-      if(len(hypons_analisys) > 0):
-            genus_hypons_similarities[genus] = compute_hypons_similarity(
-                concept, genus, genus_weight
-                )
-      else:
-            print(genus.name() + "has no hyponyms or similarities with corpus")
-  return genus_hypons_similarities
+        # return all the genus hypons with similarity values !=0
+        # all similarity values are weighted with genus weight
+        # Example{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
+        hypons_analisys=compute_hypons_similarity(
+            concept, genus, genus_weight, execution_parms["genus_hypo_depth"]
+        )
+        # add to the genus_hypons_similarities only if the genus has hypons or these have similariity values
+        # Ex. paleness doesn't have hyponyms
+        if(len(hypons_analisys) > 0):
+            genus_hypons_similarities[genus]=hypons_analisys
+    return genus_hypons_similarities
 
 
 def noun_hype_hypo_analisys(concept):
-  tot_frequencies = sum(concept.get_genus_hypernyms_bag().values())
-  hype_hypons_similarities = {}
-  for hype in concept.get_genus_hypernyms_bag():
-      #genus = max(concept.get_genus_bag(), key=concept.get_genus_bag().get)
+    tot_frequencies=sum(concept.get_genus_hypernyms_bag().values())
+    hype_hypons_similarities={}
+    for hype in concept.get_genus_hypernyms_bag():
+        # genus = max(concept.get_genus_bag(), key=concept.get_genus_bag().get)
 
-      # compute the genus normalized weight based on its frequency over all frequencies
-      hype_weight = (1 / tot_frequencies) * concept.get_genus_hypernyms_bag()[hype]
+        # compute the genus normalized weight based on its frequency over all frequencies
+        hype_weight=(1 / tot_frequencies) * \
+            concept.get_genus_hypernyms_bag()[hype]
 
-      # return all the genus hyperyms with similarity values !=0
-      # all similarity values are weighted with genus weight
-      # Example{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
-      hypons_analisys = compute_hypons_similarity(
-          concept, hype, hype_weight
-          )
-      # add to the genus_hypons_similarities only if the genus has hypons or these have similariity values
-      # Ex. paleness doesn't have hyponyms
-      if(len(hypons_analisys) > 0):
-          hype_hypons_similarities[hype] = compute_hypons_similarity(
-              concept, hype, hype_weight)
-      else:
-          print(hype.name() + "has no hyponyms or similarities with corpus")
-  return hype_hypons_similarities
+        # return all the genus hyperyms with similarity values !=0
+        # all similarity values are weighted with genus weight
+        # Example{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
+        hypons_analisys=compute_hypons_similarity(
+            concept, hype, hype_weight, execution_parms["genus_hyper_hypo_depth"]
+        )
+        # add to the genus_hypons_similarities only if the genus has hypons or these have similariity values
+        # Ex. paleness doesn't have hyponyms
+        if(len(hypons_analisys) > 0):
+            hype_hypons_similarities[hype]=hypons_analisys
+    return hype_hypons_similarities
 
-def compute_hypons_similarity(concept, genus_syn, genus_weight):
-    all_hypon = list(genus_syn.closure(
-        lambda s: genus_syn.hyponyms(), depth=1))
+
+def compute_hypons_similarity(concept, root_syn, genus_weight, depth=1):
+    all_hypon=list(root_syn.closure(
+        lambda s: s.hyponyms(), depth=depth))
     # creates a dictionary like
-    #{Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
+    # {Synset('hypothesis.n.02'): 0.005906564752148317, Synset('quantity.n.03'): 0.0075294222323759}
  # k=hypon, v=weighted cosine similarity  between definitions corpus and hypon definition
  # the weight is normalized frequency of genus in corpus
- #hypon_corpus is the merge of the hyponyn definition and examples
-    hypon_analisys_dict = {(hypon, \
-                                         cos_similarity( \
-                                            preprocess(\
-                                                  hypon.definition()  \
-                                             #+ ". ".join(hypon.examples())+ \
-                                             #" ".join([lemma.name() for lemma in hypon.lemmas()])
-                                             #" ".join([lemma.name() for lemma in list(itertools.chain(*[sub_hypon.lemmas() for sub_hypon in hypon.hyponyms()]))])\
-                                            ),
-                                             concept.get_preprocessed_corpus()\
-                                           # " ".join([lemma.name() for lemma in list(itertools.chain(*[genus_syn.lemmas() for genus_syn in concept.get_genus_bag()]))])
-                                              ) \
-                                          *genus_weight)
-                           for hypon in all_hypon}
+ # hypon_corpus is the merge of the hyponyn definition and examples
+    hypon_analisys_list=[]
+    for hypon in all_hypon:
+      corpus_to_analyze=[]
+      preprocessed_defs=preprocess(
+          hypon.definition()) if execution_parms["definition_similarity"] else[]
+      preprocessed_examples=list(itertools.chain(
+          *[preprocess(example) for example in hypon.examples()]))if execution_parms["examples_similarity"] else []
+      lemmas_corpus=[lemma.name() for lemma in hypon.lemmas()
+                                ] if execution_parms["lemmas_similarity"] else []
+      corpus_to_analyze.extend(preprocessed_defs)
+      corpus_to_analyze.extend(preprocessed_examples)
+      corpus_to_analyze.extend(lemmas_corpus)
+
+      target_corpus_lemmas=[lemma.name() for lemma in list(itertools.chain(
+          *[genus_syn.lemmas() for genus_syn in concept.get_genus_bag()]))] if execution_parms["lemmas_similarity"] else []
+
+      target_corpus=concept.get_preprocessed_corpus()
+      target_corpus.extend(target_corpus_lemmas)
+
+      hypon_analisys_list.append((hypon, cos_similarity(
+          corpus_to_analyze, target_corpus) * genus_weight))
+
     # return the result omitting the ones with 0 similarity
-    return {k: v for k, v in hypon_analisys_dict if v != 0}
+    return [tuple for tuple in hypon_analisys_list if tuple[0]]
 
 
 def cos_similarity(sentence_1, sentence_2):
     if (len(sentence_1) == 0 or len(sentence_2) == 0):
-      return 0.0
+        return 0.0
     if (len(sentence_1) == 0 and len(sentence_2) == 0):
-      return 1.0
-    X_set = {w[0] for w in sentence_1}
-    Y_set = {w[0] for w in sentence_2}
-    l1 = []
-    l2 = []
+        return 1.0
+    X_set={w[0] for w in sentence_1}
+    Y_set={w[0] for w in sentence_2}
+    l1=[]
+    l2=[]
     # form a set containing keywords of both strings
-    rvector = X_set.union(Y_set)
+    rvector=X_set.union(Y_set)
 
     for w in rvector:
         if w in X_set:
@@ -275,7 +424,7 @@ def cos_similarity(sentence_1, sentence_2):
             l2.append(1)
         else:
             l2.append(0)
-    c = 0
+    c=0
 
     # cosine formula
     for i in range(len(rvector)):
@@ -283,70 +432,23 @@ def cos_similarity(sentence_1, sentence_2):
     return c / float((sum(l1)*sum(l2))**0.5)
 
 
-def genus_hyper(concept_definitions_dict):
-    content = concept_definitions_dict  # Loading the content-to-form.csv file
+verbs = ["VB", "VBD", "VBG", "VBN", "VBP", "VBZ"]
 
-    for index in content:
-        genus_dict = {}
-        hyponyms_list = []
-
-        for definition in content[index].get_definitions():
-            hypernyms = []
-            hyponyms = []
-            clean_tokens = definition.get_preprocessed()
-
-            for word in clean_tokens:
-                syn = [lesk(definition.get_raw(), word)]
-                if len(syn) > 0:  # needed because for some words lesks returns an empty list
-                    for s in syn:
-                        if s:
-                            def hyper(s): return s.hypernyms()
-                            all_hyper = list(s.closure(hyper, depth=1))
-                            hypernyms.extend([x.name().split(".")[0]
-                                              for x in all_hyper])
-
-                    for g in hypernyms:
-                        if g not in genus_dict:
-                            genus_dict[g] = 1
-                        else:
-                            genus_dict[g] += 1
-
-            if len(genus_dict) > 0:
-                genus = max(genus_dict, key=genus_dict.get)
-                syns = wn.synsets(genus)
-
-                # W e take every hyponyms for the Genus of the definition
-                for i, s in enumerate(syns, start=0):
-                    def hypon(s): return s.hyponyms()
-                    all_hypon = list(s.closure(hypon, depth=1))
-                    hyponyms.extend([x.name().split(".")[0]
-                                     for x in all_hypon])
-
-            hyponyms_list.append(' '.join(hyponyms))
-
-        # CountVectorizer will create k vectors in n-dimensional space, where:
-        # - k is the number of sentences,
-        # - n is the number of unique words in all sentences combined.
-        # If a sentence contains a certain word, the value will be 1 and 0 otherwise
-        vectorizer = CountVectorizer()
-        matrix = vectorizer.fit_transform(hyponyms_list)
-
-        feature_list = vectorizer.get_feature_names()
-        vectors = matrix.toarray()
-
-        # Index of the element with maximum frequency across all the definition of a concept
-        m = vectors.sum(axis=0).argmax()
-
-        print("\t{} - {} - {}".format(index + 1, feature_list[m], m))
-
-
+execution_parms={}
 if __name__ == "__main__":
+
+  for execution_item in experiments_parameters[8:8]:
+    execution_parms = execution_item
 
     concept_definitions_dict = load_data(
         "./part3/exercise2/input/content-to-form.csv")
 
-    print("\tid\t(genus->hypo)\t\t(genus->hype->hypo)\n"+"\n".join([findConcept(concept)
-           for concept in concept_definitions_dict.values()]))
-  
+    result = "\n\tid\t(genus->hypo)\t\t(genus->hype->hypo)\n"+"\n".join([findConcept(concept)
+                                                                          for concept in concept_definitions_dict.values()])
+    print("\n".join("{}\t{}".format(k, v) for k, v in execution_parms.items())+result)
+    text_file = open("./part3/exercise2/reports/" + execution_parms['test_id'] + ".csv", "w")
+    text_file.write(result)
+    text_file.close()
+
    # print("\nGenus Hyper")
-   #genus_hyper(concept_definitions_dict)
+   # genus_hyper(concept_definitions_dict)
