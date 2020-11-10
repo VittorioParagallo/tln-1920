@@ -95,26 +95,26 @@ def save_html_intermediate_data(dataframe, filename, caption="", crosscell="", s
     if not os.path.exists(pdf_filepath):
       os.makedirs(pdf_filepath)
     html_filepath += filename
-    png_filepath += filename
-    pdf_filepath += filename
+    png_filepath += filename.replace("html", "png")
+    pdf_filepath += filename.replace("html", "pdf")
 
     # save as html
     with open(html_filepath, 'w') as f:
         f.write(html_text)
-    # save as png
-    # imgkit.from_file(html_filepath, png_filepath)
-    # #save as pdf
-    # doc = fitz.open()                            # PDF with the pictures
-    # img = fitz.open(png_filepath)  # open pic as document
-    # rect = img[0].rect                       # pic dimension
-    # pdfbytes = img.convertToPDF()            # make a PDF stream
-    # img.close()                              # no longer needed
-    # imgPDF = fitz.open("pdf", pdfbytes)      # open stream as PDF
-    # page = doc.newPage(width=rect.width,   # new page with ...
-    #                     height=rect.height)  # pic dimension
-    # page.showPDFpage(rect, imgPDF, 0)
-    # # image fills the page
-    # doc.save(pdf_filepath)
+    #save as png
+    imgkit.from_file(html_filepath, png_filepath)
+    #save as pdf
+    doc = fitz.open()                            # PDF with the pictures
+    img = fitz.open(png_filepath)  # open pic as document
+    rect = img[0].rect                       # pic dimension
+    pdfbytes = img.convertToPDF()            # make a PDF stream
+    img.close()                              # no longer needed
+    imgPDF = fitz.open("pdf", pdfbytes)      # open stream as PDF
+    page = doc.newPage(width=rect.width,   # new page with ...
+                        height=rect.height)  # pic dimension
+    page.showPDFpage(rect, imgPDF, 0)
+    # image fills the page
+    doc.save(pdf_filepath)
 
 
 stop_words = set(stopwords.words('english'))
@@ -561,7 +561,7 @@ execution_parms = {}
 
 if __name__ == "__main__":
 
-  for execution_item in experiments_parameters[90:91]:
+  for execution_item in experiments_parameters[7:8]:
     execution_parms = execution_item
 
     concept_definitions_dict = load_data(
@@ -572,7 +572,7 @@ if __name__ == "__main__":
     #TMP remove and update execution_parms object
     #execution_parms["search_type"] = "dynamic"
 
-    log_intermediate_data = False
+    log_intermediate_data = True
 
     if execution_parms["search_type"]=="static":
       result = "\n\tid\t(genus->hypo)\t\t(genus->hype->hypo)\n"+"\n".join([static_search_concept(concept)
