@@ -1,0 +1,10 @@
+
+	id	found synset	level	similarity	score
+department_of_justice.n.01|component.n.01|3|0.0274041|0.1818181
+patience.n.01|pliability.n.02|3|0.0411526|0.4
+greedy.s.03|pile.n.03|2|0.0462013|None
+politics.n.05|acme.n.01|3|0.0164274|0.3076923
+food.n.01|eternal_life.n.01|2|0.0276172|0.1666666
+radiator.n.03|discipline.n.01|-2|0.0310086|0.125
+vehicle.n.03|engineering.n.02|-1|0.0345999|0.1538461
+screw.n.02|seaborgium.n.01|1|0.0311493|0.2222222

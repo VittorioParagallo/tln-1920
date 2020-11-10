@@ -1,0 +1,10 @@
+
+	id	found synset	level	similarity	score
+department_of_justice.n.01|pascal's_law.n.01|3|0.0131912|0.1818181
+patience.n.01|quality.n.01, difficulty.n.04, quality.n.01|0, 1, 0|0.0191398|0.5, 0.4615384, 0.5
+greedy.s.03|swing.n.01|1|0.0046439|None
+politics.n.05|state_of_the_art.n.01|3|0.0082474|0.3076923
+food.n.01|human_nature.n.01, life.n.01|1, 1|0.0078086|0.2222222, 0.1818181
+radiator.n.03|boiling_point.n.01|2|0.0052083|0.1333333
+vehicle.n.03|solution.n.02|1|0.0098985|0.1818181
+screw.n.02|alkali_metal.n.01|2|0.0103365|0.2105263

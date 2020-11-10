@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|right.n.01|0.1404878|legal_right.n.01|0.0274041|0.17391304347826086|abstraction.n.01|0.1675415|legal_right.n.01|0.0283828|0.17391304347826086
+patience.n.01|ability.n.01|0.1358036|penetration.n.04|0.0350950|0.42857142857142855|quality.n.01|0.1158137|awfulness.n.01|0.0549924|0.42857142857142855
+greedy.s.03|desire.n.03|0.1478442|materialism.n.01|0.0321704|None|arousal.n.02|0.0572598|materialism.n.01|0.0321704|None
+politics.n.05|administration.n.02|0.1406421|government_officials.n.01|0.0164274|0.2857142857142857|body.n.02|0.1234426|government_officials.n.01|0.0174872|0.2857142857142857
+food.n.01|animation.n.01|0.2087667|eternal_life.n.01|0.0318896|0.16666666666666666|food.n.01|0.1735852|comestible.n.01|0.0562363|0.9090909090909091
+radiator.n.03|heat.n.01, heat.n.01|0.1012739, 0.1012739|latent_heat.n.01, specific_heat.n.01|0.0196116, 0.0196116|0.2222222222222222|energy.n.01, energy.n.01|0.0877058, 0.0877058|latent_heat.n.01, specific_heat.n.01|0.0184579, 0.0184579|0.2222222222222222
+vehicle.n.03|transportation_system.n.01, transportation_system.n.01|0.1348399, 0.1348399|air_transportation_system.n.01, highway_system.n.01|0.0226509, 0.0226509|0.3076923076923077|statement.n.01|0.0337099|wisecrack.n.01|0.0244658|0.16666666666666666
+screw.n.02|metallic_element.n.01|0.0608862|tin.n.01|0.0226577|0.21052631578947367|chemical_element.n.01|0.0586714|seaborgium.n.01|0.0339110|0.2222222222222222

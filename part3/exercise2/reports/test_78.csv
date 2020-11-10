@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|correct.v.01, right.v.01|0.1767766, 0.1767766|rectify.v.04, expiate.v.01|0.0019214, 0.0019214|0.10526315789473684|change.v.01, change.v.01, change.v.01|0.2165063, 0.2165063, 0.2165063|corrupt.v.01, decorate.v.01, repair.v.01|0.0109842, 0.0109842, 0.0109842|0.11764705882352941
+patience.n.01|digest.v.03|0.3096617|accept.v.07|0.0030949|0.125|permit.v.01|0.2340822|digest.v.03|0.0108273|0.13333333333333333
+greedy.s.03|money.n.01|0.1221694|boodle.n.01|0.0063915|None|get.v.01|0.1727736|gain.v.08|0.0120339|0.4
+politics.n.05|state.n.04, country.n.02|0.2755891, 0.1948709|world_power.n.01, fatherland.n.01|0.0034462, 0.0034462|0.25|social_control.n.01, administrative_district.n.01|0.1125087, 0.1591114|breeding.n.03, fatherland.n.01|0.0067993, 0.0067993|0.625
+food.n.01|feed.v.06|0.1727736|crop.v.05|0.0039822|0.2|consume.v.02|0.2443388|gorge.v.01|0.0198910|0.2
+radiator.n.03|heat.v.01|0.1178511|crispen.v.01|0.0023569|0.14285714285714285|change.v.01, change.v.01, change.v.01|0.2041241, 0.2041241, 0.2041241|corrupt.v.01, decorate.v.01, repair.v.01|0.0080187, 0.0080187, 0.0080187|0.15384615384615385
+vehicle.n.03|travel.v.01, travel.v.01|0.2425356, 0.2425356|rise.v.01, roll.v.12|0.0029543, 0.0029543|0.2222222222222222|move.v.02|0.1714985|agitate.v.06|0.0147468|0.2222222222222222
+screw.n.02|metallic_element.n.01|0.1|tungsten.n.01|0.0013307|0.21052631578947367|be.v.01|0.1|perplex.v.01|0.0084738|0.11764705882352941

@@ -1,0 +1,10 @@
+
+	id	found synset	level	similarity	score
+department_of_justice.n.01|pascal's_law.n.01|3|0.0010395|0.1818181
+patience.n.01|stand_for.v.04|2|0.0009091|0.125
+greedy.s.03|beg.v.03|1|0.0015648|0.2222222
+politics.n.05|state_of_the_art.n.01|3|0.0009320|0.3076923
+food.n.01|devour.v.03|2|0.0013767|0.2
+radiator.n.03|overheat.v.02|2|0.0011784|0.1428571
+vehicle.n.03|fail.v.04|1|0.0013784|0.2222222
+screw.n.02|get_around_to.v.01, render-set.v.01|1, 2|0.0006637|0.125, 0.1111111

@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|concept.n.01, concept.n.01, concept.n.01|0.1290994, 0.1290994, 0.1290994|hypothesis.n.02, part.n.09, property.n.04|0.0050819, 0.0050819, 0.0050819|0.19047619047619047|idea.n.01|0.1825741|impression.n.01|0.0070985|0.2
+patience.n.01|ability.n.02, ability.n.02, ability.n.02|0.1781741, 0.1781741, 0.1781741|capacity.n.08, faculty.n.01, skill.n.01|0.0086492, 0.0086492, 0.0086492|0.2857142857142857|quality.n.01, quality.n.01, quality.n.01|0.1259881, 0.1259881, 0.1259881|asperity.n.01, dash.n.01, damn.n.01|0.0139464, 0.0139464, 0.0139464|0.42857142857142855
+greedy.s.03|money.n.01|0.1240347|boodle.n.01|0.0137894|None|medium_of_exchange.n.01|0.1240347|boodle.n.01|0.0145871|None
+politics.n.05|state.n.04, country.n.02|0.2773500, 0.1961161|world_power.n.01, fatherland.n.01|0.0061752, 0.0061752|0.25|administrative_district.n.01|0.1601281|fatherland.n.01|0.0110080|0.125
+food.n.01|animation.n.01, animation.n.01|0.1754116, 0.1754116|eternal_life.n.01, survival.n.01|0.0046160, 0.0046160|0.16666666666666666|time_period.n.01|0.1754116|flower.n.03|0.0135292|0.18181818181818182
+radiator.n.03|object.n.01|0.1678362|land.n.04|0.0043226|0.46153846153846156|be.v.01|0.1186781|perplex.v.01|0.0068484|0.14285714285714285
+vehicle.n.03|object.n.01|0.1740776|land.n.04|0.0043697|0.4444444444444444|physical_entity.n.01|0.1230914|land.n.04|0.0081489|0.4444444444444444
+screw.n.02|metallic_element.n.01|0.1015346|tungsten.n.01|0.0032904|0.21052631578947367|be.v.01|0.1015346|perplex.v.01|0.0048771|0.11764705882352941

@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|concept.n.01|0.1369306|abstraction.n.01|0.0034744|0.19047619047619047|see.v.05|0.1613743|subsume.v.02|0.0065699|0.09523809523809523
+patience.n.01|digest.v.03|0.2378413|stand_for.v.04|0.0041742|0.125|permit.v.01|0.1004087|digest.v.03|0.0099561|0.13333333333333333
+greedy.s.03|money.n.01|0.1058018|boodle.n.01|0.0083870|None|medium_of_exchange.n.01|0.1105064|boodle.n.01|0.0093087|None
+politics.n.05|country.n.02|0.1256148|fatherland.n.01|0.0055519|0.125|administrative_district.n.01|0.0924500|fatherland.n.01|0.0097509|0.125
+food.n.01|animation.n.01|0.1959069|eternal_life.n.01|0.0036605|0.16666666666666666|have.v.01|0.0280275|harbor.v.03|0.0100308|0.2
+radiator.n.03|heating_system.n.01|0.1964185|gas_heat.n.01|0.0033372|0.5555555555555556|make.v.03|0.0710669|raise.v.07|0.0054965|0.15384615384615385
+vehicle.n.03|transportation.n.02|0.2175970|airlift.n.01|0.0037738|0.13333333333333333|change.n.03|0.0371134|transportation.n.02|0.0061199|0.14285714285714285
+screw.n.02|alloy.n.01|0.1224989|solder.n.01|0.0021608|0.21052631578947367|be.v.01|0.0583211|perplex.v.01|0.0041694|0.11764705882352941

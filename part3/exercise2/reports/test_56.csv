@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|concept.n.01|0.0|law.n.04|0.0011463|0.19047619047619047|change.v.01, change.v.01, change.v.01|0.0, 0.0, 0.0|adjust.v.01, extend.v.09, lift.v.10|0.0041423, 0.0041423, 0.0041423|0.11764705882352941
+patience.n.01|time_period.n.01|0.0972433|time.n.03|0.0010653|0.2857142857142857|time_period.n.01|0.0972433|time.n.03|0.0035568|0.2857142857142857
+greedy.s.03|desire.n.01|0.0|wish.n.01|0.0034897|None|feeling.n.01, get.v.01|0.0, 0.0|wish.n.01, recover.v.04|0.0048741, 0.0048741|None
+politics.n.05|state.n.02, state.v.01|0.0555555, 0.0453609|degree.n.02, summarize.v.02|0.0010531, 0.0010531|0.3333333333333333|social_control.n.01|0.0|government.n.02|0.0051093|0.6666666666666666
+food.n.01|thing.n.12|0.0|variable.n.01|0.0008091|0.4444444444444444|being.n.01|0.0|animation.n.01|0.0074170|0.18181818181818182
+radiator.n.03|heat.v.01|0.1290994|overheat.v.02|0.0012291|0.14285714285714285|supply.v.01|0.0645497|heat.v.02|0.0029476|0.13333333333333333
+vehicle.n.03|object.n.01|0.0771516|land.n.02|0.0016798|0.4444444444444444|physical_entity.n.01|0.0|land.n.02|0.0033660|0.4444444444444444
+screw.n.02|object.n.01|0.0610847|part.n.02|0.0010058|0.375|make.v.03, make.v.03, change.v.01|0.0, 0.0, 0.0|cut.v.06, offset.v.04, round.v.02|0.0018419, 0.0018419, 0.0018419|0.125

@@ -1,0 +1,10 @@
+
+	id	found synset	level	similarity	score
+department_of_justice.n.01|legal_right.n.01|4|0.0253594|0.1739130
+patience.n.01|penetration.n.04|2|0.0303885|0.4285714
+greedy.s.03|itch.v.04|2|0.0291003|0.4
+politics.n.05|body.n.02, body.n.02|0, 0|0.0105612|0.3333333, 0.3333333
+food.n.01|eternal_life.n.01|2|0.0100757|0.1666666
+radiator.n.03|latent_heat.n.01, latent_heat.n.01|2, 2|0.0191366|0.2222222, 0.2222222
+vehicle.n.03|transfer.v.02, transfer.v.02|2, 2|0.0350689|0.2222222, 0.2222222
+screw.n.02|titanium.n.01|2|0.0100217|0.2105263

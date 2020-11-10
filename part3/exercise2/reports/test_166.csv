@@ -1,0 +1,10 @@
+
+	id	found synset	level	similarity	score
+department_of_justice.n.01|hypothesis.n.02, model.n.01, hypothesis.n.02|2, 3, 2|0.0030782|0.1904761, 0.1818181, 0.1904761
+patience.n.01|permit.v.01, permit.v.01|0, 0|0.0049628|0.1428571, 0.1428571
+greedy.s.03|boodle.n.01|2|0.0075259|None
+politics.n.05|fatherland.n.01, fatherland.n.01|2, 2|0.0041336|0.125, 0.125
+food.n.01|crop.v.05|2|0.0045228|0.2
+radiator.n.03|dress.v.02|1|0.0058232|0.1428571
+vehicle.n.03|rise.v.01, rise.v.01|2, 2|0.0030909|0.2222222, 0.2222222
+screw.n.02|consume.v.02, consume.v.02, behave.v.02, tungsten.n.01|0, 0, 1, 2|0.0015827|0.1333333, 0.1333333, 0.125, 0.2105263

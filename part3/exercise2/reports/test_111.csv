@@ -1,0 +1,10 @@
+
+	id	found synset	level	similarity	score
+department_of_justice.n.01|legal_right.n.01|3|0.0025639|0.1739130
+patience.n.01|stand_for.v.04|2|0.0032120|0.125
+greedy.s.03|acquisitiveness.n.01|3|0.0063827|None
+politics.n.05|trust_busting.n.01|2|0.0028861|0.625
+food.n.01|reseed.v.02|2|0.0027580|0.2
+radiator.n.03|central_heating.n.01|2|0.0032967|0.5555555
+vehicle.n.03|hop.v.02|2|0.0026592|0.2222222
+screw.n.02|solder.n.01, solder.n.01|2, 2|0.0015209|0.2105263, 0.2105263

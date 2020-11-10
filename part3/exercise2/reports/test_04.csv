@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|concept.n.01, concept.n.01|0.1180562, 0.1180562|abstraction.n.01, rule.n.01|0.0019860, 0.0019860|0.19047619047619047|see.v.05|0.0|subsume.v.02|0.0040709|0.09523809523809523
+patience.n.01|digest.v.03|0.1458649|stand_for.v.04|0.0042827|0.125|permit.v.01|0.0|stand_for.v.04|0.0078435|0.125
+greedy.s.03|desire.n.02|0.1702513|greed.n.01|0.0060552|None|get.v.01|0.1318760|receive.v.01|0.0077021|0.4
+politics.n.05|area.n.01|0.0754851|section.n.03|0.0037029|0.14285714285714285|social_control.n.01|0.0|bossism.n.01|0.0052413|0.625
+food.n.01|sustain.v.04|0.0|reseed.v.02|0.0027752|0.2|consume.v.02, consume.v.02|0.0, 0.0|cannibalize.v.01, fill_up.v.04|0.0115877, 0.0115877|0.2222222222222222
+radiator.n.03|heating_system.n.01|0.1666666|central_heating.n.01|0.0032967|0.5555555555555556|change.v.01|0.0|load.v.02|0.0060599|0.14285714285714285
+vehicle.n.03|move.v.02|0.1028688|transfer.v.02|0.0029730|0.2222222222222222|move.v.02|0.1028688|transfer.v.02|0.0154303|0.2222222222222222
+screw.n.02|alloy.n.01|0.1105064|solder.n.01|0.0015209|0.21052631578947367|change.v.01|0.0|tabulate.v.02|0.0026167|0.11764705882352941

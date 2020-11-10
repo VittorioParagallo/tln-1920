@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|right.n.01|0.1402481|legal_right.n.01|0.0022051|0.17391304347826086|change.v.01|0.0|liberalize.v.01|0.0056026|0.11764705882352941
+patience.n.01|digest.v.03|0.1190982|stand_for.v.04|0.0023620|0.125|permit.v.01|0.0|stand_for.v.04|0.0054095|0.125
+greedy.s.03|desire.n.02|0.1805787|greed.n.01|0.0051424|None|tendency.n.03|0.0|greed.n.01|0.0069589|None
+politics.n.05|government.n.02|0.1290994|trust_busting.n.01|0.0024215|0.625|social_control.n.01|0.0|bossism.n.01|0.0049344|0.625
+food.n.01|sustain.v.04|0.0736210|reseed.v.02|0.0024283|0.2|consume.v.02|0.0|cannibalize.v.01|0.0110974|0.2222222222222222
+radiator.n.03|heating_system.n.01|0.2041241|central_heating.n.01|0.0028305|0.5555555555555556|change.v.01|0.0350070|heat.v.01|0.0042525|0.15384615384615385
+vehicle.n.03|move.v.03|0.0465242|hop.v.02|0.0025416|0.2222222222222222|move.v.02|0.1234426|teleport.v.01|0.0125094|0.2
+screw.n.02|alloy.n.01|0.0946320|solder.n.01|0.0012853|0.21052631578947367|change.v.01|0.0|tabulate.v.02|0.0029761|0.11764705882352941

@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|concept.n.01, concept.n.01, concept.n.01|0.1270001, 0.1270001, 0.1270001|hypothesis.n.02, part.n.09, property.n.04|0.0022834, 0.0022834, 0.0022834|0.19047619047619047|change.v.01, change.v.01, change.v.01|0.2199706, 0.2199706, 0.2199706|corrupt.v.01, decorate.v.01, repair.v.01|0.0109152, 0.0109152, 0.0109152|0.11764705882352941
+patience.n.01|calm.v.01|0.2617119|pacify.v.01|0.0041549|0.15384615384615385|cognition.n.01|0.2027212|kernel.n.03|0.0149240|0.2857142857142857
+greedy.s.03|money.n.01|0.1221694|boodle.n.01|0.0102869|None|medium_of_exchange.n.01|0.1221694|boodle.n.01|0.0143677|None
+politics.n.05|state.n.04, country.n.02|0.2755891, 0.1948709|world_power.n.01, fatherland.n.01|0.0047692, 0.0047692|0.25|administrative_district.n.01|0.1591114|fatherland.n.01|0.0099964|0.125
+food.n.01|animation.n.01, animation.n.01|0.1754116, 0.1754116|eternal_life.n.01, survival.n.01|0.0045443, 0.0045443|0.16666666666666666|time_period.n.01|0.1754116|flower.n.03|0.0124186|0.18181818181818182
+radiator.n.03|object.n.01|0.1678362|land.n.04|0.0034300|0.46153846153846156|be.v.01|0.1186781|perplex.v.01|0.0067742|0.14285714285714285
+vehicle.n.03|object.n.01|0.1714985|land.n.04|0.0039605|0.4444444444444444|be.v.01|0.1212678|perplex.v.01|0.0087820|0.2
+screw.n.02|metallic_element.n.01|0.1010152|tungsten.n.01|0.0023768|0.21052631578947367|make.v.03|0.1428571|raise.v.07|0.0060919|0.125

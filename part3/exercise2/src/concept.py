@@ -1,8 +1,8 @@
 class Concept:
-    def __init__(self, id=None, genus_bag=[], definitions=[]):
+    def __init__(self, id=None, genus_bag=None, definitions=None):
         self.__id=id
-        self.__genus_bag = genus_bag
-        self.__definitions = definitions
+        self.__genus_bag = genus_bag if genus_bag else []
+        self.__definitions = definitions if definitions else []
 
     def get_id(self):
         return self.__id
@@ -41,22 +41,23 @@ class Concept:
         self.__preprocessed_corpus = preprocessed_corpus
 
 
-class Genus:
+class Definition:
+    def __init__(self, rawText=None, preprocessed=None):
+        self.__raw = rawText
+        self.__preprocessed = preprocessed
 
-    def get_lemma(self):
-        return self.__lemma
+    def get_raw(self):
+        return self.__raw
 
-    def set_lemma(self, lemma):
-        self.__lemma = lemma
+    def set_raw(self, rawText):
+        self.__raw = rawText
 
-    def get_frequency(self):
-        return self.__frequency
+    def get_preprocessed(self):
+        return self.__preprocessed
 
-    def set_frequency(self, frequency):
-        self.__frequency = frequency
+    #list of preprocessed text
+    def set_preprocessed(self, preprocessed):
+        self.__preprocessed = preprocessed
 
-    def get_synset(self):
-        return self.__synset
-
-    def set_synset(self, synset):
-        self.__synset = synset
+    def __str__(self):
+        return '\t'.join(('{} = {}'.format(item[15:], self.__dict__[str(item)]) for item in self.__dict__))

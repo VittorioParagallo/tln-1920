@@ -1,0 +1,10 @@
+
+	id	(genus->hypo)		(genus->hype->hypo)
+department_of_justice.n.01|concept.n.01|0.0|law.n.04|0.0110431|0.19047619047619047|idea.n.01|0.0637576|law.n.04|0.0114239|0.19047619047619047
+patience.n.01|delay.n.02|0.0|break.n.13|0.0020534|0.25|quality.n.01, quality.n.01|0.0842151, 0.0842151|difficulty.n.04, particularity.n.01|0.0145198, 0.0145198|0.46153846153846156
+greedy.s.03|lack.n.01|0.0408930|shortness.n.02|0.0024573|None|wealth.n.04|0.0|money.n.02|0.0141876|None
+politics.n.05|state.n.02|0.0555555|degree.n.02|0.0056980|0.3333333333333333|attribute.n.02, attribute.n.02|0.0, 0.0|ethnicity.n.01, degree.n.02|0.0060060, 0.0060060|0.3333333333333333
+food.n.01|organism.n.01|0.0|person.n.01|0.0037569|0.4444444444444444|being.n.01|0.0|animation.n.01|0.0220863|0.18181818181818182
+radiator.n.03|temperature.n.01|0.0|boiling_point.n.01|0.0045045|0.13333333333333333|instrumentality.n.03|0.0|furniture.n.01|0.0055953|0.7058823529411765
+vehicle.n.03|artifact.n.01|0.0|thing.n.04|0.0033063|0.36363636363636365|statement.n.01, statement.n.01|0.0, 0.0|solution.n.02, thing.n.07|0.0080988, 0.0080988|0.18181818181818182
+screw.n.02|metallic_element.n.01|0.0|alkali_metal.n.01|0.0074990|0.21052631578947367|chemical_element.n.01|0.0|alkali_metal.n.01|0.0076490|0.21052631578947367
