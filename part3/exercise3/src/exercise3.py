@@ -3,63 +3,69 @@ from nltk.parse.corenlp import CoreNLPDependencyParser
 from nltk.corpus import brown
 from nltk.stem import WordNetLemmatizer
 from nltk.wsd import lesk
-
+from graphviz import Source
 from utilities.OurDependencyGraph import OurDependencyGraph
 from utilities.our_lesk import our_lesk
-
+import spacy
+from spacy import displacy
+from corenlp_dtree_visualizer.converters import _corenlp_dep_tree_to_spacy_dep_tree
+import itertools
+from nltk.corpus import wordnet as wn
+from nltk import word_tokenize
 # global parameter for WordNet search
 verbs_pos = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
 subj_dept = ['nsubj', 'nsubjpass']
-obj_dept = ['dobj', 'iobj']
+obj_dept = ['dobj', 'iobj', 'obj']
 
-
-def text_extraction(verb):
-    """
-    It analyzes the Brown Corpus and extracts the sentences containing the
-    desired verb given as global input.
-    :return: list of sentences (in which each sentence is a list of words)
-    """
-
-    lemmatizer = WordNetLemmatizer()
-    list_sent = brown.sents()
-    # if you want to filter sentences by category
-    # list_sent = brown.sents(categories=['news'])
-
-    sentences = []
-    for sent in list_sent:
-        tags = dict(nltk.pos_tag(sent))
-        for word in sent:
-            if tags[word] in verbs_pos:
-                # The word is a verb, so we apply lemmatization
-                word = lemmatizer.lemmatize(word, 'v')  # eg. said
-                if word == verb:  # said -> say, because of lemmatization
-                    sentences.append(sent)
-
-    return sentences
-
-
-def lemmatize_graph(graph, tags):
-    """
-    Apply lemmatization to verbs in the dependency graph
-    :param graph: dependency graph
-    :param tags: PoS of corresponding sentence
-    :return: new and lemmatized dependency graph
-    """
-
-    lemmatizer = WordNetLemmatizer()
-    new_dict = {}
-    for k in graph.dict:
-        word = graph.dict[k]
-        if word in tags.keys() and tags[word] in verbs_pos:
-            # eg. from "said" to "say"
-            new_dict[k] = lemmatizer.lemmatize(word, 'v')
-        else:
-            new_dict[k] = word  # otherwise the normal word
-
-    # update the dictionary with lemmatization
-    return OurDependencyGraph(graph.graph, new_dict)
-
-
+personal_pronoun_tags = ['PRP']
+tag_to_wnpos_map = {
+    'CC': None,  # coordin. conjunction (and, but, or)
+    'CD': [wn.NOUN],  # cardinal number (one, two)
+    'DT': None,  # determiner (a, the)
+    'EX': [wn.ADV],  # existential ‘there’ (there)
+    'FW': None,  # foreign word (mea culpa)
+    'IN': [wn.ADV],  # preposition/sub-conj (of, in, by)
+    'JJ': [wn.ADJ, wn.ADJ_SAT],  # adjective (yellow)
+    'JJR': [wn.ADJ, wn.ADJ_SAT],  # adj., comparative (bigger)
+    'JJS': [wn.ADJ, wn.ADJ_SAT],  # adj., superlative (wildest)
+    'LS': None,  # list item marker (1, 2, One)
+    'MD': None,  # modal (can, should)
+    'NN': [wn.NOUN],  # noun, sing. or mass (llama)
+    'NNS': [wn.NOUN],  # noun, plural (llamas)
+    'NNP': [wn.NOUN],  # proper noun, sing. (IBM)
+    'NNPS': [wn.NOUN],  # proper noun, plural (Carolinas)
+    'PDT': [wn.ADJ, wn.ADJ_SAT],  # predeterminer (all, both)
+    'POS': None,  # possessive ending (’s )
+    'PRP': None,  # personal pronoun (I, you, he)
+    'PRP$': None,  # possessive pronoun (your, one’s)
+    'RB': [wn.ADV],  # adverb (quickly, never)
+    'RBR': [wn.ADV],  # adverb, comparative (faster)
+    'RBS': [wn.ADV],  # adverb, superlative (fastest)
+    'RP': [wn.ADJ, wn.ADJ_SAT],  # particle (up, off)
+    'SYM': None,  # symbol (+,%, &)
+    'TO': None,  # “to” (to)
+    'UH': None,  # interjection (ah, oops)
+    'AUX': [wn.VERB],
+    'VB': [wn.VERB],  # verb base form (eat)
+    'VBD': [wn.VERB],  # verb past tense (ate)
+    'VBG': [wn.VERB],  # verb gerund (eating)
+    'VBN': [wn.VERB],  # verb past participle (eaten)
+    'VBP': [wn.VERB],  # verb non-3sg pres (eat)
+    'VBZ': [wn.VERB],  # verb 3sg pres (eats)
+    'WDT': None,  # wh-determiner (which, that)
+    'WP': None,  # wh-pronoun (what, who)
+    'WP$': None,  # possessive (wh- whose)
+    'WRB': None,  # wh-adverb (how, where)
+    '$': None,  # dollar sign ($)
+    '#': None,  # pound sign (#)
+    '“': None,  # left quote (‘ or “)
+    '”': None,  # right quote (’ or ”)
+    '(': None,  # left parenthesis ([, (, {, <)
+    ')': None,  # right parenthesis (], ), }, >)
+    ',': None,  # comma (,)
+    '.': None,  # sentence-final punc (. ! ?)
+    ':': None  # mid-sentence punc (: ; ... – -)
+}
 def hanks(verb):
     """
     Implementation of P. Hanks theory.
@@ -71,7 +77,6 @@ def hanks(verb):
     """
 
     fillers = []  # [(subj, obj, sentence)]
-    sentences = []
 
     # Set the URI to communicate with Stanford CoreNLP
     # launch server first from StanfordCoreNLP folder:
@@ -79,112 +84,140 @@ def hanks(verb):
     dependency_parser = CoreNLPDependencyParser(url="http://localhost:9000")
 
     print('[1] - Extracting sentences...')
-    list_word_sentences = text_extraction(verb)
-    for sent in list_word_sentences:
-        sentence = ' '.join(sent)
-        sentences.append(sentence.strip())
+    """
+    It analyzes the Brown Corpus and extracts the sentences containing the
+    desired verb given as global input.
+    :return: list of sentences (in which each sentence is a list of words)
+    """
+    # if you want to filter sentences by category
+    # list_sent = brown.sents(categories=['news'])
+    sentences = [' '.join(sent).strip().lower().replace('.', '')
+                 for sent in brown.sents()
+                 if verb in
+                 [WordNetLemmatizer().lemmatize(word_tag[0], 'v')
+                  for word_tag in nltk.pos_tag(sent)
+                  if word_tag[1] in verbs_pos]]
 
-    sentences = [x.lower() for x in sentences]
-    print("\t{} sentences in which the verb \'{}\' appears.".format(str(len(sentences)), verb))
+    print("\t{} sentences in which the verb \'{}\' appears.".format(
+        str(len(sentences)), verb))
 
     print('\n[2] - Extracting fillers...')
     for sentence in sentences:
         # PoS Tagging
-        sentence = sentence.replace('.', '')
         tokens = nltk.word_tokenize(sentence)
-        tags = dict(nltk.pos_tag(tokens))  # dictionary of all PoS Tag of the tokens
+        # dictionary of all PoS Tag of the tokens
+        tags = dict(nltk.pos_tag(tokens))
 
         # Syntactic parsing
         result = dependency_parser.raw_parse(sentence)
         dep = next(result)
-        graph = OurDependencyGraph()  # first init needed because of .init_from_dot()
-        graph.init_from_dot(dep.to_dot())
+        # visualizza tree
+        #for triple in dep.triples(): print(triple[1], "(", triple[0][0], ", ", triple[2][0], ")")
 
-        # Lemmatization
-        # (it lemmatized only the verbs, the other words are not changed)
-        lemmatized_graph = lemmatize_graph(graph, tags)  # es. "said" to "say"
+        # una lista di dipendenze in cui:
+        # si cerca tra i nodi quelli con token verbo
+        # tra essi quello che corrisponde al verbo dati in input
+        # e si restituisce la lista di dipendenti se la dipendenza è quella indicata nei parametri
+        tree_nodes = dep.nodes
+        verbs_dependents_keys = [list(itertools.chain.from_iterable(list
+                                                              (verb_node['deps'].values()))) for verb_node in tree_nodes.values()
+                                                              if verb_node['tag'] in verbs_pos
+                                                              and verb_node['lemma'] == verb]
+        # and not set(verb_node['deps'].keys()).isdisjoint(subj_dept+obj_dept)
 
-        verb_key_list = lemmatized_graph.get_verb_key(verb)  # list of keys in which we can find the verb in graph.dict
-        # format -> [int1, int 2, ...], eg.: [34], [0, 10, 34, ...]
+        for verb_dependent_keys in verbs_dependents_keys:
+            verb_dependent_nodes = [(tree_nodes[index]['lemma'], tree_nodes[index]['rel'], tree_nodes[index]['tag'])
+                                    for index in verb_dependent_keys]
 
-        if len(verb_key_list) <= 0:
-            # DEBUG
-            # print("\tError in **{}**".format(sentence), file=sys.stderr)
-            continue
+            verb_dependent_nodes_filtered = list(
+                filter(lambda x: x[1] in subj_dept or x[1] in obj_dept, verb_dependent_nodes))
+        # disegna tree
+        #Source(dep.to_dot(), filename="test.gv", format="png").view()
 
-        # Adjacency List
-        # we take the first occurrence of the verb, which is our root
-        adjs = lemmatized_graph.get_adj_neighbor(verb_key_list[0])
-        # if the adjacent element of the verb are subj or obj we update adjs variable
-        adjs = list(filter(lambda x: x[1] in subj_dept or x[1] in obj_dept, adjs))
+            if len(verb_dependent_nodes_filtered) == 2:
 
-        # Valency = 2
-        if len(adjs) == 2:  # Note: not all the verb in sentences have valency = 2
-            # assigning the correct subject and obj
-            if adjs[0][1] in subj_dept:
-                w1 = lemmatized_graph.dict[adjs[0][0]]
-                w2 = lemmatized_graph.dict[adjs[1][0]]
-            else:
-                w1 = lemmatized_graph.dict[adjs[1][0]]
-                w2 = lemmatized_graph.dict[adjs[0][0]]
-            fillers.append((w1, w2, sentence))  # where w1 = subj and w2 = obj
+                filler_1_supersense = compute_supersense(
+                    verb_dependent_nodes_filtered[0], sentence)
+                filler_2_supersense = compute_supersense(
+                    verb_dependent_nodes_filtered[1], sentence)
+                # è una tripla  (filler 1, filler 2, sentence)
+                # ogni filler è a sua volta una tripla con senso disambiguato, lemma, relazione col verbo
+                if filler_1_supersense != None and filler_2_supersense != None:
+                  fillers.append(((filler_1_supersense, verb_dependent_nodes_filtered[0][0], verb_dependent_nodes_filtered[0][1]),
+                                (filler_2_supersense,
+                                  verb_dependent_nodes_filtered[1][0], verb_dependent_nodes_filtered[1][1]),
+                                sentence))
 
-    tot = len(fillers)
-    print("\n[3] - Total of {} Fillers".format(str(tot)))
-    for f in fillers:
-        print("\t{}".format(f))
+    print("\n[3] - Total of {} Fillers".format(str(len(fillers))))
+    filler_result_log = "\n".join([("{} | ({}, {})  | {} | ({}, {}) | {}".format(
+        f[0][0], f[0][1], f[0][2], f[1][0], f[1][1], f[1][2], f[2])) for f in fillers])
 
-    our_lesk_semantic_types = {}  # {(s1, s2): count}
+    print(filler_result_log)
+    
+    text_file = open("./part3/exercise3/reports/" +
+                     verb+ "_fillers.csv", "w")
+    text_file.write(filler_result_log)
+    text_file.close()
+
+
+
+
     nltk_lesk_semantic_types = {}  # {(s1, s2): count}
     for f in fillers:
-        # WSD
 
-        # Our Lesk
-        s1 = our_lesk(f[0], f[2])
-        s2 = our_lesk(f[1], f[2])
+      if (f[0][0],f[1][0]) in nltk_lesk_semantic_types.keys():
+          nltk_lesk_semantic_types[(f[0][0], f[1][0])] += 1
+      elif (f[1][0], f[0][0]) in nltk_lesk_semantic_types.keys():
+          nltk_lesk_semantic_types[(f[1][0], f[0][0])] += 1
+      else:
+          nltk_lesk_semantic_types[(f[0][0], f[1][0])] = 1
 
-        # nltk.wsd's Lesk
-        s3 = lesk(f[2], f[0])
-        s4 = lesk(f[2], f[1])
-
-        if s1 is not None and s2 is not None:
-            # Getting supersences
-            t = (s1.lexname(), s2.lexname())
-
-            # Getting frequency
-            if t in our_lesk_semantic_types.keys():
-                our_lesk_semantic_types[t] = our_lesk_semantic_types[t] + 1
-            else:
-                our_lesk_semantic_types[t] = 1
-
-        if s3 is not None and s4 is not None:
-            # Getting supersences
-            t = (s3.lexname(), s4.lexname())
-
-            # Getting frequency
-            if t in nltk_lesk_semantic_types.keys():
-                nltk_lesk_semantic_types[t] = nltk_lesk_semantic_types[t] + 1
-            else:
-                nltk_lesk_semantic_types[t] = 1
-
-    print('\n[4.1] - "Our Lesk":\n\tFinding Semantic Clusters (percentage, count of instances, semantic cluster):')
-    for key, value in sorted(our_lesk_semantic_types.items(), key=lambda x: x[1]):
-        to_print = str(round((value / tot) * 100, 2))
-        print("\t[{}%] - {} - {}".format(to_print, value, key))
 
     print('\n[4.2] - "NLTK Lesk":\n\tFinding Semantic Clusters (percentage, count of instances, semantic cluster):')
-    for key, value in sorted(nltk_lesk_semantic_types.items(), key=lambda x: x[1]):
-        to_print = str(round((value / tot) * 100, 2))
-        print("\t[{}%] - {} - {}".format(to_print, value, key))
+    tot = len(fillers)    
+    clusters_results = "\n".join(["{} | {} | {}%".format(cluster[0], cluster[1], str(round((cluster[1] / tot)
+                                                                                           * 100, 2))) for cluster in sorted(nltk_lesk_semantic_types.items(), key=lambda x: x[1], reverse=True)])
+    print(clusters_results)
+    text_file = open("./part3/exercise3/reports/" +
+                         verb + "_clusters.csv", "w")
+    text_file.write(clusters_results)
+    text_file.close()
+
+#receives a tuple like ('celery', 'obj', 'NN')
+#returns a super sense
+def compute_supersense(tuple, sentence):
+  if tuple[2] in personal_pronoun_tags:
+    return 'noun.person' if tuple[0] != 'it' else 'noun.entity'
+  if tuple[0] == 'who':
+    return 'noun.person'
+  if tuple[0] == 'what':
+    return 'noun.entity'
+  # Ex. in sentence: interest in how what people eat affects their health
+  # ('what', 'obj', 'WP') what sense returns no sense
+  # force to entity
+  if tag_to_wnpos_map[tuple[2]] is not None:
+    #ottieni la lista di wn pos abbinata al tag penn e calcola il sinset con lesk per ognuno di questi 
+    possible_syns_by_pos = [x for x in
+                                          [lesk(sentence, tuple[0], pos=pos) for pos in tag_to_wnpos_map[tuple[2]]]
+                                          if x is not None]
+    #usa lesk per disambiguare tra i synset trovati
+    filler_sense = lesk(sentence, tuple[0], synsets=possible_syns_by_pos)
+  else:
+    filler_sense = lesk(sentence, tuple[0])
+
+
+  filler_supersense = filler_sense.lexname(
+      ) if filler_sense is not None else None
+  return filler_supersense
 
 
 if __name__ == "__main__":
     """
     IMPORTANT: Before run, make sure to download Stanford CoreNLP 4.1.0 tool
     and run it using the following command inside its root folder. 
-    
+
     java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000
-    
+
     After that, you can run this exercise.
     """
 

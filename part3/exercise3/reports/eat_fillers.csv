@@ -1,0 +1,31 @@
+noun.entity | (what, obj)  | noun.group | (people, nsubj) | and in the wake of the new affluence and the new techniques of processing comes a new american interest in how what people eat affects their health 
+noun.person | (americans, nsubj)  | adj.all | (much, obj) | americans eat too much 
+noun.person | (americans, nsubj)  | noun.substance | (fat, obj) | americans eat too much fat 
+noun.person | (one, nsubj)  | noun.artifact | (skin, obj) | and unlike other fruits , one cannot eat the skin of the avocado 
+noun.entity | (what, obj)  | noun.person | (they, nsubj) | when served in a psychological atmosphere that allows young bodies to assimilate the greatest good from what they eat because they are free from tension , a foundation is laid for a high level of health that releases the children from physical handicaps to participate with enjoyment in the work assignments , the athletic programs and the most important phase , the educational opportunities 
+noun.person | (student, nsubj)  | noun.food | (cereal, obj) | at the beginning of the school year , the new students don't eat the cereal right away , but within a short time they are eating it voraciously 
+noun.person | (they, nsubj)  | noun.entity | (it, obj) | at the beginning of the school year , the new students don't eat the cereal right away , but within a short time they are eating it voraciously 
+noun.person | (i, nsubj)  | noun.person | (rider, obj) | one wrote : `` ( i am so hungry ) i could eat a rider off his horse & snap at the stirups '' 
+noun.person | (i, nsubj)  | noun.food | (egg, obj) | i eat too much eggs and poark 
+noun.person | (we, nsubj)  | noun.person | (seed, obj) | we produce peanut oil , but to a much greater extent we eat the entire seed 
+noun.person | (who, nsubj)  | noun.food | (celery, obj) | when someone in the audience rose and asked how does it feel to be a celebrity , carl said , `` a celebrity is a fellow who eats celery with celerity '' 
+noun.person | (i, nsubj)  | noun.substance | (soup, obj) | one of the girl students , sitting by while i ate the thick soup , asked me if i had a sleeping bag 
+noun.entity | (it, nsubj)  | noun.act | (leg, obj) | there are signs that it has struggled for days to escape and that in a frenzy of hunger , pain , and fear , it has all but eaten off its own leg 
+noun.person | (they, nsubj)  | noun.food | (food, obj) | they ate the cafeteria food with its orange sauces and scotty gazed without interest at his food , the teachers , the heroic baronial windows , and the bright ranks of college banners 
+noun.person | (he, nsubj)  | noun.quantity | (nothing, obj) | he had eaten almost nothing on the crested , three-sectioned plate and had drunk about half the milk in its paper container 
+noun.person | (you, nsubj)  | noun.food | (honey, obj) | `` you don't eat enough , honey 
+noun.person | (i, nsubj)  | adj.all | (more, obj) | `` i'm eating more '' , he would say 
+noun.person | (she, nsubj)  | noun.group | (dinner, obj) | she was personally sloppy , and when she had colds would blow her nose in the same handkerchief all day and keep it , soaking wet , dangling from her waist , and when she gardened she would eat dinner with dirt on her calves 
+noun.person | (you, nsubj)  | noun.entity | (it, obj) | `` why , winston '' , she'd cry , `` i just now saw you eating it out of the jar '' ! !
+noun.person | (fish, nsubj)  | noun.artifact | (body, obj) | no , the fish could eat their bodies for all the sturch cared 
+noun.person | (he, nsubj)  | noun.food | (egg, obj) | he remembered the last time he had eaten -- actual eggs from an actual pan 
+noun.entity | (what, obj)  | noun.person | (i, nsubj) | it's not much of a meal , but it's what i eat '' 
+noun.group | (people, nsubj)  | adj.all | (much, obj) | he told himself he had never seen two people eat so much 
+noun.person | (you, nsubj)  | noun.substance | (dust, obj) | `` ain't no sense you eating our dust '' , rod protested 
+noun.person | (he, nsubj)  | noun.food | (breakfast, obj) | he ate breakfast in a sullen mood , but afterwards , when he walked out onto virginia street , he felt braced 
+noun.person | (they, nsubj)  | adj.all | (other, obj) | `` i wonder if they did eat each other at the end '' , owen mused 
+noun.person | (they, nsubj)  | noun.food | (breakfast, obj) | they were eating breakfast 
+noun.person | (she, nsubj)  | noun.food | (bread, obj) | she was eating bread and cheese just as fast as she possibly could , and washing it down with red wine 
+noun.cognition | (amount, obj)  | noun.food | (egg, obj) | we sent the waiter away and ate a tremendous amount of cold ham , hot hard-boiled eggs and hot garlic bread 
+noun.person | (they, nsubj)  | noun.person | (chicken, obj) | `` they eat chickens sometimes '' , the boy said 
+noun.person | (they, nsubj)  | noun.person | (chicken, obj) | `` they are ugly and they eat chickens and i hate snakes '' 

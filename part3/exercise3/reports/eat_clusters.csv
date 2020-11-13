@@ -1,0 +1,12 @@
+('noun.person', 'noun.food') | 9 | 29.03%
+('noun.entity', 'noun.person') | 4 | 12.9%
+('noun.person', 'noun.person') | 4 | 12.9%
+('noun.person', 'adj.all') | 3 | 9.68%
+('noun.person', 'noun.substance') | 3 | 9.68%
+('noun.person', 'noun.artifact') | 2 | 6.45%
+('noun.entity', 'noun.group') | 1 | 3.23%
+('noun.entity', 'noun.act') | 1 | 3.23%
+('noun.person', 'noun.quantity') | 1 | 3.23%
+('noun.person', 'noun.group') | 1 | 3.23%
+('noun.group', 'adj.all') | 1 | 3.23%
+('noun.cognition', 'noun.food') | 1 | 3.23%
