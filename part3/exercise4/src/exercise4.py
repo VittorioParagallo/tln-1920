@@ -36,7 +36,7 @@ def parse_nasari_dictionary():
 
 def tokenize_text(text):
     """
-    It divides the text in groups. Each group is composed by w words.
+    It divides the text in groups. Each group..
 
     :param text: input text
     :return: list of sequences (list of all groups of word)
@@ -70,11 +70,13 @@ def clustering(similarities, sentences):
     """
     print("\tComputing clusters using K-Means...")
     sentences_similarities = np.array(similarities)
+    #trasponi da riga a colonna
     data = sentences_similarities.reshape(-1, 1)  # needed for cluster computin
 
     # Sets the best cluster size within the minimum and maximum supplied. Eg.: 2,10
-    clusters_size_ranges = np.arange(2, 10)
+    clusters_size_ranges = np.arange(2, 20)
     clusters_sizes = {}
+    #verifica qual è il numero migliore di cluster nel range fornito
     for size in clusters_size_ranges:
         model = KMeans(n_clusters=size).fit(data)
         predictions = model.predict(data)
@@ -86,8 +88,8 @@ def clustering(similarities, sentences):
     kmeans = KMeans(n_clusters=best_clusters_size)
     kmeans.fit(data)
     matix_clusterized = kmeans.labels_
-    
-     # Calculating beginning windows lenght based on sentences evenly splitted in contiguos clusters
+
+    # Calculating beginning windows lenght based on sentences evenly splitted in contiguos clusters
     initial_window_size = len(matix_clusterized) / best_clusters_size
     print("\t\tThe initial window size is: {:.3f}".format(initial_window_size))
 
@@ -100,37 +102,64 @@ def clustering(similarities, sentences):
 
     iterations_log = []
     stable = False  # if true -> convergence
-    while not stable:
+    offset = 1
+    end = False
+    while not end:
         stable = True
+        end = True
         for i in range(len(final_list)):
             if i > 0:
-                last_prev_vs_prev_similarity = sentences_cosine_similarity(
-                    ' '.join(final_list[i - 1][:-1]), final_list[i - 1][-1])
-                last_prev_vs_curr_similarity = sentences_cosine_similarity(
-                    final_list[i - 1][-1], ' '.join(final_list[i]))
-
-                if last_prev_vs_curr_similarity > last_prev_vs_prev_similarity: 
-                    stable = False
-                    elem_to_move = final_list[i - 1].pop(len(final_list[i - 1]) - 1)
-                    final_list[i].insert(0, elem_to_move)
+                if offset < len(final_list[i - 1]):
+                  end = end and False
+                  last_prev_vs_prev_similarity = sentences_cosine_similarity(
+                      ' '.join(final_list[i - 1][:-offset]
+                               ),  ' '.join(final_list[i - 1][-offset:]))
+                  last_prev_vs_curr_similarity = sentences_cosine_similarity(
+                      ' '.join(final_list[i - 1][-offset:]),
+                      ' '.join(final_list[i]))
                 else:
-                    first_curr_vs_curr_similarity = sentences_cosine_similarity(
-                        ' '.join(final_list[i][1:]), final_list[i][0])
-                    first_curr_vs_prev_similarity = sentences_cosine_similarity(
-                        final_list[i][0], ' '.join(final_list[i - 1]))
-                    if first_curr_vs_prev_similarity > first_curr_vs_curr_similarity:
-                        stable = False
-                        elem_to_move = final_list[i].pop(0)
-                        final_list[i - 1].append(elem_to_move)
+                  last_prev_vs_prev_similarity = 1
+                  last_prev_vs_curr_similarity = 0
+
+                if last_prev_vs_curr_similarity > last_prev_vs_prev_similarity:
+                    stable = False
+                    elem_to_move = final_list[i - 1][-offset:]
+                    del final_list[i - 1][-offset:]
+                    final_list[i][0:0] = elem_to_move
+                else:
+                    if offset < len(final_list[i]):
+                      end = end and False
+                      first_curr_vs_curr_similarity = sentences_cosine_similarity(
+                          ' '.join(final_list[i][offset:]), ' '.join(final_list[i][:offset]))
+                      first_curr_vs_prev_similarity = sentences_cosine_similarity(
+                          ' '.join(final_list[i][:offset]), ' '.join(final_list[i - 1]))
+                      if first_curr_vs_prev_similarity > first_curr_vs_curr_similarity:
+                          stable = False
+                          elem_to_move = final_list[i][:offset]
+                          del final_list[i][:offset]
+                          final_list[i - 1].extend(elem_to_move)
+
         # Just for logging
         iteration_log_line = []
         for j in range(len(final_list)):
             if j == 0:
                 iteration_log_line.append(len(final_list[j]))
             else:
-                iteration_log_line.append((len(final_list[j]) + iteration_log_line[j - 1]))
+                iteration_log_line.append(
+                    (len(final_list[j]) + iteration_log_line[j - 1]))
         iterations_log.append(iteration_log_line)
+        print('------------------------------------------------------')
+        print('\n'.join(' '.join(map(str, sl)) for sl in iterations_log))
+        if stable:
+          offset += 1
+
     print("\tDone.")
+    segmented_result = '\n\n\n\t<NEW TILE>\n\n\n'.join(
+        '\n'.join(map(str, sl)) for sl in final_list)
+    text_file = open("./part3/exercise4/output/" +
+                     config["input"].split('/')[-1].split('.')[0] + "_segmented.csv", "w")
+    text_file.write(segmented_result)
+    text_file.close()
     return iterations_log
 
 
@@ -147,16 +176,21 @@ def segmentation():
 
     # Text tokenization
     print('\tBegin tokenization...')
+    #divides the text in sentences with nltk sent_tokenize
+    #and return both list of sentences and tokenized sentences
+    #ex.
+    #sequences[0]=['in', 'one', 'account', 'it', .....
+    #sentences[0]= "in one account it is argued that .....
     sequences, sentences = tokenize_text(text)
     print('\tDone.')
 
     # Compute similarity between neighbors
     print('\tComputing similarity...')
-    similarities = list(np.zeros(len(sequences))) 
+    similarities = list(np.zeros(len(sequences)))
     for i in range(1, len(sequences) - 1):
         prev = create_vectors(sequences[i - 1], nasari)
         current = create_vectors(sequences[i], nasari)
-        next = create_vectors(sequences[i + 1], nasari)
+        next_ = create_vectors(sequences[i + 1], nasari)
 
         # Because the Weighted Overlap measures the similarity between two
         # vectors representing two sentences (couple term:weight), we need to
@@ -174,7 +208,7 @@ def segmentation():
         # Computing Square Root Weighted Overlap between next and current
         # paragraphs
         similarity = []
-        for x in next:
+        for x in next_:
             for w in current:
                 similarity.append(math.sqrt(weighted_overlap(x, w)))
         right = max(similarity) if len(similarity) > 0 else 0
@@ -211,6 +245,14 @@ def segmentation():
     plt.savefig('{}{}.png'.format(config["output"], now))
     plt.show()
     print("\tPlot saved in output folder.")
+
+    breakpoints_results = '\n'.join(
+        '\t'.join(map(str, sl)) for sl in breakpoints)
+    text_file = open("./part3/exercise4/output/" +
+                     config["input"].split('/')[-1].split('.')[0] + "_tiling_process.csv", "w")
+    text_file.write(breakpoints_results)
+    text_file.close()
+
     print('Segmentation ended.')
 
 
@@ -218,7 +260,7 @@ global config  # Dictionary of the configuration. Used across all the script.
 
 if __name__ == "__main__":
     config = {
-        "input": "part3/exercise4/input/snowden.txt",
+        "input": "part3/exercise4/input/origin_of_lindyhop.txt",
         "output": "part3/exercise4/output/",
         "nasari": "part3/exercise4/resources/NASARI_lexical_english.txt",
         "limit": 14  # first x elem of nasari vector
