@@ -1,0 +1,1528 @@
+FrameId	type	position	name	sense
+1071	name	People_by_vocation	career.n.01
+
+- DEFINITION:This frame contains  words for Individuals as viewed in terms of their vocation.   The Person is conceived of as independent of other specific individuals with whom they have relationships and independent of their participation in any particular activity. They may have a Descriptor, Origin, Persistent_characteristic, or Ethnicity. A specific Age may sometimes be specified as well.  'Humphrey Bogart was a great actor.'
+	- career.n.01 : the particular occupation for which you are trained
+	- occupational_group.n.01 : a body of people doing the same kind of work
+
+1071	FE	Origin	age.n.01
+
+- DEFINITION:The Origin is the place where the Person was born or lived a salient part of her or his life.
+	- beginning.n.04 : the place where something begins, where it springs into being
+	- origin.n.02 : properties attributable to your ancestry
+	- origin.n.03 : an event that is a beginning; a first part or stage of subsequent events
+	- origin.n.04 : the point of intersection of coordinate axes; where the values of the coordinates are all zero
+	- origin.n.05 : the source of something's existence or from which it derives or is derived
+	- lineage.n.01 : the descendants of one individual
+
+1071	FE	Person	person.n.02
+
+- DEFINITION:The Person is the human being.
+	- person.n.01 : a human being
+	- person.n.02 : a human body (usually including the clothing)
+	- person.n.03 : a grammatical category used in the classification of pronouns, possessive determiners, and verb forms according to whether they indicate the speaker, the addressee, or a third party
+
+1071	FE	Persistent_characteristic	form.n.01
+
+- DEFINITION:The Persistent_characteristic is a physiological characteristic or personality trait of the Person which is concieved of as persisting over time.
+	- feature.n.01 : a prominent attribute or aspect of something
+	- characteristic.n.02 : a distinguishing quality
+	- characteristic.n.03 : the integer part (positive or negative) of the representation of a logarithm; in the expression log 643 = 2.808 the characteristic is 2
+	- characteristic.n.04 : any measurable property of a device measured under closely specified conditions
+	- characteristic.a.01 : typical or distinctive
+
+1071	FE	Descriptor	ethnicity.n.01
+
+- DEFINITION:The Descriptor is a temporary condition of the Person.
+	- form.n.01 : the phonological or orthographic sound or appearance of a word that can be used to describe or identify something
+	- descriptor.n.02 : a piece of stored information that is used to identify an item in an information storage and retrieval system
+
+1071	FE	Age	ethnicity.n.01
+
+- DEFINITION:The Age is the length of time the Person has been alive.
+	- age.n.01 : how long something has existed
+	- historic_period.n.01 : an era of history having some distinctive feature
+	- age.n.03 : a time of life (usually defined in years) at which some particular qualification or power arises
+	- long_time.n.01 : a prolonged period of time
+	- old_age.n.01 : a late time of life
+	- age.v.01 : begin to seem older; get older
+	- senesce.v.01 : grow old or older
+	- age.v.03 : make older
+
+1071	FE	Ethnicity	form.n.01
+
+- DEFINITION:The Ethnicity is the religious, racial, national, socio-economic or cultural group to which the Person belongs.
+	- ethnicity.n.01 : an ethnic quality or affiliation resulting from racial or cultural ties
+
+1071	FE	Context_of_acquaintance	form.n.01
+
+- DEFINITION:An expression indicating the context with which the Person is associated.  'Is she the actress from the movie we saw last night?'
+	- acquaintance.n.01 : personal knowledge or information about someone or something
+	- acquaintance.n.02 : a relationship less intimate than friendship
+	- acquaintance.n.03 : a person with whom you are acquainted
+
+1071	FE	Rank	type.n.01
+
+- DEFINITION:Rank is the position in a hierarchy that a Person occupies within an organization.  	 'Robin is the head waitress at La Notte.'  
+	- rank.n.01 : a row or line of people (especially soldiers or police) standing abreast of one another
+	- rank.n.02 : relative status
+	- rank_and_file.n.01 : the ordinary members of an organization (such as the enlisted soldiers of an army)
+	- social_station.n.01 : position in a social hierarchy
+	- membership.n.01 : the body of members of an organization or group
+	- rank.v.01 : take or have a position relative to others
+	- rate.v.01 : assign a rank or rating to
+	- rank.v.03 : take precedence or surpass others in rank
+	- rank.s.01 : very fertile; producing profuse growth
+	- rank.s.02 : very offensive in smell or taste
+	- crying.s.02 : conspicuously and outrageously bad or reprehensible
+	- absolute.s.02 : complete and without restriction or qualification; sometimes used informally as intensifiers
+	- rank.s.05 : growing profusely
+
+1071	FE	Place_of_employment	beginning.n.04
+
+- DEFINITION:This FE identifies the Place where the Person works.
+	- employment.n.01 : the state of being employed or having a job
+	- employment.n.02 : the occupation for which you are paid
+	- employment.n.03 : the act of giving someone a job
+	- use.n.01 : the act of using
+
+1071	FE	Employer	origin.n.03
+
+- DEFINITION:The Employer gives compensation to an Person for their work.
+	- employer.n.01 : a person or firm that employs workers
+
+1071	FE	Type	beginning.n.04
+
+- DEFINITION:This FE identifies the Type of the vocation that the Person practices.
+	- type.n.01 : a subdivision of a particular kind of thing
+	- character.n.05 : a person of a specified kind (usually with many eccentricities)
+	- type.n.03 : (biology) the taxonomic group whose characteristics are used to define the next higher taxon
+	- type.n.04 : printed characters
+	- type.n.05 : all of the tokens of the same symbol
+	- type.n.06 : a small metal block bearing a raised character on one end; produces a printed character when inked and pressed on paper
+	- type.v.01 : write by means of a keyboard with types
+	- type.v.02 : identify as belonging to a certain type
+
+1071	FE	Compensation	long_time.n.01
+
+- DEFINITION:The Compensation is the payment that the Person receives for performing a task.
+	- compensation.n.01 : something (such as money) given or received as payment or reparation (as for a service or loss or injury)
+	- compensation.n.02 : (psychiatry) a defense mechanism that conceals your undesirable shortcomings by exaggerating desirable behaviors
+	- recompense.n.02 : the act of compensating for service or loss or injury
+
+1071	LU	politician	attendant.n.02
+
+- DEFINITION:COD: a person who is professionally involved in politics, especially as a holder of an elected office
+	- politician.n.01 : a leader engaged in civil administration
+	- politician.n.02 : a person active in party politics
+	- politician.n.03 : a schemer who tries to gain advantage in an organization in sly or underhanded ways
+
+1071	LU	farmer	attendant.n.02
+
+- DEFINITION:COD: a person who owns or manages a farm.
+	- farmer.n.01 : a person who operates a farm
+	- farmer.n.02 : United States civil rights leader who in 1942 founded the Congress of Racial Equality (born in 1920)
+	- farmer.n.03 : an expert on cooking whose cookbook has undergone many editions (1857-1915)
+
+1071	LU	attendant	attendant.n.02
+
+- DEFINITION:COD:  person employed to provide a service to the public.
+	- attendant.n.01 : someone who waits on or tends to or attends to the needs of another
+	- attendant.n.02 : a person who is present and participates in a meeting
+	- accompaniment.n.01 : an event or situation that happens at the same time as or in connection with another
+	- attendant.s.01 : being present (at meeting or event etc.)
+	- attendant.s.02 : following or accompanying as a consequence
+
+1071	LU	clerk	None
+
+- DEFINITION:COD: a person employed in an office or bank to keep records or accounts and to undertake other routine administrative duties.
+	- clerk.n.01 : an employee who performs clerical work (e.g., keeps records or accounts)
+	- salesclerk.n.01 : a salesperson in a store
+	- clerk.v.01 : work as a clerk, as in the legal business
+
+1071	LU	consultant	attendant.n.02
+
+- DEFINITION:COD: a person who provides expert advice professionally.
+	- adviser.n.01 : an expert who gives advice
+
+1071	LU	gardener	attendant.n.02
+
+- DEFINITION:FN: somebody who works on the planting and upkeep of gardens, parks, etc.
+	- gardener.n.01 : someone who takes care of a garden
+	- gardener.n.02 : someone employed to work in a garden
+
+1071	LU	lawyer	attendant.n.02
+
+- DEFINITION:COD: a person who practises or studies law, especially (in the UK) a solicitor or a barrister or (in the US) an attorney. 
+	- lawyer.n.01 : a professional person authorized to practice law; conducts lawsuits or gives legal advice
+
+1071	LU	maid	attendant.n.02
+
+- DEFINITION:COD: a female domestic servant.
+	- maid.n.01 : a female domestic
+	- maid.n.02 : an unmarried girl (especially a virgin)
+
+1071	LU	manager	attendant.n.02
+
+- DEFINITION:COD: a person who manages an organization or group of staff.
+	- director.n.01 : someone who controls resources and expenditures
+	- coach.n.01 : (sports) someone in charge of training an athlete or a team
+
+1071	LU	professor	None
+
+- DEFINITION:COD: a university teacher. 
+	- professor.n.01 : someone who is a member of the faculty at a college or university
+
+1071	LU	receptionist	None
+
+- DEFINITION:COD: a person who greets and deals with clients and visitors to a surgery, office, hotel, etc
+	- receptionist.n.01 : a secretary whose main duty is to answer the telephone and receive visitors
+
+1071	LU	salesman	attendant.n.02
+
+- DEFINITION:COD: a person whose job involves selling or promoting commercial products
+	- salesman.n.01 : a man salesperson
+
+1071	LU	servant	attendant.n.02
+
+- DEFINITION:COD: a person employed to perform duties for others, especially in a house on domestic duties or as a personal attendant.
+	- servant.n.01 : a person working in the service of another (especially in the household)
+	- handmaid.n.01 : in a subordinate position
+
+1071	LU	waiter	attendant.n.02
+
+- DEFINITION:COD: a man whose job is to serve customers at their tables in a restaurant
+	- waiter.n.01 : a person whose occupation is to serve at table (as in a restaurant)
+	- waiter.n.02 : a person who waits or awaits
+
+1071	LU	carpenter	attendant.n.02
+
+- DEFINITION:COD: a person who makes wooden objects and structures
+	- carpenter.n.01 : a woodworker who makes or repairs wooden objects
+	- carpenter.v.01 : work as a carpenter
+
+1071	LU	scientist	None
+
+- DEFINITION:COD: a person who is studying or has expert knowledge of one or more of the natural or physical sciences.
+	- scientist.n.01 : a person with advanced knowledge of one or more sciences
+
+1071	LU	private eye	attendant.n.02
+
+- DEFINITION:COD: a private detective
+
+
+1071	LU	actress	attendant.n.02
+
+- DEFINITION:FN: a woman employed performing fictional roles in play,  film, television, etc.
+	- actress.n.01 : a female actor
+
+1071	LU	waitress	attendant.n.02
+
+- DEFINITION:COD: a woman whose job is to serve customers at their tables in a restaurant.
+	- waitress.n.01 : a woman waiter
+	- wait.v.04 : serve as a waiter or waitress in a restaurant
+
+1071	LU	technician	attendant.n.02
+
+- DEFINITION:COD: a person employed to look after technical equipment or do practical work in a laboratory.
+	- technician.n.01 : someone whose occupation involves training in a specific technical process
+	- technician.n.02 : someone known for high skill in some intellectual or artistic technique
+
+1071	LU	toxicologist	None
+
+- DEFINITION:FN: a person employed in the field of the study of poisons.
+	- toxicologist.n.01 : one who studies the nature and effects of poisons and their treatment
+
+1071	LU	engineer	None
+
+- DEFINITION:COD: a person qualified in engineering.  
+	- engineer.n.01 : a person who uses scientific knowledge to solve practical problems
+	- engineer.n.02 : the operator of a railway locomotive
+	- engineer.v.01 : design as an engineer
+	- mastermind.v.01 : plan and direct (a complex undertaking)
+
+1071	LU	double agent	attendant.n.02
+
+- DEFINITION:COD: an agent who pretends to act as a spy for one country while in fact acting for its enemy.
+
+
+1071	LU	researcher	attendant.n.02
+
+- DEFINITION:COD: someone whose job is to conduct research.
+	- research_worker.n.01 : a scientist who devotes himself to doing research
+
+1071	LU	archaeologist	attendant.n.02
+
+- DEFINITION:FN: a person who professionally studies human history and history by examining physical artifacts.
+	- archeologist.n.01 : an anthropologist who studies prehistoric people and their culture
+
+1071	LU	professional	attendant.n.02
+
+- DEFINITION:not found
+	- professional.n.01 : a person engaged in one of the learned professions
+	- professional.n.02 : an athlete who plays for pay
+	- master.n.09 : an authority qualified to teach apprentices
+	- professional.a.01 : engaged in a profession or engaging in as a profession or means of livelihood
+	- professional.a.02 : of or relating to or suitable as a profession
+	- professional.a.03 : characteristic of or befitting a profession or one engaged in a profession
+	- professional.a.04 : of or relating to a profession
+	- professional.s.05 : engaged in by members of a profession
+
+1071	LU	agent	attendant.n.02
+
+- DEFINITION:FN: a person who represents another person or organization
+	- agent.n.01 : an active and efficient cause; capable of producing a certain effect
+	- agent.n.02 : a representative who acts on behalf of other persons or organizations
+	- agent.n.03 : a substance that exerts some force or effect
+	- agent.n.04 : a businessman who buys or sells for another in exchange for a commission
+	- agent.n.05 : any agent or representative of a federal agency or bureau
+	- agentive_role.n.01 : the semantic role of the animate entity that instigates or causes the happening denoted by the verb in the clause
+
+1071	LU	journalist	attendant.n.02
+
+- DEFINITION:FN: a person who works in the field of journalism - news, some forms of photography, etc.
+	- journalist.n.01 : a writer for newspapers and magazines
+	- diarist.n.01 : someone who keeps a diary or journal
+
+1071	LU	judge	None
+
+- DEFINITION:FN: one who presides over a courtroom and makes decisions brought to the court of law
+	- judge.n.01 : a public official authorized to decide questions brought before a court of justice
+	- evaluator.n.01 : an authority who is able to estimate worth or quality
+	- judge.v.01 : determine the result of (a competition)
+	- evaluate.v.02 : form a critical opinion of
+	- estimate.v.01 : judge tentatively or form an estimate of (quantities or time)
+	- pronounce.v.02 : pronounce judgment on
+	- judge.v.05 : put on trial or hear a case and sit as the judge at the trial of
+
+1071	LU	mechanic	attendant.n.02
+
+- DEFINITION:FN: a repairman that works on various kinds of machinery
+	- machinist.n.01 : a craftsman skilled in operating machine tools
+	- automobile_mechanic.n.01 : someone whose occupation is repairing and maintaining automobiles
+	- mechanic.s.01 : resembling the action of a machine; - Emily Dickenson
+
+1071	LU	oilman	attendant.n.02
+
+- DEFINITION:FN: one who works in the oil-extraction industry
+	- oilman.n.01 : a person who owns or operates oil wells
+	- oilman.n.02 : a worker who produces or sells petroleum
+
+1071	LU	reporter	None
+
+- DEFINITION:FN: a person who reports news, as in journalism
+	- reporter.n.01 : a person who investigates and reports or edits news stories
+
+1071	LU	scholar	attendant.n.02
+
+- DEFINITION:FN: a person who studies professionally within a certain field
+	- scholar.n.01 : a learned person (especially in the humanities); someone who by long study has gained mastery in one or more disciplines
+	- learner.n.01 : someone (especially a child) who learns (as from a teacher) or takes up knowledge or beliefs
+	- scholar.n.03 : a student who holds a scholarship
+
+1071	LU	veterinarian	attendant.n.02
+
+- DEFINITION:FN: a person who specializes in animal medicine
+	- veterinarian.n.01 : a doctor who practices veterinary medicine
+
+1071	LU	trader	attendant.n.02
+
+- DEFINITION:FN: a person who professionally trades a commodity
+	- trader.n.01 : someone who purchases and maintains an inventory of goods to be sold
+
+1071	LU	mole	None
+
+- DEFINITION:FN: a person who works as a spy, often with a complex fake identity behind enemy lines
+	- gram_molecule.n.01 : the molecular weight of a substance expressed in grams; the basic unit of amount of substance adopted under the Systeme International d'Unites
+	- counterspy.n.01 : a spy who works against enemy espionage
+	- mole.n.03 : spicy sauce often containing chocolate
+	- mole.n.04 : a small congenital pigmented spot on the skin
+	- breakwater.n.01 : a protective structure of stone or concrete; extends from shore into the water to prevent a beach from washing away
+	- mole.n.06 : small velvety-furred burrowing mammal having small eyes and fossorial forefeet
+
+1071	LU	spy	None
+
+- DEFINITION:FN: a person who works as a secret agent in order to obtain information, sabotage infrastructure, etc.
+	- spy.n.01 : (military) a secret agent hired by a state to obtain information about its enemies or by a business to obtain industrial secrets from competitors
+	- spy.n.02 : a secret watcher; someone who secretly watches other people
+	- descry.v.01 : catch sight of
+	- spy.v.02 : watch, observe, or inquire secretly
+	- spy.v.03 : catch sight of; to perceive with the eyes
+	- spy.v.04 : secretly collect sensitive or classified information; engage in espionage
+
+1071	LU	businessperson	None
+
+- DEFINITION:FN: one who works in some form of business
+	- businessperson.n.01 : a capitalist who engages in industrial commercial enterprise
+
+1071	LU	speculator	attendant.n.02
+
+- DEFINITION:FN: one who invests money into something (e.g. land, commodities, stocks) and profits from the fluctuation of prices
+	- speculator.n.01 : someone who makes conjectures without knowing the facts
+	- speculator.n.02 : someone who risks losses for the possibility of considerable gains
+
+1071	LU	architect	attendant.n.02
+
+- DEFINITION:FN: a person who designs and builds buildings
+	- architect.n.01 : someone who creates plans to be used in making something (such as buildings)
+
+1071	LU	plain-clothes man	attendant.n.02
+
+- DEFINITION:FN: a law enforcement officer wearing plain (not police uniform) clothing.
+
+
+1071	LU	magistrate	attendant.n.02
+
+- DEFINITION:FN: an official who presides of court proceedings and, in many cases, decides them.
+	- magistrate.n.01 : a lay judge or civil authority who administers the law (especially one who conducts a court dealing with minor offenses)
+
+1071	LU	officer	None
+
+- DEFINITION:FN: a member of a governmental institution tasked with collecting information and protecting public safety
+	- military_officer.n.01 : any person in the armed services who holds a position of authority or command
+	- officeholder.n.01 : someone who is appointed or elected to an office and who holds a position of trust
+	- policeman.n.01 : a member of a police force
+	- officer.n.04 : a person authorized to serve in a position of authority on a vessel
+	- officer.v.01 : direct or command as an officer
+
+1071	LU	police officer	None
+
+- DEFINITION:FN: an employee of a law enforcement institution 
+
+
+1071	LU	spokesperson	None
+
+- DEFINITION:FN: a person who makes statements and responds to questions on behalf of an individual or organization.
+	- spokesperson.n.01 : an advocate who represents someone else's policy or purpose
+
+1071	LU	spokesman	attendant.n.02
+
+- DEFINITION:FN: a male who makes statements and responds to questions on behalf of an individual or organization.
+	- spokesman.n.01 : a male spokesperson
+
+1071	LU	spokeswoman	attendant.n.02
+
+- DEFINITION:FN: a woman who makes statements and responds to questions on behalf of an individual or organization.
+	- spokeswoman.n.01 : a female spokesperson
+
+1071	LU	policeman	attendant.n.02
+
+- DEFINITION:FN: police officer.
+	- policeman.n.01 : a member of a police force
+
+1071	LU	bodyguard	attendant.n.02
+
+- DEFINITION:FN: an person who provides protection for another.
+	- bodyguard.n.01 : someone who escorts and protects a prominent person
+	- bodyguard.n.02 : a group of men who escort and protect some important person
+
+1071	LU	police	None
+
+- DEFINITION:FN: one or more police officers or agents of a police department.
+	- police.n.01 : the force of policemen and officers
+	- patrol.v.01 : maintain the security of by carrying out a patrol
+
+1071	LU	tailor	attendant.n.02
+
+- DEFINITION:FN: a person who makes or modifies clothing 
+	- tailor.n.01 : a person whose occupation is making and altering garments
+	- tailor.v.01 : adjust to a specific need or market
+	- cut.v.07 : style and tailor in a certain fashion
+	- sew.v.02 : create (clothes) with cloth
+
+1071	LU	correspondent	None
+
+- DEFINITION:COD: a journalist reporting on a particular subject or from a particular country.
+	- correspondent.n.01 : someone who communicates by means of letters
+	- correspondent.n.02 : a journalist employed to provide news stories for newspapers or broadcast media
+	- analogous.s.01 : similar or equivalent in some respects though otherwise dissimilar
+
+1071	LU	cook	None
+
+- DEFINITION:FN: a person who prepares food as a means of employment
+	- cook.n.01 : someone who cooks food
+	- cook.n.02 : English navigator who claimed the east coast of Australia for Britain and discovered several Pacific islands (1728-1779)
+	- cook.v.01 : prepare a hot meal
+	- cook.v.02 : prepare for eating by applying heat
+	- cook.v.03 : transform and make suitable for consumption by heating
+	- fudge.v.01 : tamper, with the purpose of deception
+	- cook.v.05 : transform by heating
+
+1071	LU	manservant	attendant.n.02
+
+- DEFINITION:FN: a male who is employed to do tasks (such as household chores) for someone else
+	- manservant.n.01 : a man servant
+
+1071	LU	senator	attendant.n.02
+
+- DEFINITION:FN: a member of a senate
+	- senator.n.01 : a member of a senate
+
+1071	LU	attorney	attendant.n.02
+
+- DEFINITION:FN: a lawyer qualified to represent clients in legal proceedings
+	- lawyer.n.01 : a professional person authorized to practice law; conducts lawsuits or gives legal advice
+
+1071	LU	athlete	attendant.n.02
+
+- DEFINITION:FN: a person trained to compete in sports or exercises requiring physical skill
+	- athlete.n.01 : a person trained to compete in sports
+
+1071	LU	chef	None
+
+- DEFINITION:FN: the head cook in a restaurant
+	- chef.n.01 : a professional cook
+
+1071	LU	bartender	attendant.n.02
+
+- DEFINITION:FN: a person who mixes and serves alcoholic drinks at a bar
+	- bartender.n.01 : an employee who mixes and serves alcoholic drinks at a bar
+
+1071	LU	teacher	attendant.n.02
+
+- DEFINITION:FN: a person who teaches or instructs (as a profession)
+	- teacher.n.01 : a person whose occupation is teaching
+	- teacher.n.02 : a personified abstraction that teaches
+
+1071	LU	pilot	None
+
+- DEFINITION:FN: a person qualified to operate an aircraft or spacecraft in flight
+	- pilot.n.01 : someone who is licensed to operate an aircraft in flight
+	- pilot.n.02 : a person qualified to guide ships through difficult waters going into or out of a harbor
+	- pilot_program.n.02 : a program exemplifying a contemplated series; intended to attract sponsors
+	- original.n.02 : something that serves as a model or a basis for making copies
+	- pilot_burner.n.01 : small auxiliary gas burner that provides a flame to ignite a larger gas burner
+	- fender.n.02 : an inclined metal frame at the front of a locomotive to clear the track
+	- fly.v.03 : operate an airplane
+	- navigate.v.02 : act as the navigator in a car, plane, or vessel and plan, direct, plot the path and position of the conveyance
+
+1071	LU	flight attendant	attendant.n.02
+
+- DEFINITION:FN: a person who attends to the needs of passengers during a commercial flight
+
+
+1071	LU	server	None
+
+- DEFINITION:FN: a person who waits on tables
+	- waiter.n.01 : a person whose occupation is to serve at table (as in a restaurant)
+	- server.n.02 : (court games) the player who serves to start a point
+	- server.n.03 : (computer science) a computer that provides client stations with access to files and printers as shared resources to a computer network
+	- server.n.04 : utensil used in serving food or drink
+
+1071	LU	software developer	attendant.n.02
+
+- DEFINITION:FN: a person who develops software (by writing computer programs, among other things)
+
+
+1071	LU	web developer	None
+
+- DEFINITION:FN: a person who develops websites (by writing computer programs, among other things)
+
+
+1071	LU	saleswoman	attendant.n.02
+
+- DEFINITION:FN: a woman whose job involves selling or promoting commercial products
+	- salesgirl.n.01 : a woman salesperson
+
+1071	LU	salesperson	attendant.n.02
+
+- DEFINITION:FN: a person whose job involves selling or promoting commercial products
+	- salesperson.n.01 : a person employed to represent a business and to sell its merchandise (as to customers in a store or to customers who are visited)
+
+1071	LU	homemaker	attendant.n.02
+
+- DEFINITION:FN: a person who manages the household of his/her own family, esp. as a principal occupation
+	- housewife.n.01 : a wife who manages a household while her husband earns the family income
+
+1071	LU	student	None
+
+- DEFINITION:FN: a person formally engaged in learning, esp. one enrolled in a school or university
+	- student.n.01 : a learner who is enrolled in an educational institution
+	- scholar.n.01 : a learned person (especially in the humanities); someone who by long study has gained mastery in one or more disciplines
+
+1071	LU	artist	attendant.n.02
+
+- DEFINITION:FN: a person who practices one of the fine or performing arts (as a profession)
+	- artist.n.01 : a person whose creative work shows sensitivity and imagination
+
+1071	LU	musician	attendant.n.02
+
+- DEFINITION:FN: a person who makes and/or performs music as a profession
+	- musician.n.01 : someone who plays a musical instrument (as a profession)
+	- musician.n.02 : artist who composes or conducts music as a profession
+
+1071	LU	singer	None
+
+- DEFINITION:FN: a person who sings, esp. a trained or professional vocalist
+	- singer.n.01 : a person who sings
+	- singer.n.02 : United States inventor of an improved chain-stitch sewing machine (1811-1875)
+	- singer.n.03 : United States writer (born in Poland) of Yiddish stories and novels (1904-1991)
+
+1071	LU	painter	attendant.n.02
+
+- DEFINITION:FN: an artist who paints pictures
+	- painter.n.01 : an artist who paints
+	- painter.n.02 : a worker who is employed to cover objects with paint
+	- painter.n.03 : a line that is attached to the bow of a boat and used for tying up (as when docking or towing)
+	- cougar.n.01 : large American feline resembling a lion
+
+1071	LU	dancer	attendant.n.02
+
+- DEFINITION:FN: a person who dances professionally
+	- dancer.n.01 : a performer who dances professionally
+	- dancer.n.02 : a person who participates in a social gathering arranged for dancing (as a ball)
+
+1071	LU	writer	None
+
+- DEFINITION:FN: a person who writes (books, articles, stories, etc.) professionally
+	- writer.n.01 : writes (books or stories or articles or the like) professionally (for pay)
+	- writer.n.02 : a person who is able to write and has written something
+
+1071	LU	editor	None
+
+- DEFINITION:FN: a person who manages content for a publishing firm, newspaper, magazine, or other publication, and/or someone who selects, edits, and revises material for publications etc.
+	- editor.n.01 : a person responsible for the editorial aspects of publication; the person who determines the final content of a text (especially of a newspaper or magazine)
+	- editor_program.n.01 : (computer science) a program designed to perform such editorial functions as rearrangement or modification or deletion of data
+
+1071	LU	actor	attendant.n.02
+
+- DEFINITION:FN: a person who acts in stage plays, movies, or TV
+	- actor.n.01 : a theatrical performer
+	- actor.n.02 : a person who acts and gets things done
+
+1071	LU	producer	None
+
+- DEFINITION:FN: a person responsible for the financial and administrative aspects of a stage, film, TV, or radio production
+	- manufacturer.n.02 : someone who manufactures something
+	- producer.n.02 : someone who finds financing for and supervises the making and presentation of a show (play or film or program or similar work)
+	- producer.n.03 : something that produces
+
+1071	LU	director	None
+
+- DEFINITION:FN: a person responsible for the interpretive aspects of a stage, film, or TV production, and supervises all in order to realize the writer's conception
+	- director.n.01 : someone who controls resources and expenditures
+	- director.n.02 : member of a board of directors
+	- director.n.03 : someone who supervises the actors and directs the action in the production of a show
+	- film_director.n.01 : the person who directs the making of a film
+	- conductor.n.01 : the person who leads a musical group
+
+1071	LU	designer	None
+
+- DEFINITION:FN: a person who devises and executes designs, for art, machines, etc. 
+	- interior_designer.n.01 : a person who specializes in designing architectural interiors and their furnishings
+	- architect.n.01 : someone who creates plans to be used in making something (such as buildings)
+	- graphic_designer.n.01 : someone who specializes in graphic design
+	- designer.n.04 : a person who devises plots or intrigues
+	- couturier.n.01 : someone who designs clothing
+
+1071	LU	neuroscientist	None
+
+- DEFINITION:FN: a person who works in the field of neuroscience (which encompasses various scientific disciplines dealing with the nervous system)
+	- neuroscientist.n.01 : a neurobiologist who specializes in the study of the brain
+
+1071	LU	biologist	None
+
+- DEFINITION:FN: a scientist who specializes in biology
+	- biologist.n.01 : (biology) a scientist who studies living organisms
+
+1071	LU	chemist	None
+
+- DEFINITION:FN: a scientist who specializes in chemistry
+	- chemist.n.01 : a scientist who specializes in chemistry
+	- pharmacist.n.01 : a health professional trained in the art of preparing and dispensing drugs
+
+1071	LU	physicist	None
+
+- DEFINITION:FN: a scientist who specializes in physics
+	- physicist.n.01 : a scientist trained in physics
+
+1071	LU	anthropologist	attendant.n.02
+
+- DEFINITION:FN: a specialist in anthropology
+	- anthropologist.n.01 : a social scientist who specializes in anthropology
+
+1071	LU	linguist	None
+
+- DEFINITION:FN: a specialist in linguistics
+	- linguist.n.01 : a specialist in linguistics
+	- linguist.n.02 : a person who speaks more than one language
+
+1071	LU	psychologist	None
+
+- DEFINITION:FN: a specialist in psychology
+	- psychologist.n.01 : a scientist trained in psychology
+
+1071	LU	psychiatrist	attendant.n.02
+
+- DEFINITION:FN: a person who practices psychiatry
+	- psychiatrist.n.01 : a physician who specializes in psychiatry
+
+1071	LU	mathematician	attendant.n.02
+
+- DEFINITION:FN: an expert or specialist in mathematics
+	- mathematician.n.01 : a person skilled in mathematics
+
+1071	LU	sociologist	None
+
+- DEFINITION:FN: a specialist in sociology
+	- sociologist.n.01 : a social scientist who studies the institutions and development of human society
+
+1071	LU	fire fighter	None
+
+- DEFINITION:FN: A team tasked with putting out fires or protecting fire-threatened structures.
+
+
+1071	LU	firefighter	None
+
+- DEFINITION:FN: A team tasked with putting out fires or protecting fire-threatened structures.
+	- fireman.n.04 : a member of a fire department who tries to extinguish fires
+
+1071	LU	programmer	attendant.n.02
+
+- DEFINITION:FN: a person who writes computer programs
+	- programmer.n.01 : a person who designs and writes and tests computer programs
+
+1071	LU	driver	None
+
+- DEFINITION:FN: one who is paid to operate a motor vehicle
+	- driver.n.01 : the operator of a motor vehicle
+	- driver.n.02 : someone who drives animals that pull a vehicle
+	- driver.n.03 : a golfer who hits the golf ball with a driver
+	- driver.n.04 : (computer science) a program that determines how a computer will communicate with a peripheral device
+	- driver.n.05 : a golf club (a wood) with a near vertical face that is used for hitting long shots from the tee
+
+1083	name	Subjective_influence	influence.n.01
+
+- DEFINITION:An Agent, Situation or Entity has an influence on a Cognizer. The influence may be general; or it may be manifested in the Cognizer's engaging in an Action as a consequence of the influence; or the Cognizer may be influenced in how they carry out a Behavior that they are engaged in already. Alternatively, a Product may be specified whose production or design was influenced by the Cognizer's experience of the  Situation or Entity. ''  The  mediation of the Cognizer's psyche distinguishes this frame from the Objective_influence frame, where dependent events occur automatically given the appropriate kind of influencing force. In this frame, by contrast, a Cognizer may perceive an influence yet not respond to it in any way.  ' These works had a profound effect and influenced her in the creation of a successful series capturing this sun-drenched region.' 'I'm sure if I asked Mattel what inspired this car I would be told it's an original design, and not supposed to represent any actual car.'     
+	- influence.n.01 : a power to affect persons or events especially power based on prestige etc
+	- influence.n.02 : causing something without any direct or apparent effort
+	- influence.n.03 : a cognitive factor that tends to have an effect on what you do
+	- influence.n.04 : the effect of one thing (or person) on another
+	- influence.n.05 : one having power to influence another
+	- influence.v.01 : have and exert influence or effect
+	- determine.v.02 : shape or influence; give direction to
+	- charm.v.04 : induce into action by using one's charm
+
+1083	FE	Cognizer	natural_process.n.01
+
+- DEFINITION:The person who is influenced by the Situation or Entity.   'George Gilder would run with this idea later in writing the New Testament of supply-side economics that influenced Reagan. '  
+
+
+1083	FE	Situation	form.n.01
+
+- DEFINITION:A state of affairs--- which can be an event, state or conditions---that has an influence on the Cognizer.   'The balmy temperatures inspired me to write a poem on the advent of spring.' 'Hecker said that although the sheer age of the building inspired him to preserve its heritage aspects he also designed its interiors around the ·clean and fresh· mood of Queensland.'
+	- situation.n.01 : the general state of things; the combination of circumstances at a given time; ; ; - Franklin D.Roosevelt
+	- situation.n.02 : a condition or position in which you find yourself
+	- situation.n.03 : a complex or critical or unusual difficulty
+	- site.n.02 : physical position in relation to the surroundings
+	- position.n.06 : a job in an organization
+
+1083	FE	Entity	topographic_point.n.01
+
+- DEFINITION:A person or thing that has an influence on the Cognizer.  'The painting inspired me to take a risk and use the intense green for the sky.' 
+	- entity.n.01 : that which is perceived or known or inferred to have its own distinct existence (living or nonliving)
+
+1083	FE	Action	situation.n.02
+
+- DEFINITION:An Action that the Cognizer decides to carry out as a consequence of the influence of a Situation or Entity.   'What factors influenced Nixon to issue the doctrine?' 
+	- action.n.01 : something done (usually as opposed to something said)
+	- action.n.02 : the state of being active
+	- military_action.n.01 : a military engagement
+	- natural_process.n.01 : a process existing in or produced by nature (rather than by the intent of human beings)
+	- action.n.05 : the series of events that form a plot
+	- action.n.06 : the trait of being active and energetic and forceful
+	- action.n.07 : the operating part that transmits power to a mechanism
+	- legal_action.n.01 : a judicial proceeding brought by one party against another; one party prosecutes another for a wrong done or for protection of a right or for prevention of a wrong
+	- action.n.09 : an act by a government body or supranational organization
+	- action.n.10 : the most important or interesting work or activity in a specific area or field
+	- action.v.01 : institute legal proceedings against; file a suit against
+	- carry_through.v.01 : put in effect
+
+1083	FE	Behavior	action.v.01
+
+- DEFINITION:A Behavior that the Cognizer is engaged in independently but whose execution is subsequently influenced by the Situation or Entity.  'Attention will also be paid to St. Paul , what influenced him in his thinking and what he wrote in his letters about sex, sexuality, men and women'
+	- behavior.n.01 : manner of acting or controlling yourself
+	- behavior.n.02 : the action or reaction of something (as a machine or substance) under specified circumstances
+	- demeanor.n.01 : (behavioral attributes) the way a person behaves toward other people
+	- behavior.n.04 : (psychology) the aggregate of the responses or reactions or movements made by an organism in any situation
+
+1083	FE	Product	clock_time.n.01
+
+- DEFINITION:An entity that stands metonymically for the actions and considerations that produced it.  'Does anyone know what inspired this song? '
+	- merchandise.n.01 : commodities offered for sale
+	- product.n.02 : an artifact that has been created by someone or some process
+	- product.n.03 : a quantity obtained by multiplication
+	- product.n.04 : a chemical substance formed as a result of a chemical reaction
+	- product.n.05 : a consequence of someone's efforts or of a particular set of circumstances
+	- intersection.n.04 : the set of elements common to two or more sets
+
+1083	FE	Time	situation.n.01
+
+- DEFINITION:The Time at which the Subjective_influencing event occurs.
+	- time.n.01 : an instance or single occasion for some event
+	- time.n.02 : a period of time considered as a resource under your control and sufficient to accomplish something
+	- time.n.03 : an indefinite period (usually marked by specific attributes or activities)
+	- time.n.04 : a suitable moment
+	- time.n.05 : the continuum of experience in which events pass from the future through the present to the past
+	- time.n.06 : a person's experience on a particular occasion
+	- clock_time.n.01 : a reading of a point in time as given by a clock
+	- fourth_dimension.n.01 : the fourth coordinate that is required (along with three spatial dimensions) to specify a physical event
+	- meter.n.04 : rhythm as given by division into parts of equal duration
+	- prison_term.n.01 : the period of time a prisoner is imprisoned
+	- clock.v.01 : measure the time or duration of an event or action or the person who performs an action in a certain period of time
+	- time.v.02 : assign a time for an activity or event
+	- time.v.03 : set the speed, duration, or execution of
+	- time.v.04 : regulate or set the time of
+	- time.v.05 : adjust so that a force is applied and an action occurs at the desired time
+
+1083	FE	Event_description	situation.n.02
+
+- DEFINITION:This FE applies to appraisals of the Subjective_influence event. 
+	- description.n.01 : a statement that represents something in words
+	- description.n.02 : the act of describing something
+	- description.n.03 : sort or variety
+
+1083	FE	Agent	situation.n.01
+
+- DEFINITION:The Agent acts to influence a Cognizer.
+	- agent.n.01 : an active and efficient cause; capable of producing a certain effect
+	- agent.n.02 : a representative who acts on behalf of other persons or organizations
+	- agent.n.03 : a substance that exerts some force or effect
+	- agent.n.04 : a businessman who buys or sells for another in exchange for a commission
+	- agent.n.05 : any agent or representative of a federal agency or bureau
+	- agentive_role.n.01 : the semantic role of the animate entity that instigates or causes the happening denoted by the verb in the clause
+
+1083	FE	Place	place.n.03
+
+- DEFINITION:The location in which one has influence.  'Chavez has much influence in South America.'
+	- topographic_point.n.01 : a point located with respect to surface features of some region
+	- place.n.02 : any area set aside for a particular purpose
+	- place.n.03 : an abstract mental location
+	- place.n.04 : a general vicinity
+	- stead.n.01 : the post or function properly or customarily occupied or served by another
+	- place.n.06 : a particular situation
+	- home.n.01 : where you live at a particular time
+	- position.n.06 : a job in an organization
+	- position.n.01 : the particular portion of space occupied by something
+	- place.n.10 : proper or designated social situation
+	- seat.n.01 : a space reserved for sitting (as in a theater or on a train or airplane)
+	- place.n.12 : the passage that is being read
+	- place.n.13 : proper or appropriate position or location
+	- plaza.n.01 : a public square with room for pedestrians
+	- place.n.15 : an item on a list or in a sequence
+	- space.n.07 : a blank area
+	- put.v.01 : put into a certain place or abstract location
+	- place.v.02 : place somebody in a particular situation or location
+	- rate.v.01 : assign a rank or rating to
+	- locate.v.03 : assign a location to
+	- place.v.05 : to arrange for
+	- place.v.06 : take a place in a competition; often followed by an ordinal
+	- target.v.01 : intend (something) to move towards a certain goal
+	- identify.v.01 : recognize as being; establish the identity of someone or something
+	- place.v.09 : assign to (a job or a home)
+	- set.v.09 : locate
+	- place.v.11 : estimate
+	- place.v.12 : identify the location or place of
+	- invest.v.01 : make an investment
+	- station.v.01 : assign to a station
+	- place.v.15 : finish second or better in a horse or dog race
+	- place.v.16 : sing a note with the correct pitch
+
+1083	FE	Domain	place.n.03
+
+- DEFINITION:The field in which one maintains influence.  'Chavez has much influence in South American politics.'
+	- sphere.n.01 : a particular environment or walk of life
+	- domain.n.02 : territory over which rule or control is exercised
+	- domain.n.03 : (mathematics) the set of values of the independent variable for which a function is defined
+	- world.n.02 : people in general; especially a distinctive group of people with some shared interest
+	- knowledge_domain.n.01 : the content of a particular field of knowledge
+
+1083	LU	impact	shock.n.02
+
+- DEFINITION:FN: a marked emotional effect
+	- impact.n.01 : the striking of one body against another
+	- impact.n.02 : a forceful consequence; a strong effect
+	- impingement.n.01 : influencing strongly
+	- shock.n.02 : the violent interaction of individuals or groups entering into combat
+	- impact.v.01 : press or wedge together; pack together
+	- affect.v.01 : have an effect upon
+
+1083	LU	influential	shock.n.02
+
+- DEFINITION:not found
+	- influential.a.01 : having or exercising influence or power
+
+1083	LU	inspire	None
+
+- DEFINITION:not found
+	- inspire.v.01 : heighten or intensify
+	- inspire.v.02 : supply the inspiration for
+	- prompt.v.02 : serve as the inciting cause of
+	- cheer.v.05 : spur on or encourage especially by cheers and shouts
+	- revolutionize.v.03 : fill with revolutionary ideas
+	- inhale.v.02 : draw in (air)
+
+1083	LU	influence	None
+
+- DEFINITION:FN: an effect on the character or behaviour of someone or something, or the capacity to produce such effects
+	- influence.n.01 : a power to affect persons or events especially power based on prestige etc
+	- influence.n.02 : causing something without any direct or apparent effort
+	- influence.n.03 : a cognitive factor that tends to have an effect on what you do
+	- influence.n.04 : the effect of one thing (or person) on another
+	- influence.n.05 : one having power to influence another
+	- influence.v.01 : have and exert influence or effect
+	- determine.v.02 : shape or influence; give direction to
+	- charm.v.04 : induce into action by using one's charm
+
+1083	LU	influence	None
+
+- DEFINITION:FN: an effect on the character or behaviour of someone or something, or the capacity to produce such effects
+	- influence.n.01 : a power to affect persons or events especially power based on prestige etc
+	- influence.n.02 : causing something without any direct or apparent effort
+	- influence.n.03 : a cognitive factor that tends to have an effect on what you do
+	- influence.n.04 : the effect of one thing (or person) on another
+	- influence.n.05 : one having power to influence another
+	- influence.v.01 : have and exert influence or effect
+	- determine.v.02 : shape or influence; give direction to
+	- charm.v.04 : induce into action by using one's charm
+
+1083	LU	inspiration	shock.n.02
+
+- DEFINITION:FN: an event of sudden creativity
+	- inspiration.n.01 : arousal of the mind to special unusual activity or creativity
+	- inspiration.n.02 : a product of your creative thinking and work
+	- inspiration.n.03 : a sudden intuition as part of solving a problem
+	- divine_guidance.n.01 : (theology) a special influence of a divinity on the minds of human beings
+	- inspiration.n.05 : arousing to a particular emotion or action
+	- inhalation.n.01 : the act of inhaling; the drawing in of air (or other gases) as in breathing
+
+1083	LU	effect	None
+
+- DEFINITION:FN: an emotional impact
+	- consequence.n.01 : a phenomenon that follows and is caused by some previous phenomenon
+	- impression.n.02 : an outward appearance
+	- effect.n.03 : an impression (especially one that is artificial or contrived)
+	- effect.n.04 : the central meaning or theme of a speech or literary work
+	- effect.n.05 : (of a law) having legal validity
+	- effect.n.06 : a symptom caused by an illness or a drug
+	- effect.v.01 : produce
+	- effect.v.02 : act so as to bring into existence
+
+1083	LU	impact	shock.n.02
+
+- DEFINITION:FN: a marked emotional effect
+	- impact.n.01 : the striking of one body against another
+	- impact.n.02 : a forceful consequence; a strong effect
+	- impingement.n.01 : influencing strongly
+	- shock.n.02 : the violent interaction of individuals or groups entering into combat
+	- impact.v.01 : press or wedge together; pack together
+	- affect.v.01 : have an effect upon
+
+1083	LU	drive	None
+
+- DEFINITION:not found
+	- drive.n.01 : the act of applying force to propel something
+	- drive.n.02 : a mechanism by which force or power is transmitted in a machine
+	- campaign.n.02 : a series of actions advancing a principle or tending toward a particular end
+	- driveway.n.01 : a road leading up to a private house
+	- drive.n.05 : the trait of being highly motivated
+	- drive.n.06 : hitting a golf ball off of a tee with a driver
+	- drive.n.07 : the act of driving a herd of animals overland
+	- drive.n.08 : a journey in a vehicle (usually an automobile)
+	- drive.n.09 : a physiological state corresponding to a strong need or desire
+	- drive.n.10 : (computer science) a device that writes data onto or reads data from a storage medium
+	- drive.n.11 : a wide scenic road planted with trees
+	- drive.n.12 : (sports) a hard straight return (as in tennis or squash)
+	- drive.v.01 : operate or control a vehicle
+	- drive.v.02 : travel or be transported in a vehicle
+	- drive.v.03 : cause someone or something to move by driving
+	- force.v.06 : force into or from an action or state, either physically or metaphorically
+	- drive.v.05 : to compel or force or urge relentlessly or exert coercive pressure on, or motivate strongly
+	- repel.v.01 : cause to move back by force or influence
+	- drive.v.07 : compel somebody to do something, often against his own will or judgment
+	- drive.v.08 : push, propel, or press with force
+	- drive.v.09 : cause to move rapidly by striking or throwing with force
+	- tug.v.02 : strive and make an effort to reach a goal
+	- drive.v.11 : move into a desired direction of discourse
+	- drive.v.12 : have certain properties when driven
+	- drive.v.13 : work as a driver
+	- drive.v.14 : move by being propelled by a force
+	- drive.v.15 : urge forward
+	- drive.v.16 : proceed along in a vehicle
+	- drive.v.17 : strike with a driver, as in teeing off
+	- drive.v.18 : hit very hard, as by swinging a bat horizontally
+	- drive.v.19 : excavate horizontally
+	- drive.v.20 : cause to function by supplying the force or power for or by controlling
+	- drive.v.21 : hunting: search for game
+	- drive.v.22 : hunting: chase from cover into more open ground
+
+1083	LU	motivate	shock.n.02
+
+- DEFINITION:not found
+	- motivate.v.01 : give an incentive for action
+
+1083	LU	push	None
+
+- DEFINITION:not found
+	- push.n.01 : the act of applying force in order to move something away
+	- push.n.02 : the force used in pushing
+	- energy.n.03 : enterprising or ambitious drive
+	- push_button.n.01 : an electrical switch operated by pressing
+	- push.n.05 : an effort to advance
+	- push.v.01 : move with force,
+	- push.v.02 : press, drive, or impel (someone) to action or completion of an action
+	- advertise.v.02 : make publicity for; try to sell (a product)
+	- tug.v.02 : strive and make an effort to reach a goal
+	- push.v.05 : press against forcefully without moving
+	- push.v.06 : approach a certain age or speed
+	- crusade.v.01 : exert oneself continuously, vigorously, or obtrusively to gain an end or engage in a crusade for a certain cause or person; be an advocate for
+	- push.v.08 : sell or promote the sale of (illegal goods such as drugs)
+	- push.v.09 : move strenuously and with effort
+	- press.v.11 : make strenuous pushing movements during birth to expel the baby
+
+1083	LU	galvanize	shock.n.02
+
+- DEFINITION:not found
+	- startle.v.01 : to stimulate to action
+	- galvanize.v.02 : cover with zinc
+	- galvanize.v.03 : stimulate (muscles) by administering a shock
+
+1083	LU	coax	shock.n.02
+
+- DEFINITION:not found
+	- coaxial_cable.n.01 : a transmission line for high-frequency signals
+	- wheedle.v.01 : influence or urge by gentle urging, caressing, or flattering
+
+1083	LU	entice	None
+
+- DEFINITION:not found
+	- entice.v.01 : provoke someone to do something through (often false or exaggerated) promises or persuasion
+
+1083	LU	spur	None
+
+- DEFINITION:not found
+	- goad.n.02 : a verbalization that encourages you to attempt something
+	- spur.n.02 : any sharply pointed projection
+	- spur.n.03 : tubular extension at the base of the corolla in some flowers
+	- spur.n.04 : a sharp prod fixed to a rider's heel and used to urge a horse onward
+	- branch_line.n.01 : a railway line connected to a trunk line
+	- spur.v.01 : incite or stimulate
+	- spur.v.02 : give heart or courage to
+	- spur.v.03 : strike with a spur
+	- spur.v.04 : goad with spurs
+	- spur.v.05 : equip with spurs
+
+1083	LU	tempt	None
+
+- DEFINITION:not found
+	- tempt.v.01 : dispose or incline or entice to
+	- entice.v.01 : provoke someone to do something through (often false or exaggerated) promises or persuasion
+	- tempt.v.03 : give rise to a desire by being attractive or inviting
+	- charm.v.04 : induce into action by using one's charm
+	- tempt.v.05 : try to seduce
+	- tempt.v.06 : try presumptuously
+
+1083	LU	discourage	shock.n.02
+
+- DEFINITION:not found
+	- deter.v.01 : try to prevent; show opposition to
+	- discourage.v.02 : deprive of courage or hope; take away hope from; cause to feel discouraged
+	- warn.v.02 : admonish or counsel in terms of someone's behavior
+
+1083	LU	encourage	shock.n.02
+
+- DEFINITION:not found
+	- promote.v.01 : contribute to the progress or growth of
+	- encourage.v.02 : inspire with confidence; give hope or courage to
+	- encourage.v.03 : spur on
+
+1083	LU	goad	shock.n.02
+
+- DEFINITION:not found
+	- prod.n.02 : a pointed instrument that is used to prod into a state of motion
+	- goad.n.02 : a verbalization that encourages you to attempt something
+	- spur.v.02 : give heart or courage to
+	- goad.v.02 : urge with or as if with a goad
+	- goad.v.03 : stab or urge on as if with a pointed stick
+	- needle.v.01 : goad or provoke,as by constant criticism
+
+1083	LU	stimulate	shock.n.02
+
+- DEFINITION:not found
+	- stimulate.v.01 : act as a stimulant
+	- induce.v.02 : cause to do; cause to act in a specified manner
+	- stimulate.v.03 : stir the feelings, emotions, or peace of
+	- stimulate.v.04 : cause to be alert and energetic
+	- induce.v.03 : cause to occur rapidly
+	- stimulate.v.06 : stir feelings in
+	- provoke.v.03 : provide the needed stimulus for
+
+1017	name	Noise_makers	None
+
+- DEFINITION:The Noise_maker is an artifact used to produce sound, especially for musical effect.  'The church bells rang' 'The car alarm went off again' 'I have never played an acoustic  guitar.' 'Each artist personally owns a Steinway and has chosen to perform on the Steinway piano professionally'
+	- maker.n.01 : a person who makes things
+	- godhead.n.01 : terms referring to the Judeo-Christian God
+	- manufacturer.n.01 : a business engaged in manufacturing some product
+
+1017	FE	Noise_maker	function.n.02
+
+- DEFINITION:This FE identifies the entity or substance that is designed to produce sound.
+	- maker.n.01 : a person who makes things
+	- godhead.n.01 : terms referring to the Judeo-Christian God
+	- manufacturer.n.01 : a business engaged in manufacturing some product
+
+1017	FE	Use	function.n.02
+
+- DEFINITION:The use for which an Noise_maker  is intended.
+	- use.n.01 : the act of using
+	- function.n.02 : what something is used for
+	- use.n.03 : a particular service
+	- consumption.n.03 : (economics) the utilization of economic goods to satisfy needs or in manufacturing
+	- habit.n.02 : (psychology) an automatic pattern of behavior in reaction to a specific situation; may be inherited or acquired through frequent repetition
+	- manipulation.n.01 : exerting shrewd or devious influence especially for one's own advantage
+	- use.n.07 : (law) the exercise of the legal right to enjoy the benefits of owning property
+	- use.v.01 : put into service; make work or employ for a particular purpose or for its inherent or natural purpose
+	- use.v.02 : take or consume (regularly or habitually)
+	- use.v.03 : use up, consume fully
+	- use.v.04 : seek or achieve an end by using to one's advantage
+	- practice.v.04 : avail oneself to
+	- use.v.06 : habitually do something (use only in the past tense)
+
+1017	FE	Creator	reason.n.01
+
+- DEFINITION:An individual or individuals that bring the Noise_maker into existence.
+	- godhead.n.01 : terms referring to the Judeo-Christian God
+	- creator.n.02 : a person who grows or makes or invents things
+
+1017	FE	Time_of_creation	appoint.v.01
+
+- DEFINITION:The time at which a Noise_maker comes into existence.
+	- creation.n.01 : the human act of creating
+	- creation.n.02 : an artifact that has been brought into existence by someone
+	- creation.n.03 : the event that occurred at the beginning of something
+	- initiation.n.02 : the act of starting something for the first time; introducing something new
+	- creation.n.05 : (theology) God's act of bringing the universe into existence
+	- universe.n.01 : everything that exists anywhere
+
+1017	FE	Name	function.n.02
+
+- DEFINITION:The term used to refer to an Noise_maker.
+	- name.n.01 : a language unit by which a person or thing is known
+	- name.n.02 : a person's reputation
+	- name.n.03 : family based on male descent
+	- name.n.04 : a well-known or notable person
+	- name.n.05 : by the sanction or authority of
+	- name.n.06 : a defamatory or abusive word or phrase
+	- name.v.01 : assign a specified (usually proper) proper name to
+	- name.v.02 : give the name or identifying characteristics of; refer to by name or some other identifying characteristic property
+	- name.v.03 : charge with a function; charge to be
+	- appoint.v.01 : create and charge with a task or function
+	- name.v.05 : mention and identify by name
+	- mention.v.01 : make reference to
+	- identify.v.05 : identify as in botany or biology, for example
+	- list.v.01 : give or make a list of; name individually; give the names of
+	- diagnose.v.01 : determine or distinguish the nature of a problem or an illness through a diagnostic analysis
+
+1017	FE	Type	use.n.01
+
+- DEFINITION:An indication of the subtype of Noise_maker.
+	- type.n.01 : a subdivision of a particular kind of thing
+	- character.n.05 : a person of a specified kind (usually with many eccentricities)
+	- type.n.03 : (biology) the taxonomic group whose characteristics are used to define the next higher taxon
+	- type.n.04 : printed characters
+	- type.n.05 : all of the tokens of the same symbol
+	- type.n.06 : a small metal block bearing a raised character on one end; produces a printed character when inked and pressed on paper
+	- type.v.01 : write by means of a keyboard with types
+	- type.v.02 : identify as belonging to a certain type
+
+1017	FE	Material	mention.v.01
+
+- DEFINITION:Any indication of what makes up the Noise_maker, including components, etc.
+	- material.n.01 : the tangible substance that goes into the makeup of a physical object
+	- material.n.02 : information (data or ideas or observations) that can be used or reworked into a finished form
+	- fabric.n.01 : artifact made by weaving or felting or knitting or crocheting natural or synthetic fibers
+	- material.n.04 : things needed for doing or making something
+	- material.n.05 : a person judged suitable for admission or employment
+	- material.s.01 : concerned with worldly rather than spiritual interests
+	- material.a.02 : derived from or composed of matter
+	- material.a.03 : directly relevant to a matter especially a law case
+	- material.s.04 : concerned with or affecting physical as distinct from intellectual or psychological well-being; ; - T.Roosevelt
+	- corporeal.a.01 : having material or physical form or substance;  - Benjamin Jowett
+	- substantial.a.03 : having substance or capable of being treated as fact; not imaginary; ; ; - Shakespeare
+
+1017	LU	guitar	bell.n.10
+
+- DEFINITION:COD: a stringed musical instrument with a fretted fingerboard and six or twelve strings, played by plucking or strumming with the fingers or a plectrum
+	- guitar.n.01 : a stringed instrument usually having six strings; played by strumming or plucking
+
+1017	LU	bell	None
+
+- DEFINITION:COD: a hollow object, typically made of metal and in the shape of a deep inverted cup, that sounds a clear musical note when struck
+	- bell.n.01 : a hollow device made of metal that makes a ringing sound when struck
+	- doorbell.n.01 : a push button at an outer door that gives a ringing or buzzing signal when pushed
+	- bell.n.03 : the sound of a bell being struck
+	- bell.n.04 : (nautical) each of the eight half-hour units of nautical time signaled by strokes of a ship's bell; eight bells signals 4:00, 8:00, or 12:00 o'clock, either a.m. or p.m.
+	- bell.n.05 : the shape of a bell
+	- bell.n.06 : a phonetician and father of Alexander Graham Bell (1819-1905)
+	- bell.n.07 : English painter; sister of Virginia Woolf; prominent member of the Bloomsbury Group (1879-1961)
+	- bell.n.08 : United States inventor (born in Scotland) of the telephone (1847-1922)
+	- chime.n.01 : a percussion instrument consisting of a set of tuned bells that are struck with a hammer; used as an orchestral instrument
+	- bell.n.10 : the flared opening of a tubular device
+	- bell.v.01 : attach a bell to
+
+1017	LU	siren	None
+
+- DEFINITION:COD: a device that makes a loud prolonged signal or warning sound
+	- siren.n.01 : a sea nymph (part woman and part bird) supposed to lure sailors to destruction on the rocks where the nymphs lived
+	- enchantress.n.01 : a woman who is considered to be dangerously seductive
+	- siren.n.03 : a warning signal that is a loud wailing sound
+	- siren.n.04 : an acoustic device producing a loud often wailing sound as a signal or warning
+	- siren.n.05 : eellike aquatic North American salamander with small forelimbs and no hind limbs; have permanent external gills
+
+1017	LU	piano	bell.n.10
+
+- DEFINITION:COD: a large keyboard musical instrument with a wooden case enclosing a soundboard and metal strings, which are struck by hammers when the keys are depressed.
+	- piano.n.01 : a keyboard instrument that is played by depressing keys that cause hammers to strike tuned strings and produce sounds
+	- piano.n.02 : (music) low loudness
+	- piano.a.01 : used chiefly as a direction or description in music
+	- piano.r.01 : used as a direction in music; to be played relatively softly
+
+1017	LU	rattle	bell.n.10
+
+- DEFINITION:COD: a thing that makes a rattling sound, in particular a baby's toy consisting of a container filled with small pellets
+	- rattle.n.01 : a rapid series of short loud sounds (as might be heard with a stethoscope in some types of respiratory disorders)
+	- rattle.n.02 : a baby's toy that makes percussive noises when shaken
+	- rattle.n.03 : loosely connected horny sections at the end of a rattlesnake's tail
+	- rattle.v.01 : make short successive sounds
+	- rattle.v.02 : shake and cause to make a rattling noise
+
+1017	LU	xylophone	None
+
+- DEFINITION:COD: a musical instrument played by striking a row of wooden bars of graduated length with small beaters
+	- marimba.n.01 : a percussion instrument with wooden bars tuned to produce a chromatic scale and with resonators; played with small mallets
+
+1017	LU	drum	None
+
+- DEFINITION:COD: a percussion instrument sounded by being struck with sticks or the hands, typically cylindrical, barrel-shaped, or bowl-shaped with a taut membrane over one or both ends.
+	- drum.n.01 : a musical percussion instrument; usually consists of a hollow cylinder with a membrane stretched across each end
+	- drum.n.02 : the sound of a drum
+	- barrel.n.03 : a bulging cylindrical shape; hollow with flat ends
+	- drum.n.04 : a cylindrical metal container used for shipping or storage of liquids
+	- brake_drum.n.01 : a hollow cast-iron cylinder attached to the wheel that forms part of the brakes
+	- drum.n.06 : small to medium-sized bottom-dwelling food and game fishes of shallow coastal and fresh waters that make a drumming noise
+	- drum.v.01 : make a rhythmic sound
+	- drum.v.02 : play a percussion instrument
+	- cram.v.03 : study intensively, as before an exam
+
+1017	LU	cello	None
+
+- DEFINITION:COD:  a bass instrument of the violin family, held upright on the floor between the legs of the seated player.
+	- cello.n.01 : a large stringed instrument; seated player holds it upright while playing
+
+1017	LU	saxophone	bell.n.10
+
+- DEFINITION:COD: a member of a family of metal wind instruments with a reed like a clarinet, used especially in jazz and dance music
+	- sax.n.02 : a single-reed woodwind with a conical bore
+
+1017	LU	alarm	bell.n.10
+
+- DEFINITION:COD: a warning sound or device.
+	- alarm.n.01 : fear resulting from the awareness of danger
+	- alarm.n.02 : a device that signals the occurrence of some undesirable event
+	- alarm.n.03 : an automatic signal (usually a sound) warning of danger
+	- alarm_clock.n.01 : a clock that wakes a sleeper at some preset time
+	- dismay.v.02 : fill with apprehension or alarm; cause to be unpleasantly surprised
+	- alarm.v.02 : warn or arouse to a sense of danger or call to a state of preparedness
+
+2625	name	Relational_location	location.n.01
+
+- DEFINITION:This is a general frame that identifies a Profiled_region whose configuration is specified by an image schema (specified in more specific child frames) and located relative to a Ground.
+	- location.n.01 : a point or extent in space
+	- placement.n.03 : the act of putting something in a certain place
+	- localization.n.01 : a determination of the place where something is
+	- location.n.04 : a workplace away from a studio at which some or all of a movie may be made
+
+2625	FE	Profiled_region	form.n.01
+
+- DEFINITION:The region which is located relative to the Ground and which is shaped according to an image schema.
+	- region.n.01 : the extended spatial location of something
+	- area.n.03 : a part of an animal that has a special function or is supplied by a given artery or nerve
+	- region.n.03 : a large indefinite location on the surface of the Earth
+	- region.n.04 : the approximate amount of something (usually used prepositionally as in `in the region of')
+	- region.n.05 : a knowledge domain that you are interested in or are communicating about
+
+2625	FE	Constituent_parts	grind.v.06
+
+- DEFINITION:Salient parts that make up a Profiled_region.  
+	- parts.n.01 : the local environment
+	- part.n.01 : something determined in relation to something that includes it
+	- part.n.02 : something less than the whole of a human artifact
+	- part.n.03 : a portion of a natural object
+	- part.n.04 : that which concerns a person with regard to a particular role or situation
+	- region.n.01 : the extended spatial location of something
+	- function.n.03 : the actions and activities assigned to or required or expected of a person or group
+	- character.n.04 : an actor's portrayal of someone in a play
+	- share.n.01 : assets belonging to or due to or contributed by an individual person or group
+	- part.n.09 : one of the portions into which something is regarded as divided and which together constitute a whole
+	- part.n.10 : a line of scalp that can be seen when sections of hair are combed in opposite directions
+	- part.n.11 : the melody carried by a particular voice or instrument in polyphonic music
+	- contribution.n.01 : the part played by a person in bringing about a result
+	- separate.v.09 : go one's own way; move apart
+	- separate.v.08 : discontinue an association or relation; go different ways
+	- depart.v.03 : leave
+	- separate.v.12 : come apart
+	- separate.v.02 : force, take, or pull apart
+
+2625	FE	Relative_location	form.n.01
+
+- DEFINITION:A place that a Profiled_region is located with respect to.
+	- location.n.01 : a point or extent in space
+	- placement.n.03 : the act of putting something in a certain place
+	- localization.n.01 : a determination of the place where something is
+	- location.n.04 : a workplace away from a studio at which some or all of a movie may be made
+
+2625	FE	Formational_cause	reason.n.01
+
+- DEFINITION:Indicates the action (or causer) which brings the features of the Profiled_region about.  This FE should also include words that indicate that there was no salient formation. 
+	- cause.n.01 : events that provide the generative force that is the origin of something
+	- cause.n.02 : a justification for something existing or happening
+	- campaign.n.02 : a series of actions advancing a principle or tending toward a particular end
+	- causal_agent.n.01 : any entity that produces an effect or is responsible for events or results
+	- lawsuit.n.01 : a comprehensive term for any proceeding in a court of law whereby an individual seeks a legal remedy
+	- cause.v.01 : give rise to; cause to happen or occur, not always intentionally
+	- induce.v.02 : cause to do; cause to act in a specified manner
+
+2625	FE	Container_possessor	form.n.01
+
+- DEFINITION:The location that the Profiled_region is a part of.
+	- owner.n.02 : a person who owns something
+
+2625	FE	Descriptor	form.n.01
+
+- DEFINITION:The Descriptor is a temporary condition of the Profiled_region.
+	- form.n.01 : the phonological or orthographic sound or appearance of a word that can be used to describe or identify something
+	- descriptor.n.02 : a piece of stored information that is used to identify an item in an information storage and retrieval system
+
+2625	FE	Related_event	form.n.01
+
+- DEFINITION:An event related to the Profiled_region in some way other than (1) Formational_cause (which is a separate FE) or an intended use (which would place the instance in Locale_by_use), or (3) a defining event (which would place the instance in Locale_by_event).
+	- event.n.01 : something that happens at a given place and time
+	- event.n.02 : a special set of circumstances
+	- event.n.03 : a phenomenon located at a single point in space-time; the fundamental observational entity in relativity theory
+	- consequence.n.01 : a phenomenon that follows and is caused by some previous phenomenon
+
+2625	FE	Inherent_purpose	grind.v.05
+
+- DEFINITION:The activity that is carried out in the Profiled_region.
+	- purpose.n.01 : an anticipated outcome that is intended or that guides your planned actions
+	- function.n.02 : what something is used for
+	- determination.n.02 : the quality of being determined to do or achieve something; firmness of purpose
+	- aim.v.02 : propose or intend
+	- purpose.v.02 : reach a decision
+
+731	name	Becoming_silent	silent.s.04
+
+- DEFINITION:In this frame a Speaker ceases speaking, sometimes about a particular Topic. An Expressor may also be indicated. '' The words of this frame are very frequently used imperatively, to the extent that certain words and phrases (not another word, silence, shhh) can only be used this way.  'Finally, Jan shut up about his car accident.' 'The children's laughter quieted down.' 'Somehow, he managed to hold his tongue.'
+	- silent.s.01 : marked by absence of sound
+	- mum.s.01 : failing to speak or communicate etc when expected to
+	- silent.s.03 : implied by or inferred from actions or statements
+	- silent.s.04 : not made to sound
+	- silent.s.05 : having a frequency below or above the range of human audibility
+	- dumb.s.04 : unable to speak because of hereditary deafness
+
+731	FE	Speaker	speaker.n.01
+
+- DEFINITION:The Speaker has previously been speaking but has now stopped. 'The children finally quieted down.'
+	- speaker.n.01 : someone who expresses in language; someone who talks (especially someone who delivers a public speech or someone especially garrulous)
+	- loudspeaker.n.01 : electro-acoustic transducer that converts electrical signals into sounds loud enough to be heard at a distance
+	- speaker.n.03 : the presiding officer of a deliberative assembly
+
+731	FE	Topic	speaker.n.03
+
+- DEFINITION:The Topic is the subject which the Speaker had been speaking about. 'Mark shut up about the book.'
+	- subject.n.01 : the subject matter of a conversation or discussion
+	- topic.n.02 : some situation or event that is thought about
+
+731	FE	Place	topographic_point.n.01
+
+- DEFINITION:The Place is the location where the becoming silent occurs.
+	- topographic_point.n.01 : a point located with respect to surface features of some region
+	- place.n.02 : any area set aside for a particular purpose
+	- place.n.03 : an abstract mental location
+	- place.n.04 : a general vicinity
+	- stead.n.01 : the post or function properly or customarily occupied or served by another
+	- place.n.06 : a particular situation
+	- home.n.01 : where you live at a particular time
+	- position.n.06 : a job in an organization
+	- position.n.01 : the particular portion of space occupied by something
+	- place.n.10 : proper or designated social situation
+	- seat.n.01 : a space reserved for sitting (as in a theater or on a train or airplane)
+	- place.n.12 : the passage that is being read
+	- place.n.13 : proper or appropriate position or location
+	- plaza.n.01 : a public square with room for pedestrians
+	- place.n.15 : an item on a list or in a sequence
+	- space.n.07 : a blank area
+	- put.v.01 : put into a certain place or abstract location
+	- place.v.02 : place somebody in a particular situation or location
+	- rate.v.01 : assign a rank or rating to
+	- locate.v.03 : assign a location to
+	- place.v.05 : to arrange for
+	- place.v.06 : take a place in a competition; often followed by an ordinal
+	- target.v.01 : intend (something) to move towards a certain goal
+	- identify.v.01 : recognize as being; establish the identity of someone or something
+	- place.v.09 : assign to (a job or a home)
+	- set.v.09 : locate
+	- place.v.11 : estimate
+	- place.v.12 : identify the location or place of
+	- invest.v.01 : make an investment
+	- station.v.01 : assign to a station
+	- place.v.15 : finish second or better in a horse or dog race
+	- place.v.16 : sing a note with the correct pitch
+
+731	FE	Time	speaker.n.03
+
+- DEFINITION:The Time is when the becoming silent occurs.
+	- time.n.01 : an instance or single occasion for some event
+	- time.n.02 : a period of time considered as a resource under your control and sufficient to accomplish something
+	- time.n.03 : an indefinite period (usually marked by specific attributes or activities)
+	- time.n.04 : a suitable moment
+	- time.n.05 : the continuum of experience in which events pass from the future through the present to the past
+	- time.n.06 : a person's experience on a particular occasion
+	- clock_time.n.01 : a reading of a point in time as given by a clock
+	- fourth_dimension.n.01 : the fourth coordinate that is required (along with three spatial dimensions) to specify a physical event
+	- meter.n.04 : rhythm as given by division into parts of equal duration
+	- prison_term.n.01 : the period of time a prisoner is imprisoned
+	- clock.v.01 : measure the time or duration of an event or action or the person who performs an action in a certain period of time
+	- time.v.02 : assign a time for an activity or event
+	- time.v.03 : set the speed, duration, or execution of
+	- time.v.04 : regulate or set the time of
+	- time.v.05 : adjust so that a force is applied and an action occurs at the desired time
+
+731	FE	Expressor	speaker.n.03
+
+- DEFINITION:The Expressor is the Speaker's voice or other communicative noise emitted by the Speaker. 'The excited chatter hushed.'</def-root >
+
+
+731	FE	Manner	station.v.01
+
+- DEFINITION:The manner in which the quietening occurs. 
+	- manner.n.01 : how something is done or how it happens
+	- manner.n.02 : a way of acting or behaving
+	- manner.n.03 : a kind
+
+731	LU	button (one's) lip	None
+
+- DEFINITION:not found
+
+
+731	LU	hold (one's) tongue	None
+
+- DEFINITION:not found
+
+
+731	LU	hush	None
+
+- DEFINITION:not found
+	- hush.n.01 : (poetic) tranquil silence
+	- hush.v.01 : become quiet or still; fall silent
+	- hush.v.02 : cause to be quiet or not talk
+	- quieten.v.01 : become quiet or quieter
+	- hush.v.04 : wash by removing particles
+	- hush.v.05 : run water over the ground to erode (soil), revealing the underlying strata and valuable minerals
+
+731	LU	hush up	None
+
+- DEFINITION:not found
+
+
+731	LU	quiet	None
+
+- DEFINITION:FN: the state of being silent. Often occurs with verbs (keeping, remaining, staying).
+	- lull.n.02 : a period of calm weather
+	- tranquillity.n.01 : an untroubled state; free from disturbances
+	- silence.n.02 : the absence of sound
+	- repose.n.03 : a disposition free from stress or emotion
+	- quieten.v.01 : become quiet or quieter
+	- calm.v.01 : make calm or still
+	- quiet.a.01 : characterized by an absence or near absence of agitation or activity
+	- quiet.a.02 : free of noise or uproar; or making little if any sound
+	- quiet.s.03 : not showy or obtrusive
+	- hushed.s.01 : in a softened tone
+	- placid.s.01 : (of a body of water) free from disturbance by heavy waves
+	- quiet.a.06 : of the sun characterized by a low level of surface phenomena like sunspots e.g.
+	- quietly.r.03 : with little or no activity or no agitation (`quiet' is a nonstandard variant for `quietly')
+
+731	LU	quiet down	None
+
+- DEFINITION:not found
+
+
+731	LU	shush	None
+
+- DEFINITION:not found
+	- shush.v.01 : silence (someone) by uttering `shush!'
+
+731	LU	shut up	None
+
+- DEFINITION:not found
+
+
+731	LU	stow it	None
+
+- DEFINITION:not found
+
+
+731	LU	silence	None
+
+- DEFINITION:not found
+	- silence.n.01 : the state of being silent (as when no one is speaking)
+	- silence.n.02 : the absence of sound
+	- muteness.n.02 : a refusal to speak when expected
+	- secrecy.n.01 : the trait of keeping things secret
+	- hush.v.02 : cause to be quiet or not talk
+	- silence.v.02 : keep from expression, for example by threats or pressure
+
+731	LU	sh	None
+
+- DEFINITION:not found
+
+
+731	LU	quieten	None
+
+- DEFINITION:not found
+	- quieten.v.01 : become quiet or quieter
+	- calm.v.01 : make calm or still
+	- hush.v.02 : cause to be quiet or not talk
+
+731	LU	pipe down	None
+
+- DEFINITION:not found
+
+
+731	LU	quiet	None
+
+- DEFINITION:FN: the state of being silent. Often occurs with verbs (keeping, remaining, staying).
+	- lull.n.02 : a period of calm weather
+	- tranquillity.n.01 : an untroubled state; free from disturbances
+	- silence.n.02 : the absence of sound
+	- repose.n.03 : a disposition free from stress or emotion
+	- quieten.v.01 : become quiet or quieter
+	- calm.v.01 : make calm or still
+	- quiet.a.01 : characterized by an absence or near absence of agitation or activity
+	- quiet.a.02 : free of noise or uproar; or making little if any sound
+	- quiet.s.03 : not showy or obtrusive
+	- hushed.s.01 : in a softened tone
+	- placid.s.01 : (of a body of water) free from disturbance by heavy waves
+	- quiet.a.06 : of the sun characterized by a low level of surface phenomena like sunspots e.g.
+	- quietly.r.03 : with little or no activity or no agitation (`quiet' is a nonstandard variant for `quietly')
+
+731	LU	seal (one's) lips	hush.v.02
+
+- DEFINITION:not found
+
+
+731	LU	not a word	hush.v.02
+
+- DEFINITION:not found
+
+
