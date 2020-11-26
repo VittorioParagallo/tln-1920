@@ -11,17 +11,16 @@ from nltk.tokenize import RegexpTokenizer
 no_punct_tokenizer = RegexpTokenizer(r'\w+')
 stop_words = set(stopwords.words('english'))
 
-def flat_list(list_of_lists): return list(itertools.chain(*list_of_lists))
-
+flat_list= lambda list_of_lists: list(itertools.chain(*list_of_lists))
 
 def preprocess(text):
     """
     It does some preprocess: removes the stopword and punctuation
-    :param definition: a string representing a definition
+    :param text: a string representing a definition
     :return: a set of string which contains the preprocessed string tokens.    """
     return ' '.join([token for token
-            in no_punct_tokenizer.tokenize(text.replace('_', ' ').lower())
-            if token not in stop_words])
+                           in no_punct_tokenizer.tokenize(text.replace('_', ' ').lower())
+                               if token not in stop_words])
 
 def get_main_clause(frame_name):
     """
@@ -29,7 +28,7 @@ def get_main_clause(frame_name):
     :param frame_name: the name of the frame
     :return: the main clause inside the frame name
     """
-    tokens = nltk.word_tokenize(frame_name.replace('_', ' '))
+    tokens = nltk.word_tokenize(preprocess(frame_name))
     for elem in reversed(nltk.pos_tag(tokens)):
         if elem[1] in ["NN", "NNS"]:
             return elem[0] 
@@ -38,13 +37,12 @@ def get_main_clause(frame_name):
 def get_wn_ctx(word, pos=None):
     """
     :param word: word for which we need to find meaning
-    :return: a dictionary of Synset and relative ctx associated to the given word
+    :return: a dictionary of Synset and relative ctx associated to the given syn
     """
-
     word = word.replace(' ', '_')
     synsets = wn.synsets(word)
     if len(synsets) < 1:
-      synsets = wn.synsets(word.replace('_', ''))
+      synsets = wn.synsets(word.replace('_', '')) # Ex noise_makers, noisemakers 
     if len(synsets) < 1:
       synsets = wn.synsets(get_main_clause(word))
     if len(synsets) < 1:
@@ -74,20 +72,19 @@ def bag_of_words(ctx_fn, ctx_wn):
     :param ctx_wn: the second disambiguation context (from Wordnet)
     :return: the synset with the highest score
     """
-    def compute_score(ctx1, ctx2): return len(set(ctx1) & set(ctx2)) + 1
+    compute_score = lambda ctx1, ctx2: len(ctx1 & ctx2) + 1
     
-    fn_words_bag = set(no_punct_tokenizer.tokenize(
-        ' '.join([
-            ''.join(preprocess(data)) for data in ctx_fn if data is not None])))
+    get_words_set=lambda str_list : set(no_punct_tokenizer.tokenize(
+                                    ' '.join(
+                                        [''.join(preprocess(data)) for data in str_list if data is not None])))
+
+    fn_words_bag = get_words_set(ctx_fn)
 
     sense_score_list = [(sense, compute_score(
-                                            set(no_punct_tokenizer.tokenize(
-                                              ' '.join(
-                                                  [''.join(preprocess(data)) for data in ctx_wn[sense] if data is not None]))),
+                                            get_words_set(ctx_wn[sense]),
                                             fn_words_bag))
                                   for sense in ctx_wn]
     return max(sense_score_list, key=lambda x: x[1],default=[None])[0]
-
 
 if __name__ == "__main__":
 
@@ -111,17 +108,16 @@ if __name__ == "__main__":
         open('./part2/exercise2/input/gold.txt'), delimiter='\t')
     #row={'FrameId': '1071', 'name': 'People_by_vocation', 'sense': 'career.n.01', 'type': 'name'}
     gold_data = [row for row in reader]
-
+    #function to find the gold syn in file
+    find_gold_syn = lambda fId, type, name:next(gold['sense']
+                                                                        for gold in gold_data
+                                                                          if gold["FrameId"] == str(fId) and
+                                                                             gold["type"] == type and
+                                                                             gold["name"] == name.replace(' ', '_'))
 
     with open('./part2/exercise2/output/results.csv', "w", encoding="utf-8") as out:
-
       row_template = '{}\t{}\t{}\t{}\t{}\t{}\n'
       out.write(row_template.format('FrameId','type','name','sense','gold','score'))
-      
-      #function to find the gold syn in file
-      find_gold_syn = lambda fId, type, name:next(gold['sense']
-                                                  for gold in gold_data
-                                                  if gold["FrameId"] == str(fId) and gold["type"] == type and gold["name"] == name.replace(' ', '_'))
                                                   
       scores=[]
       for f in frames:
@@ -132,7 +128,7 @@ if __name__ == "__main__":
         
         #cerca gold syn e valuta lo score
         gold_fname_syn = find_gold_syn(f.ID,'name', f.name)
-        scores.append( int(gold_fname_syn == sense_name))
+        scores.append(int(gold_fname_syn == sense_name))
 
         # salva i risultati
         out.write(row_template.format(
@@ -160,7 +156,7 @@ if __name__ == "__main__":
           scores.append(int(gold_lu_syn == sense_lu))
 
           out.write(row_template.format(
-              f.ID, 'LU', lu.name, sense_lu, gold_lu_syn, scores[-1]))
+              f.ID, 'LU', lu.name.replace(' ','_'), sense_lu, gold_lu_syn, scores[-1]))
 
       total_score = sum(scores)
       count=len(scores)

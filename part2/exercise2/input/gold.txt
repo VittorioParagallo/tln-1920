@@ -18,7 +18,7 @@ FrameId	type	name	sense
 1071	LU	attendant.n	attendant.n.01
 1071	LU	clerk.n	clerk.n.01
 1071	LU	consultant.n	adviser.n.01
-1071	LU	gardener.n	gardener.n.02
+1071	LU	gardener.n	gardener.n.01
 1071	LU	lawyer.n	lawyer.n.01
 1071	LU	maid.n	maid.n.01
 1071	LU	manager.n	director.n.01
@@ -38,7 +38,7 @@ FrameId	type	name	sense
 1071	LU	double_agent.n	double_agent.n.01
 1071	LU	researcher.n	research_worker.n.01
 1071	LU	archaeologist.n	archeologist.n.01
-1071	LU	professional.a	professional.a.04
+1071	LU	professional.a	professional.a.02
 1071	LU	agent.n	agent.n.02
 1071	LU	journalist.n	journalist.n.01
 1071	LU	judge.n	judge.n.01
@@ -107,7 +107,7 @@ FrameId	type	name	sense
 1071	LU	firefighter.n	fireman.n.04
 1071	LU	programmer.n	programmer.n.01
 1071	LU	driver.n	driver.n.01
-1083	name	Subjective_influence	influence.n.03
+1083	name	Subjective_influence	influence.n.04
 1083	FE	Cognizer	perceiver.n.01
 1083	FE	Situation	situation.n.01
 1083	FE	Entity	agent.n.01
@@ -184,7 +184,7 @@ FrameId	type	name	sense
 731	LU	quiet.v	quieten.v.01
 731	LU	quiet_down.v	quieten.v.01
 731	LU	shush.v	shush.v.01
-731	LU	shut_up.v	hush.v.02
+731	LU	shut_up.v	close_up.v.04
 731	LU	stow_it.v	quieten.v.01
 731	LU	silence.v	silence.v.02
 731	LU	sh.intj	shush.v.01
