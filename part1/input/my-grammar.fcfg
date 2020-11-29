@@ -1,0 +1,61 @@
+## from Natural Language Toolkit: sem3.fcfg
+
+
+% start S
+############################
+# Grammar Rules
+#############################
+
+ S -> VP NP
+ S -> NP PP
+ S -> NP VP
+ S -> VP
+ NP -> DT NN JJ
+ NP -> DT JJ NN
+ NP -> DT JJ NNS
+ NP -> PRP NN
+ NP -> NP PP
+ NP -> DT PRP
+ VP -> VBZ
+ VP -> VBZ VBN
+ VP -> VBP VP
+ VP -> VBN VP
+ VP -> VBN RB
+
+ PP -> IN NP
+ PP -> DT NP
+ PP -> IN JJ NNP 
+
+#############################
+# Lexical Rules
+#############################
+# rif https://universaldependencies.org/docs/it/pos/all.html
+
+
+#DT o det?
+DT -> 'il' | 'lo' |'la' | 'i' | 'gli' | 'le' | 'un' | 'uno' | 'una'
+
+#IN o RD: Definite article?
+IN -> 'a' | 'di' | 'da' | 'in' | 'con' | 'su' | 'per' | 'tra' | 'fa' | 'dei' | 'dello' | 'della' | 'delle'
+
+#DD: Demonstrative determiner
+DD -> 'questo' | 'questa' | 'questi' | 'queste'
+
+VBZ -> 'è' | 'ha'
+VBN -> 'fatto' | 'stati' | 'spazzati'
+VBP -> 'sono'
+RB -> 'via'
+
+
+NN -> 'spada' | 'padre' | 'mossa'
+NNS -> 'anni' | 'avanzi'
+NNP -> 'repubblica'
+JJ -> 'laser' | 'leale' | 'ultimi' | 'vecchia'
+PRP -> 'mio' | 'mie'| 'miei'| 'tuo' | 'tue' | 'tua' | 'tuoi' | 'suo' | 'suoi' | 'sua' | 'sue' | 'nostri'| 'nostro' | 'nostre' | 'vostre'| 'vostro' | 'vostri' | 'loro'
+
+#DI: Indefinite determiner inserito in DT
+#DI -> 'un' | 'uno' | 'una'
+
+
+
+
