@@ -52,7 +52,6 @@ def weighted_overlap(topic_nasari_vector, paragraph_nasari_vector):
         return num/den
     return 0
 
-
 def parse_nasari_dictionary():
     """
     It parse the Nasari input file, and it converts into a more convenient
@@ -123,7 +122,7 @@ def parse_document(file):
 
 if __name__ == "__main__":
 
-  percentage= 00
+  percentage= 10
   nasari_dict = parse_nasari_dictionary()
 
   # Inspecting the input files
