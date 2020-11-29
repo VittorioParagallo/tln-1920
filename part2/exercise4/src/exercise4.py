@@ -17,7 +17,7 @@ def get_synset_terms(sense):
     """
     req = requests.get("https://babelnet.io/v5/getSynset",
                        {"id": sense,
-                        "key": "67adc825-bbcc-4cd4-8d6c-71ecdb875e7c",  # API key
+                        "key": "4b7bbd3d-3fb7-492b-934b-d1003db8fa7f",  # API key
                         "targetLang": "IT"})  # only italian results
     data = req.json()
     synset_terms = set()

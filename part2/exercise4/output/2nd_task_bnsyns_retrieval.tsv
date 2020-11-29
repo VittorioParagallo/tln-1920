@@ -1,49 +1,49 @@
-disturbo bipolare	problema	bn:00010593n	bn:00048242n	disturbo_bipolare,depressione_bipolare,psicosi_maniaco-depressiva	problema
-acido	base	bn:00000902n	bn:00002771n	acidi,acido,acidi_inorganici	base,alcali,base_(chimica)
-zero assoluto	vapore	bn:00000453n	bn:00080637n	-273°,-273,15°c,zero_assoluto	vapore_d'acqua,vapor_d'acqua,vapore_acqueo
-rivoluzione verde	vernice	bn:03594063n	bn:00079613n	rivoluzione_verde	lacca,vernice,laccatura
-sistema operativo	deep learning	bn:00059123n	bn:02601968n	os,sistema_operativo,so	deep_learning,apprendimento_approfondito,apprendimento_profondo
-olimpiadi internazionali di matematica	teoria	bn:03701756n	bn:00045632n	olimpiadi_internazionali_della_matematica,imo,olimpiadi_internazionali_di_matematica	ipotesi,possibilità,teoria
-el niño	equatore	bn:00030030n	bn:00031294n	enso,el_nino,el_niño	equatore,equatore_terrestre,circonferenza_equatoriale
-distintivo	vetro	bn:00062448n	bn:00040605n	distintivo,spilla,spillo	vetro,cristalleria,cristallerie
-dimora	scultore	bn:00042667n	bn:00069924n	dimora,magione_(architettura),magione	scultori,scultore,scultura
-atmosfera	ozono	bn:00002185n	bn:00060040n	atmosfera_terrestre,aria,atmosfera	ozonizzatore,ozono,generatore_di_ozono
+disturbo bipolare	problema	bn:00010593n	bn:00048242n	depressione_bipolare,disturbo_bipolare,psicosi_maniaco-depressiva	problema
+acido	base	bn:00000902n	bn:00002771n	acido,acidi,acidi_inorganici	base,base_(chimica),alcali
+zero assoluto	vapore	bn:00000453n	bn:00080637n	-273°,zero_assoluto,-273,15°c	vapore_acqueo,vapor_d'acqua,vapore_d'acqua
+rivoluzione verde	vernice	bn:03594063n	bn:00079613n	rivoluzione_verde	lacca,laccatura,vernice
+sistema operativo	deep learning	bn:00059123n	bn:02601968n	os,sistema_operativo,so	apprendimento_profondo,apprendimento_approfondito,deep_learning
+olimpiadi internazionali di matematica	teoria	bn:03701756n	bn:00045632n	imo,olimpiadi_internazionali_della_matematica,olimpiadi_internazionali_di_matematica	possibilità,teoria,ipotesi
+el niño	equatore	bn:00030030n	bn:00031294n	el_niño,el_nino,enso	circonferenza_equatoriale,equatore_terrestre,equatore
+distintivo	vetro	bn:00062448n	bn:00040605n	spilla,distintivo,spillo	cristalleria,cristallerie,vetro
+dimora	scultore	bn:00042667n	bn:00069924n	magione,dimora,magione_(architettura)	scultore,scultura,scultori
+atmosfera	ozono	bn:00002185n	bn:00060040n	atmosfera_terrestre,aria,atmosfera	ozonizzatore,generatore_di_ozono,ozono
 scudo	brocchiero	bn:00013602n	bn:00013602n	scudo,shields,brocchiero	scudo,shields,brocchiero
-moneta	pagamento	bn:00016448n	bn:00061119n	cash,bancomat,contante	pagamento,compenso,corresponsione
-avena	campo	bn:00007439n	bn:00034265n	avena,genere_avena,avena_(botanica)	campagna,campo_(agricoltura),campo
-monaco	croce	bn:00055633n	bn:00127634n	monachismo,monachesimo,regola_monastica	croce
-cannoniera	costa	bn:00042239n	bn:00071235n	gunvessel,cannoniere,cannoniera	riva,costa,sponda
-roccia	miniera	bn:00068046n	bn:00055114n	sasso,roccia,pietra	miniera
-leggenda	morale	bn:00032591n	bn:00050794n	epopea,leggenda,leggende	ammaestramento,morale,lezione
-campione	vincitore	bn:15948556n	bn:03655783n	il_campione,campione,il_campione_(film_1931)	il_vincitore_(film_1996),vincitore,il_vincitore
-dado	cubo	bn:00024258n	bn:00024258n	cubo,esaedro_regolare,cuboide	cubo,esaedro_regolare,cuboide
-topologia	struttura	bn:00003800n	bn:01049167n	topologia,analisi_situs,studio_dei_luoghi	struttura_matematica,struttura_(matematica)
-cappella	cavo	bn:15478652n	bn:01583344n	cappella,cappella_(gruppo_musicale),cappella_(progetto_musicale)	cavo,cavo_(gruppo_musicale)
-flusso di cassa	fiume	bn:00016458n	bn:00067948n	flusso_di_cassa,cash_flow,flussi_di_cassa	corsi_d'acqua,fiume,rivo
-serial killer	assassino	bn:00070599n	bn:00032175n	assassina_seriale,serial_killer,serial-killer	assassinio,omicidio,uccisione
-matrice	molecola	bn:01600840n	bn:00006815n	metaplasma,matrice_extracellulare,spazio_extracellulare	brandello,atomo,briciolo
-moda	stile	bn:00023619n	bn:00032400n	mania_del_momento,moda,moda_breve	stile_espressivo,stile,stile_artistico
-vessillologia	bandiera	bn:00646030n	bn:00030968n	vessillologo,vexillologist,vessillologia	bandiera_di_stato,bandiera_nazionale,bandiera_civile
-trattato di maastricht	europa	bn:01352045n	bn:00021127n	accordi_di_maastricht,trattato_sull'unione_europea,trattato_di_maastricht	unione_europea,cee,comunità_economica_europea
+moneta	pagamento	bn:00016448n	bn:00061119n	contante,cash,bancomat	corresponsione,pagamento,compenso
+avena	campo	bn:00007439n	bn:00034265n	genere_avena,avena,avena_(botanica)	campo_(agricoltura),campagna,campo
+monaco	croce	bn:00055633n	bn:00127634n	monachesimo,monachismo,regola_monastica	croce
+cannoniera	costa	bn:00042239n	bn:00071235n	cannoniere,cannoniera,gunvessel	sponda,riva,costa
+roccia	miniera	bn:00068046n	bn:00055114n	roccia,sasso,pietra	miniera
+leggenda	morale	bn:00032591n	bn:00050794n	epopea,leggende,leggenda	lezione,morale,ammaestramento
+campione	vincitore	bn:15948556n	bn:03655783n	campione,il_campione_(film_1931),il_campione	il_vincitore,vincitore,il_vincitore_(film_1996)
+dado	cubo	bn:00024258n	bn:00024258n	cuboide,cubo,esaedro_regolare	cuboide,cubo,esaedro_regolare
+topologia	struttura	bn:00003800n	bn:01049167n	analisi_situs,studio_dei_luoghi,topologia	struttura_matematica,struttura_(matematica)
+cappella	cavo	bn:15478652n	bn:01583344n	cappella,cappella_(progetto_musicale),cappella_(gruppo_musicale)	cavo_(gruppo_musicale),cavo
+flusso di cassa	fiume	bn:00016458n	bn:00067948n	flusso_di_cassa,cash_flow,flussi_di_cassa	corsi_d'acqua,rivo,fiume
+serial killer	assassino	bn:00070599n	bn:00032175n	serial_killer,serial-killer,assassina_seriale	assassinio,omicidio,uccisione
+matrice	molecola	bn:01600840n	bn:00006815n	metaplasma,matrice_extracellulare,spazio_extracellulare	briciolo,atomo,brandello
+moda	stile	bn:00023619n	bn:00032400n	moda,mania_del_momento,moda_breve	stile_espressivo,stile,stile_artistico
+vessillologia	bandiera	bn:00646030n	bn:00030968n	vexillologist,vessillologia,vessillologo	bandiera_nazionale,bandiera_di_stato,bandiera_civile
+trattato di maastricht	europa	bn:01352045n	bn:00021127n	trattato_di_maastricht,accordi_di_maastricht,trattato_sull'unione_europea	comunità_economica_europea,cee,unione_europea
 geyser	sorgente	bn:00040351n	bn:00036077n	geyser,scaldabagno	scaturigine,fonte,polla
-saccarosio	carboidrato	bn:00068722n	bn:00015853n	inversione_del_saccarosio,zucchero,saccarosio	glucide,carboidrato,saccaride
-spiaggia	costa	bn:00009263n	bn:00071235n	spiaggia,arenile,lido	riva,costa,sponda
-mercato azionario	borsa	bn:00070218n	bn:00070218n	mercato_azionario,borsa_valori,borsa	mercato_azionario,borsa_valori,borsa
-tradizione	artigianato	bn:00024592n	bn:00023499n	tradizionale,tradizione,costumanza	arte,abilità,abilità_professionale
+saccarosio	carboidrato	bn:00068722n	bn:00015853n	inversione_del_saccarosio,zucchero,saccarosio	glucide,saccaride,carboidrato
+spiaggia	costa	bn:00009263n	bn:00071235n	lido,spiaggia,arenile	sponda,riva,costa
+mercato azionario	borsa	bn:00070218n	bn:00070218n	borsa_valori,mercato_azionario,borsa	borsa_valori,mercato_azionario,borsa
+tradizione	artigianato	bn:00024592n	bn:00023499n	tradizione,tradizionale,costumanza	abilità_professionale,arte,abilità
 romanzo	scrittore	bn:00058201n	bn:00007287n	romanzi,romanzo,romanziere	autore_televisivo,scrittore,autore
 panino	subway	bn:00069164n	bn:03345051n	sandwich,tramezzino,j.-montagne-conte-di-sandwich	subway,subway_(azienda),subway_(ristorante)
-acustica	suono	bn:00000989n	bn:00000986n	dati_acustici,acustica,fisica_acustica	onda_acustica,suono,onda_sonora
-scherma	ginnastica	bn:00034059n	bn:00042326n	scherma,scherma_(sport),combattimento_con_la_spada	attività_ginniche,ginnastica,educazione_fisica
-scrittore	regalo	bn:00007287n	bn:02345076n	autore_televisivo,scrittore,autore	il_regalo,regalo
-bosco	tiger woods	bn:00035868n	bn:03181223n	bosco_misto,bosco,foresta	tiger_woods,eldrick_tont_woods
-nuvola	finestra	bn:02292735n	bn:00081292n	nuvola_(informatica),nuvola	finestra,finestra_(informatica),window
-jpeg	pdf	bn:00838809n	bn:01745594n	joint_photographic_experts_group,jpeg,jpg	.pdf,adobe_acrobat_document,portable_document_format
-regista	capo	bn:00032179n	bn:02347758n	chief_officer,executive,dirigente	direttore,capo,leader
-tassa	brexit	bn:00034084n	bn:14118606n	infeudazione,feudo,feudi	referendum_sulla_permanenza_del_regno_unito_nell'unione_europea,fuoriuscita_della_gran_bretagna_dall'unione_europea,brexit
-impollinazione	stame	bn:00063375n	bn:00073884n	anemofila,amenofilia,impollinazione	stame,stami,androceo
+acustica	suono	bn:00000989n	bn:00000986n	acustica,fisica_acustica,dati_acustici	onda_sonora,onda_acustica,suono
+scherma	ginnastica	bn:00034059n	bn:00042326n	combattimento_con_la_spada,scherma_(sport),scherma	ginnastica,attività_ginniche,educazione_fisica
+scrittore	regalo	bn:00007287n	bn:02345076n	autore_televisivo,scrittore,autore	regalo,il_regalo
+bosco	tiger woods	bn:00035868n	bn:03181223n	foresta,bosco_misto,bosco	eldrick_tont_woods,tiger_woods
+nuvola	finestra	bn:02292735n	bn:00081292n	nuvola,nuvola_(informatica)	window,finestra,finestra_(informatica)
+jpeg	pdf	bn:00838809n	bn:01745594n	joint_photographic_experts_group,jpeg,jpg	portable_document_format,adobe_acrobat_document,.pdf
+regista	capo	bn:00032179n	bn:02347758n	chief_officer,dirigente,executive	direttore,leader,capo
+tassa	brexit	bn:00034084n	bn:14118606n	feudi,infeudazione,feudo	fuoriuscita_della_gran_bretagna_dall'unione_europea,brexit,referendum_sulla_permanenza_del_regno_unito_nell'unione_europea
+impollinazione	stame	bn:00063375n	bn:00073884n	impollinazione,amenofilia,anemofila	stame,androceo,stami
 videogioco	gioco per pc	bn:00021477n	bn:00021477n	videogame,video_game,videogioco	videogame,video_game,videogioco
-cura	operazione chirurgica	bn:00024461n	bn:00059129n	farmaco,rimedio,cura	chirurgia,intervento,intervento_chirurgico
-risaia	patata	bn:00060141n	bn:00047481n	risaia,campi_di_riso,risaie	patata_(alimento),solanum_tuberosum,patata
-appunti	compito	bn:03223016n	bn:00894769n	appunti_(informatica),appunti,clipboard	compito
-cloruro di sodio	sale	bn:00021159n	bn:00021159n	nacl,cloruro_di_sodio,salgemma	nacl,cloruro_di_sodio,salgemma
-reddito	qualità della vita	bn:14505599n	bn:00065542n	reddito	qualità_di_vita,qualità_della_vita,qol
+cura	operazione chirurgica	bn:00024461n	bn:00059129n	ricetta,cura,farmaco	intervento,chirurgia,intervento_chirurgico
+risaia	patata	bn:00060141n	bn:00047481n	risaia,campi_di_riso,risaie	patata,solanum_tuberosum,patata_(alimento)
+appunti	compito	bn:03223016n	bn:00894769n	appunti_(informatica),clipboard,appunti	compito
+cloruro di sodio	sale	bn:00021159n	bn:00021159n	cloruro_di_sodio,nacl,salgemma	cloruro_di_sodio,nacl,salgemma
+reddito	qualità della vita	bn:14505599n	bn:00065542n	reddito	qol,qualità_di_vita,qualità_della_vita

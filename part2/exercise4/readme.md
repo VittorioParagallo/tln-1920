@@ -116,6 +116,7 @@ The scrips is exercise4.py archived in the src and includes:
  ```
   
 ## Results
+The overall results are very good (listed after the tables)
 
 **1st_task_50_couples_manually_annotated.tsv:**
 
@@ -225,6 +226,18 @@ The scrips is exercise4.py archived in the src and includes:
 | cloruro di sodio                       | sale                  | bn:00021159n | bn:00021159n | nacl,cloruro_di_sodio,salgemma                                                       | nacl,cloruro_di_sodio,salgemma                                                                                             |
 | reddito                                | qualità della vita    | bn:14505599n | bn:00065542n | reddito                                                                              | qualità_di_vita,qualità_della_vita,qol                                                                                     |
 
+**Overall results:**
+```
+Task 1: Semantic Similarity
+        Evaluation - Person: 0.77, Spearman: 0.79
+
+Task 2: Sense Identification.
+
+        Accuracy: (59%)
+```
+
+![Chart](./reports/Evaluation:_Manual_Annotation_vs_Nasari_Embeddings
+.png)
 
 ## Authors
 
