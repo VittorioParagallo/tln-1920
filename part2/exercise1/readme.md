@@ -416,6 +416,184 @@ The following charts were plotter using the above data and adding the regression
 ![Wu_&_Palmier Chart](./reports/Wu_&_Palmier.png)
 ![Shortest_Path Chart](./reports/Shortest_Path.png)
 ![Wu_&_Palmier Chart](./reports/Wu_&_Palmier.png)
+
+# Task 2 
+
+## Word Sense Disambiguation
+This script performs 2 tasks:
+- Given an input file, disambiguate the words surrounded by chars '**' and replace with all lemmas of disambiguated sens
+- Given a random list of 50 sentences from SemCor corpus disambiguate 1 lemma and verify accuracy versus the golden SemCor annotation
+
+### Input
+The input for the first part is th file in 'input' folder named sentences.txt and it is composed by sentences like:
+'- She packed her **lunch** in her purse.'
+
+The input for the second part is instead random and computed by the function:
+```python
+def get_random_sent_goldsyn_brown(quantity):
+    sents = semcor.xml('brown2/tagfiles/br-n12.xml').findall('context/p/s')
+    # prepare the ranges for the random function
+    random_index2explore = list(range(0, len(sents)-1))
+    results = []
+    # add sentences to the result till the required quantity is reached, or the dataset has no more sentences
+    while len(results) < quantity and len(random_index2explore) > 0:
+        # choose a random index not previously
+        index = choice(random_index2explore)
+        random_index2explore.remove(index)
+        raw_sent = ''
+        # a list of tuple like (word, goldSynset) to choose from
+        sent_noun_list = []
+        for wordform in sents[index]:
+            raw_sent += ' ' + wordform.text
+            lemma = wordform.get('lemma')
+            lexsn = wordform.get('lexsn')
+            wnsn = wordform.get('wnsn')
+            if wordform.get('pos') == 'NN' and lemma is not None and lexsn is not None and wnsn != '0' and '_' not in wordform.text:
+                sent_noun_list.append(
+                    (wordform.text, lexsnKey2Syn(f'{lemma}%{lexsn}')))
+        # if the analyzed sentence has nouns one is randomly chosed and assigner to the return sentence
+        if len(sent_noun_list) > 0:
+            random_gold_syn = random.choice(sent_noun_list)
+            results.append((random_gold_syn[1], random_gold_syn[0], raw_sent))
+    return results
+  ```
+the synset are retrieved from the corpus by their Sense Key Encoding (Ex: person%1:03:00::) by the function:
+  ```python
+def lexsnKey2Syn(sensekey): 
+            return wn.lemma_from_key(sensekey).synset()
+  ```
+
+### Output
+The script outputs 2 files located in output folder:
+- task2_WSD_results.csv for the results of the senses<->lemma replacement part
+- task2_SemCor_results for the result of the SemCor sentences wds
+
+## Structure
+The scrips is archived in the folder Task_2 and is only 1 file 'main_wsd.py' which includes the main, the lesk implementation and the algorithm to withdraw the SemCor sentences
+
+## Results
+The results are in the output folder and are also reported here below for ease of reading.
+In the end of the section the are as well some graphical reports no available in the output folder.
+For both the first part and the second the results shown a good success rate of about 70%
+
+task2_WSD_results.csv:
+| ID | Type | Value |
+|-|-|-|
+| 0 | Sentence |  **Arms** bend at the elbow.'] |
+|  | tagged word | arm |
+|  | Lesk syn | arm.n.01': a human limb; technically the part of the superior limb   between the shoulder and the elbow but commonly used to refer to the whole   superior limb |
+|  | Sentence_final |  ['arm'] bend at the elbow. |
+| 1 | Sentence |  Germany sells **arms** to Saudi   Arabia.'] |
+|  | tagged word | arms  |
+|  | Lesk syn | weaponry.n.01': weapons considered collectively |
+|  | Sentence_final |  Germany sells ['weaponry', 'arms',   'implements_of_war', 'weapons_system', 'munition'] to Saudi Arabia. |
+| 2 | Sentence |  The **key** broke in the lock.'] |
+|  | tagged word | key  |
+|  | Lesk syn | key.n.01': metal device shaped in such a way that when it is inserted   into the appropriate lock the lock's mechanism can be rotated |
+|  | Sentence_final |  The ['key'] broke in the lock. |
+| 3 | Sentence |  The **key** problem was not one of   quality but of quantity. '] |
+|  | tagged word | key  |
+|  | Lesk syn | key.n.02': something crucial for explaining |
+|  | Sentence_final |  The ['key'] problem was not one of   quality but of quantity.  |
+| 4 | Sentence |  Work out the **solution** in your   head.'] |
+|  | tagged word | solution  |
+|  | Lesk syn | solution.n.01': a homogeneous mixture of two or more substances;   frequently  |
+|  | Sentence_final |  Work out the ['solution'] in your   head. |
+| 5 | Sentence |  Heat the **solution** to 75°   Celsius. '] |
+|  | tagged word | solution  |
+|  | Lesk syn | solution.n.01': a homogeneous mixture of two or more substances;   frequently  |
+|  | Sentence_final |  Heat the ['solution'] to 75°   Celsius.  |
+| 6 | Sentence |  The house was burnt to **ashes**   while the owner returned.'] |
+|  | tagged word | ashes  |
+|  | Lesk syn | ash.n.01': the residue that remains when something is burned |
+|  | Sentence_final |  The house was burnt to ['ash']   while the owner returned. |
+| 7 | Sentence |  This table is made of **ash**   wood.'] |
+|  | tagged word | ash  |
+|  | Lesk syn | ash.n.03': strong elastic wood of any of various ash trees; used for   furniture and tool handles and sporting goods such as baseball bats |
+|  | Sentence_final |  This table is made of ['ash']   wood. |
+| 8 | Sentence |  The **lunch** with her boss took   longer than she expected. '] |
+|  | tagged word | lunch  |
+|  | Lesk syn | lunch.n.01': a midday meal |
+|  | Sentence_final |  The ['lunch', 'luncheon',   'tiffin', 'dejeuner'] with her boss took longer than she expected.  |
+| 9 | Sentence |  She packed her **lunch** in her   purse.'] |
+|  | tagged word | lunch  |
+|  | Lesk syn | lunch.n.01': a midday meal |
+|  | Sentence_final |  She packed her ['lunch',   'luncheon', 'tiffin', 'dejeuner'] in her purse. |
+| 10 | Sentence |  The **classification** of the   genetic data took two years.'] |
+|  | tagged word | classification  |
+|  | Lesk syn | categorization.n.03': the act of distributing things into classes or   categories of the same type |
+|  | Sentence_final |  The ['categorization',   'categorisation', 'classification', 'compartmentalization',   'compartmentalisation', 'assortment'] of the genetic data took two years. |
+| 11 | Sentence |  The journal Science published the   **classification** this month.'] |
+|  | tagged word | classification  |
+|  | Lesk syn | categorization.n.03': the act of distributing things into classes or   categories of the same type |
+|  | Sentence_final |  The journal Science published the   ['categorization', 'categorisation', 'classification',   'compartmentalization', 'compartmentalisation', 'assortment'] this month. |
+| 12 | Sentence |  His cottage is near a small   **wood**.'] |
+|  | tagged word | wood  |
+|  | Lesk syn | wood.n.01': the hard fibrous lignified substance under the bark of trees |
+|  | Sentence_final |  His cottage is near a small   ['wood'] . |
+| 13 | Sentence |  The statue was made out of a block   of **wood**.'] |
+|  | tagged word | wood  |
+|  | Lesk syn | wood.n.08': a golf club with a long shaft used to hit long shots;   originally made with a wooden head |
+|  | Sentence_final |  The statue was made out of a block   of ['wood'] . |
+
+
+task2_SemCor_results
+
+| id | Sentence | Lemma | lesk synset | gold synset | score |
+|-|-|-|-|-|-|
+| 1 | He started to reach for his gun , but apparently hammer it . | gun | gun.n.07 | gun.n.01 | 0 |
+| 2 | `` We 'll do it another way , then '' , he said harshly . | way | way.n.06 | manner.n.01 | 0 |
+| 3 | He backed Jess into a corner , grabbed a handful of the man 's shirtfront   , and drew_back his right fist . | corner | corner.n.01 | corner.n.03 | 0 |
+| 4 | Curt caught him flush on the nose with a blow which started at the floor   . | floor | floor.n.01 | floor.n.01 | 1 |
+| 5 | `` One thing , Summers '' , Brenner said . | thing | thing.n.01 | thing.n.10 | 0 |
+| 6 | When his head came_down , Curt grabbed him by the hair and catapulted him   head first into the wall . | head | head.n.01 | head.n.01 | 1 |
+| 7 | `` Damn you , Adams '' - Jess was beginning to recover from his initial   shock . | shock | daze.n.01 | daze.n.01 | 1 |
+| 8 | `` You and I have a little talking to do , Jess . | talking | talk.n.01 | talk.n.01 | 1 |
+| 9 | You 're the kind of bastard who sneaks_up on a man from behind and hits   him with a club . | man | man.n.03 | man.n.01 | 0 |
+| 10 | There were two horses in the barn , a sway-backed dun and Jess_Crouch 's   buckskin . | horses | knight.n.02 | horse.n.01 | 0 |
+| 11 | He could hear horses moving around inside , and nothing else . | horses | horse.n.01 | horse.n.01 | 1 |
+| 12 | Again he stood in the darkness listening , but there was only the scrape   of a shod hoof on a plank floor . | plank | board.n.02 | board.n.02 | 1 |
+| 13 | Vastly relieved , Summers nodded and started toward the door . | door | door.n.01 | doorway.n.01 | 0 |
+| 14 | It was like hitting a sack of salt . | salt | salt.n.01 | salt.n.02 | 0 |
+| 15 | Even Black 's old crowbait began to snort , and from the house Black   yelled , `` Jess ! | crowbait | crowbait.n.01 | crowbait.n.01 | 1 |
+| 16 | He let_go_of the shirt , and Jess slumped to the floor . | floor | floor.n.01 | floor.n.01 | 1 |
+| 17 | Presently he heard footsteps crossing the yard , and Jess 's smothered   curses . | yard | yard.n.02 | yard.n.02 | 1 |
+| 18 | There was a light in Black 's front_room , but drawn curtains prevented   any view of the interior . | interior | inside.n.01 | inside.n.01 | 1 |
+| 19 | He moved up and lifted Jess 's pistol out of its holster . | pistol | pistol.n.01 | pistol.n.01 | 1 |
+| 20 | He slammed into the wall , bounced back , and caught Curt with a   roundhouse right which sent him spinning . | wall | wall.n.04 | wall.n.01 | 0 |
+| 21 | Horse smell was very strong , and he could hear the crunch of grain being   ground between strong jaws . | grain | grain.n.01 | grain.n.02 | 0 |
+| 22 | I just want you to take a message to Diane_Molinari . | message | message.n.01 | message.n.01 | 1 |
+| 23 | He moved ahead carefully , his left_hand in_front of him , and came to a   wooden partition . | partition | partition.n.01 | partition.n.01 | 1 |
+| 24 | As it was , his vision blurred and for a moment he was unable to move . | vision | vision.n.01 | sight.n.03 | 0 |
+| 25 | The horse continued to snort . | horse | cavalry.n.01 | horse.n.01 | 0 |
+| 26 | `` It was Brenner 's idea '' , Jess mumbled , dabbing at his nose . | nose | nose.n.01 | nose.n.01 | 1 |
+| 27 | An inch lower and it would have knocked him out . | inch | inch.n.01 | inch.n.01 | 1 |
+| 28 | The tines broke_off under Jess 's twisting , and he swung the handle in   an attempt to knock Curt 's brains out . | handle | handle.n.01 | handle.n.01 | 1 |
+| 29 | Blood gushed from his nose , and he backed_off as rapidly as he could ,   stumbling over his own feet in his frantic haste to get_away from Curt 's   fists . | Blood | blood.n.01 | blood.n.01 | 1 |
+| 30 | `` No . | No | no.n.01 | no.n.01 | 1 |
+| 31 | Curt approached the place cautiously , and watched it several minutes   from the protection of a grove of trees . | protection | protection.n.01 | protective_covering.n.01 | 0 |
+| 32 | `` We 're going to Marshal_Woods 's house . | house | house.n.01 | house.n.01 | 1 |
+| 33 | `` That 's the stuff '' , Curt said . | stuff | material.n.01 | stuff.n.05 | 0 |
+| 34 | He had found Curt 's weakness , or what to Jess was a weakness , and was   smart enough to take_advantage of it . | weakness | helplessness.n.01 | failing.n.01 | 0 |
+| 35 | He reached_out to pull the door shut and fasten it with a sliding bolt . | door | door.n.01 | door.n.01 | 1 |
+| 36 | Now turn_around so I can see your face '' . | face | face.n.01 | face.n.01 | 1 |
+| 37 | Reaching across the side of the stall , he slapped the buckskin on the   rump . | side | side.n.01 | side.n.01 | 1 |
+| 38 | `` It does n't seem quite right , telling her a thing like that . | thing | thing.n.09 | thing.n.07 | 0 |
+| 39 | Apparently sensing this , and realizing that it gave him an advantage ,   Jess became bold . | advantage | advantage.n.01 | advantage.n.01 | 1 |
+| 40 | Jess 's coarse features twisted in a surprised grin which was smashed out   of shape by Curt 's fist . | grin | smile.n.01 | smile.n.01 | 1 |
+| 41 | As Curt had hoped , the house door banged open . | door | door.n.01 | door.n.01 | 1 |
+| 42 | Curt 's fingers put a_little more pressure on the trigger of his gun . | trigger | gun_trigger.n.01 | gun_trigger.n.01 | 1 |
+| 43 | Could n't I just '' - His voice trailed off into silence . | silence | silence.n.01 | silence.n.02 | 0 |
+| 44 | His face pale , Summers headed for the street . | face | face.n.01 | face.n.01 | 1 |
+| 45 | He started toward the stairway , then turned to add , `` Tell her to come   to Adams 's room , that Adams is in_trouble . | stairway | stairway.n.01 | stairway.n.01 | 1 |
+| 46 | Curt 's visit to the livery_stable had been merely a precaution in_case   anyone should be watching . | visit | visit.n.01 | visit.n.01 | 1 |
+| 47 | About now he 's probably having supper . | supper | supper.n.01 | supper.n.01 | 1 |
+| 48 | That long ride the four of you took must 've given him a good appetite . | appetite | appetite.n.01 | appetite.n.01 | 1 |
+| 49 | When his eyes began to focus , he saw Jess charging at him with a   pitchfork . | pitchfork | pitchfork.n.01 | pitchfork.n.01 | 1 |
+| 50 | Sweat bubbled out on Jess 's swarthy face . | face | face.n.01 | face.n.01 | 1 |
+|  |  |  |  | TOTALE | 33/50 (66%) |
+
+
 ## Authors
 
 - Vittorio Paragallo

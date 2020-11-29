@@ -83,13 +83,10 @@ def lexsnKey2Syn(sensekey):
 # return a random list of triple (goldSyn, word_to_wsd, text_sent) 
 # from the brown corpus
 def get_random_sent_goldsyn_brown(quantity):
-
     sents = semcor.xml('brown2/tagfiles/br-n12.xml').findall('context/p/s')
-
     # prepare the ranges for the random function
     random_index2explore = list(range(0, len(sents)-1))
     results = []
-
     # add sentences to the result till the required quantity is reached, or the dataset has no more sentences
     while len(results) < quantity and len(random_index2explore) > 0:
         # choose a random index not previously
@@ -111,7 +108,6 @@ def get_random_sent_goldsyn_brown(quantity):
             random_gold_syn = random.choice(sent_noun_list)
             results.append((random_gold_syn[1], random_gold_syn[0], raw_sent))
     return results
-
 
 if __name__ == "__main__":
   # PARTE 1
