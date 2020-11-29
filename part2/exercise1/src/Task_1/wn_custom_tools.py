@@ -28,12 +28,15 @@ def lowest_common_subsumer(synset1, synset2):
 
     if synset1 == synset2:
         return synset1
-
+    
+    # for both syns we take all the nodes in the upwards path 
     syn1_ancestors_all_paths = set(itertools.chain(*synset1.hypernym_paths()))
     syn2_ancestors_all_paths = set(itertools.chain(*synset2.hypernym_paths()))
-
+    
+    # we get a set of common nodes in the syns ancestor paths
     common_ancestors = syn1_ancestors_all_paths & syn2_ancestors_all_paths
-
+    # creates a list of tuples common_ancestor and it's depth and returns the element
+    #with max max_depth()
     lowest_common = max(
           [(common_ancestor, common_ancestor.max_depth())
               for common_ancestor in common_ancestors],
@@ -103,7 +106,9 @@ def shortest_path_metric(synset1, synset2):
     len_s1_s2 = distance(synset1, synset2)
     if len_s1_s2 is None:
         return 0
-    return 2 * max_wn_depth - len_s1_s2
+    # normalizzare [0-2maxdepth] a [0,1]   
+    #return 2 * max_wn_depth - len_s1_s2
+    return 1 / (len_s1_s2+1)
 
 def leakcock_chodorow_metric(synset1, synset2):
     """
