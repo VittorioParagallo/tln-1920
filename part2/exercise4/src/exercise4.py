@@ -169,4 +169,5 @@ if __name__ == "__main__":
                     "w"), delimiter='\t').writerows(result)
 
   print("\n\tAccuracy: ({:.0f}%)".format(
-        np.mean([similarity[2] for similarity in evaluations])*100))
+        np.mean([similarity[2] for similarity in evaluations])* 100))
+  print('End')      
